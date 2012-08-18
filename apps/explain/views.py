@@ -87,16 +87,22 @@ def explanation_submit(request):
 def vote(request, id, type):
     context = {}
     
+    direction = request.POST.get('direction')
+    
     if type == 'explanation':
         _object = Explanation.objects.get(id=id)
     elif type == 'comment':
         _object = Explanation.objects.get(id=id)
     else:
-        pass
-        #response = simplejson.dumps({ 'success': False })
-        #return 400
-        
-    Vote.object.create(user=request.user, content_object=_object)
-    response = simplejson.dumps({ 'success': True })
-        
+        response = simplejson.dumps({ 'success': False })        
+        return HttpResponse(response, mimetype='application/json', status=200)
+
+    if direction == 'up':
+        value = True
+    else:
+        value = False
+    
+    Vote.objects.create(user=request.user, content_object=_object, value=value )
+    
+    response = simplejson.dumps({ 'success': True })        
     return HttpResponse(response, mimetype='application/json', status=200)
