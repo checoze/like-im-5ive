@@ -66,14 +66,19 @@ class Explanation(Base):
     @property        
     def up_votes(self):
         up_votes = Vote.objects.for_model(self).get_up_votes().count()
-        print up_votes
-        return up_votes
+        #print up_votes
+        return int(up_votes)
         
     @property        
     def down_votes(self):
         down_votes = Vote.objects.for_model(self).get_down_votes().count()
-        print down_votes
-        return down_votes
+        return int(down_votes)
+        
+    @property        
+    def score(self):
+        print int(self.up_votes - self.down_votes)
+        return int(self.up_votes - self.down_votes)
+
 
 
 
