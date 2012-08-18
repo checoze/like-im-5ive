@@ -14,5 +14,7 @@ urlpatterns = patterns('',
     url(r'^entry/submit$', 'explain.views.entry_submit', name='entry_submit'),
     url(r'^([a-f0-9]{6})/', 'explain.views.entry_detail', name='entry_detail'),
     
+    url(r'^explanation/submit$', 'explain.views.explanation_submit', name='explanation_submit'),
+    
     url(r'api/', include(v1_api.urls)),
 )
