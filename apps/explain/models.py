@@ -1,10 +1,12 @@
 import random
-from explain.managers import VoteManager
+
 from django.db import models
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
+
+from explain.managers import VoteManager, EntryManager
 
 class Base(models.Model):
     """ Base model that contains creation data """
@@ -15,15 +17,6 @@ class Base(models.Model):
     
     class Meta:
         abstract = True
-    
-class EntryManager(models.Manager):
-    def get_until_create(self):
-        created = False
-        while not created:
-            hex = ''.join(random.choice('0123456789abcdef') for i in range(6))
-            entry, created = Entry.objects.get_or_create(hex=hex)
-            if created:
-                return entry
 
 class Entry(Base):
     """ Describes an Entry"""
