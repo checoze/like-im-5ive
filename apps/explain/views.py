@@ -53,17 +53,29 @@ def entry_detail(request, hex):
 def entry_prompt(request):
         
     context = {}
-    
-    if request.user.is_authenticated():
-        context['current_user'] = request.user.id
+
+    if request.method == "POST":
+        entry_form = EntryForm(request.POST)
+        if entry_form.is_valid():
+            entry = entry_form.save(commit=False)
+            formset = ExplanationFormset(request.POST, instance=entry)
+            if formset.is_valid():
+                entry_form.save()
+                formset.save()
     else:
-        context['current_user'] = "garrett"
-    
-    context['term'] = request.POST.get('search')
-    initial_data = {'name': request.POST.get('search') }
-    context['entry_form'] = EntryForm(initial_data)
-    context['formset'] = ExplanationFormset()
-    
+        if request.user.is_authenticated():
+            context['current_user'] = request.user.id
+        else:
+            context['current_user'] = "garrett"
+
+        context['term'] = request.POST.get('search')
+        initial_data = {'name': request.POST.get('search') }
+        form = EmptyForm(initial_data)
+        formset = ExplanationFormset()
+
+    context['entry_form'] = form
+    context['formset'] = formset
+
     return render(request, 'explain/entry_prompt.html', context)
     
 def entry_submit(request):
@@ -72,7 +84,6 @@ def entry_submit(request):
     if request.method == "POST":
         entry_form = EntryForm(request.POST)
         if entry_form.is_valid():
-            print "is valid"
             entry = entry_form.save(commit=False)
             formset = ExplanationFormset(request.POST, instance=entry)
             if formset.is_valid():
