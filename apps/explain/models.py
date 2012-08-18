@@ -46,9 +46,15 @@ class Entry(Base):
         self.slug = slugify(self.name)
             
         super(Entry, self).save(*args, **kwargs)
+    
+    def get_most_popular_explanation(self):
+        return self.explanation_set.all().get(id=2)
+
         
 class Explanation(Base):
     """ An Explanation that points to an Entry """
+
+    objects = EntryManager()
     
     entry = models.ForeignKey(Entry)
     body = models.TextField()
