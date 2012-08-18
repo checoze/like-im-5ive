@@ -1,2 +1,1 @@
-__author__ = 'Derek Stegelman'
-__date__ = '8/17/12'
+from selenium.home_test_case import *
