@@ -21,6 +21,7 @@
             <h1><a href="/">Like I&rsquo;m 5ive</a></h1>
             {% if not request.user.is_authenticated %}
             <div id="signin" class="btn-group">
+
                 <a class="btn btn-large dropdown-toggle" data-toggle="dropdown" href="#">Sign In or Sign Up <span class="caret"></span></a>
                 <ul id="signin-dropdown" class="dropdown-menu dropdown-form pull-right">
                     <li>
@@ -45,7 +46,6 @@
             <ul id="lif-auth">
                 <li id="lif-user">{{ request.user.username }}</li>
                 <li><a href="{% url logout %}">Logout</a></li>
-                <li><a href="/help">Help</a></li>
             </ul>
             {% endif %}
         </nav>
