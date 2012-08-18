@@ -43,7 +43,7 @@
             </div><!-- /.btn-group -->
             {% else %}
             <ul id="lif-auth">
-                <li id="lif-user">{{ request.user }}</li>
+                <li id="lif-user">{{ request.user.username }}</li>
                 <li><a href="{% url logout %}">Logout</a></li>
                 <li><a href="/help">Help</a></li>
             </ul>
