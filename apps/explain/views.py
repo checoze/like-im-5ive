@@ -4,9 +4,9 @@ from django.views.generic import DetailView, ListView
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.forms.models import inlineformset_factory
+from django.utils import simplejson
 
-
-from explain.models import Entry, Explanation
+from explain.models import Entry, Explanation, Vote
 from explain.forms import EntryForm, ExplanationForm, ExplanationFormset
 
 def home(request):
@@ -87,6 +87,22 @@ def explanation_submit(request):
 def vote(request, id, type):
     context = {}
     
-    print id, type
-            
-    return HttpResponseRedirect(reverse('home'))   
+    direction = request.POST.get('direction')
+    
+    if type == 'explanation':
+        _object = Explanation.objects.get(id=id)
+    elif type == 'comment':
+        _object = Explanation.objects.get(id=id)
+    else:
+        response = simplejson.dumps({ 'success': False })        
+        return HttpResponse(response, mimetype='application/json', status=200)
+
+    if direction == 'up':
+        value = True
+    else:
+        value = False
+    
+    Vote.objects.create(user=request.user, content_object=_object, value=value )
+    
+    response = simplejson.dumps({ 'success': True })        
+    return HttpResponse(response, mimetype='application/json', status=200)
