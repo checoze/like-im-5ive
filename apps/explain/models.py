@@ -8,6 +8,11 @@ from django.contrib.contenttypes import generic
 
 from explain.managers import VoteManager, EntryManager
 
+UNDERWEAR_CHOICES= (
+    ('sfw', 'Safe For Work'),
+    ('nsfw', 'Not Safe For Work')
+)
+
 class Base(models.Model):
     """ Base model that contains creation data """
 
@@ -22,6 +27,7 @@ class Tag(models.Model):
     """ Tags for Entry types with URL  """
 
     name = models.CharField(max_length=255)
+    type = models.CharField(max_length=12, choices=TAG_CHOICES)
     
     def __unicode__(self):
         return str(self.name)
@@ -39,7 +45,6 @@ class Entry(Base):
     #URL specific fields
     url = models.URLField(max_length=255, blank=True)
     tags = models.ManyToManyField(Tag)
-    nsfw_tags = models.ManyToManyField(Tag)
     
     original_creator = models.ForeignKey(User, default="1")
         
