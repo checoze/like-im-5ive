@@ -817,15 +817,14 @@ legend {
   line-height: 36px;
   color: #333333;
   border: 0;
-  border-bottom: 1px solid #e5e5e5;
 }
-/* line 33, ../../src/sass/bootstrap/_forms.scss */
+/* line 32, ../../src/sass/bootstrap/_forms.scss */
 legend small {
   font-size: 13.5px;
   color: #999999;
 }
 
-/* line 44, ../../src/sass/bootstrap/_forms.scss */
+/* line 43, ../../src/sass/bootstrap/_forms.scss */
 label,
 input,
 button,
@@ -836,7 +835,7 @@ textarea {
   line-height: 18px;
 }
 
-/* line 50, ../../src/sass/bootstrap/_forms.scss */
+/* line 49, ../../src/sass/bootstrap/_forms.scss */
 input,
 button,
 select,
@@ -844,8 +843,9 @@ textarea {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-/* line 55, ../../src/sass/bootstrap/_forms.scss */
+/* line 54, ../../src/sass/bootstrap/_forms.scss */
 label {
+  cursor: pointer;
   display: block;
   margin-bottom: 5px;
 }
