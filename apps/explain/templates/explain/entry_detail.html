@@ -15,7 +15,7 @@
 
 //Explanations
 {% for ex in entry.explanation_set.all %}
-    <p>{{ ex }} - {{ ex.up_votes }}</p>
+    <p>{{ ex }} - {{ ex.up_votes }} <a href='/vote/explanation' class='lif-upvote' data-type='explanation' data-id='{{ ex.id }}'>UPVOTE</a> / <a href='/vote/explanation' class='lif-downvote' data-type='explanation' data-id='{{ ex.id }}'>DOWNVOTE</a></p>
 {% endfor %}
 
 //Submit New Explanation
