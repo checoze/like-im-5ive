@@ -16,11 +16,38 @@
     {% block extra_js %}{% endblock extra_js %}
 </head>
 <body id="{% block body_id %}{% endblock %}" class="{% block body_class %}{% endblock %}">
-    
-    {% block content %}
-    {% endblock content %}
-    
+    <header role="banner">
+        <nav id="top-nav">
+            <h1><a href="/">Like I&rsquo;m 5ive</a></h1>
+            <div id="signin" class="btn-group">
+                <a class="btn btn-large dropdown-toggle" data-toggle="dropdown" href="#">Sign In or Sign Up <span class="caret"></span></a>
+                <ul id="signin-dropdown" class="dropdown-menu dropdown-form pull-right">
+                    <li>
+                        <form>
+                            <fieldset>
+                                <div class="coontrol-group">
+                                    <label for="">Username</label>
+                                    <input type="text"></input>
+                                </div><!-- /.control-group -->
+                                <div class="control-group">
+                                    <label for="">Password</label>
+                                    <input type="password"></input>
+                                </div><!-- /.control-group -->
+                                <input type="submit" class="btn btn-primary">
+                            </fieldset>
+                        </form>
+                    </li>
+                    <li><a href="">Don&rsquo;t have an account? Sign up!</a></li>
+                </ul>
+            </div><!-- /.btn-group -->
+        </nav>
+    </header>
+    <div id="main" role="main">
+        {% block content %}
+        {% endblock content %}
+    </div><!-- /#main -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="static/js/jquery/1.7.2/jquery.min.js"><\/script>')</script>
+    <script src="{{ STATIC_URL }}js/bootstrap/bootstrap-dropdown.js"></script>
 </body>
 </html>
