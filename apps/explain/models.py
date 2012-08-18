@@ -42,7 +42,6 @@ class Entry(Base):
     hex = models.CharField(max_length=10, blank=True)
     name = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255)
-    type = models.CharField(max_length=40)
     
     #URL specific fields
     url = models.URLField(max_length=255, blank=True)

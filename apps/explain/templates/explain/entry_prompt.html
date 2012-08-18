@@ -13,13 +13,7 @@
             <span class="help-block">{{ entry_form.name.help_text }}</span>
         {% endif %}
     </div><!-- /.control-group -->
-    <div class="control-group">
-        {{ entry_form.type.label_tag }}
-        {{ entry_form.type }}
-        {% if entry_form.type.help_text %}
-            <span class="help-block">{{ entry_form.type.help_text }}</span>
-        {% endif %}
-    </div><!-- /.control-group -->
+
     {% for form in formset %}
         <div class="control-group">
             {{ form.id }}
