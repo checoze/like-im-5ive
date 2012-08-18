@@ -1,13 +1,14 @@
 {% extends 'base.html' %}
 
-{% block content %}
 
+{% block content %}
+<script>
+    var csrf_token = "{{ csrf_token }}";
+</script>
 {{ entry }}
 
 <p>Popular:</p>
 {{ entry.get_most_popular_explanation }}
-
-
 
 //Tabs
 //Comments

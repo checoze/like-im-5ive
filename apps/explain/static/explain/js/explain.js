@@ -15,7 +15,7 @@ $(document).ready( function(){
 			dataType: 'json',
 			data: "csrfmiddlewaretoken=" + csrf_token,
 			success: function(data){
-			    alert('success!')l
+			    alert('success!');
 			},
 			error: function(){
 			    console.log('Unable to vote')
@@ -24,10 +24,12 @@ $(document).ready( function(){
     }
 
     //Vote
-    $('.lif-upvote').click(function(){
+    $('.lif-upvote').click(function(event){
+        event.preventDefault();
         vote( $(this), 'up' );
     });
-    $('.lif-downvote').click(function(){
+    $('.lif-downvote').click(function(event){
+        event.preventDefault();
         vote( $(this), 'down' );
     });
 
