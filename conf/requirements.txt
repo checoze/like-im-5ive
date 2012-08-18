@@ -9,3 +9,5 @@ hadrian==1.1.4
 selenium==2.25.0
 coverage==3.5.2
 gondor
+psycopg2==2.4.5
+gunicorn==0.14.3
