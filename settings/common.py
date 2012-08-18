@@ -24,6 +24,10 @@ AUTHENTICATION_BACKENDS = (
 )
 
 
+STATICFILES_DIRS = (
+    os.path.join(SITE_ROOT, 'static'),
+)
+
 SITE_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 
 #ADMIN_MEDIA_PREFIX = '/static/admin/'
