@@ -33,7 +33,7 @@ SITE_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 
 STATICFILES_DIRS = (
     os.path.join(SITE_ROOT, 'static'),
-    os.path.join(SITE_ROOT, 'docs/build')
+    #os.path.join(SITE_ROOT, 'docs/build')
 )
 
 
