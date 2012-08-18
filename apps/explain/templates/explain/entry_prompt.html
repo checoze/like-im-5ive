@@ -16,6 +16,8 @@ Would you like to create an Explanation for it?
     {{ entry_form.type }}
     </p>
     
+    {{ formset.as_p }}
+    
     <input type='hidden' name='original_creator' value='{{ current_user }}' />
     
     <input type='submit' />
