@@ -23,7 +23,7 @@
                 <a class="btn btn-large dropdown-toggle" data-toggle="dropdown" href="#">Sign In or Sign Up <span class="caret"></span></a>
                 <ul id="signin-dropdown" class="dropdown-menu dropdown-form pull-right">
                     <li>
-                        <form method="POST" action="{% url django.contrib.auth.views.login %}">{% csrf_token %}
+                        <form method="POST" action="{% url login %}">{% csrf_token %}
                             <fieldset>
                                 <div class="coontrol-group">
                                     <label for="username">Username</label>
@@ -33,11 +33,11 @@
                                     <label for="password">Password</label>
                                     <input type="password" name="password"></input>
                                 </div><!-- /.control-group -->
-                                <input type="submit" class="btn btn-primary">
+                                <input type="submit" class="btn btn-primary" value="Login">
                             </fieldset>
                         </form>
                     </li>
-                    <li><a href="">Don&rsquo;t have an account? Sign up!</a></li>
+                    <li><a href="{% url registration %}">Don&rsquo;t have an account? Sign up!</a></li>
                 </ul>
             </div><!-- /.btn-group -->
         </nav>
