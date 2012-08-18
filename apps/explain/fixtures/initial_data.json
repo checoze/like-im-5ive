@@ -1,1 +1,108 @@
-[{"pk": 1, "model": "explain.tag", "fields": {"type": "sfw", "name": "Paid Account Required"}}, {"pk": 2, "model": "explain.tag", "fields": {"type": "sfw", "name": "Spam"}}, {"pk": 3, "model": "explain.tag", "fields": {"type": "sfw", "name": "Viruses or Malware"}}, {"pk": 4, "model": "explain.tag", "fields": {"type": "sfw", "name": "Excessive Ads"}}, {"pk": 5, "model": "explain.tag", "fields": {"type": "nsfw", "name": "Nudity"}}, {"pk": 6, "model": "explain.tag", "fields": {"type": "nsfw", "name": "Non Sexual Nudity"}}, {"pk": 7, "model": "explain.tag", "fields": {"type": "nsfw", "name": "Suggestive Images"}}, {"pk": 8, "model": "explain.tag", "fields": {"type": "nsfw", "name": "Language"}}, {"pk": 9, "model": "explain.tag", "fields": {"type": "nsfw", "name": "Gore"}}, {"pk": 10, "model": "explain.tag", "fields": {"type": "nsfw", "name": "Violence"}}, {"pk": 11, "model": "explain.tag", "fields": {"type": "nsfw", "name": "Illicit Drugs"}}]
+[
+    {
+        "pk": 1,
+        "model": "explain.tag",
+        "fields": {
+            "type": "sfw",
+            "name": "Paid Account Required"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "explain.tag",
+        "fields": {
+            "type": "sfw",
+            "name": "Spam"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "explain.tag",
+        "fields": {
+            "type": "sfw",
+            "name": "Viruses or Malware"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "explain.tag",
+        "fields": {
+            "type": "sfw",
+            "name": "Excessive Ads"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "explain.tag",
+        "fields": {
+            "type": "nsfw",
+            "name": "Nudity"
+        }
+    },
+    {
+        "pk": 6,
+        "model": "explain.tag",
+        "fields": {
+            "type": "nsfw",
+            "name": "Non Sexual Nudity"
+        }
+    },
+    {
+        "pk": 7,
+        "model": "explain.tag",
+        "fields": {
+            "type": "nsfw",
+            "name": "Suggestive Images"
+        }
+    },
+    {
+        "pk": 8,
+        "model": "explain.tag",
+        "fields": {
+            "type": "nsfw",
+            "name": "Language"
+        }
+    },
+    {
+        "pk": 9,
+        "model": "explain.tag",
+        "fields": {
+            "type": "nsfw",
+            "name": "Gore"
+        }
+    },
+    {
+        "pk": 10,
+        "model": "explain.tag",
+        "fields": {
+            "type": "nsfw",
+            "name": "Violence"
+        }
+    },
+    {
+        "pk": 11,
+        "model": "explain.tag",
+        "fields": {
+            "type": "nsfw",
+            "name": "Illicit Drugs"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "auth.user",
+        "fields": {
+            "username": "anon",
+            "first_name": "",
+            "last_name": "",
+            "is_active": true,
+            "is_superuser": false,
+            "is_staff": false,
+            "last_login": "2012-08-18T15:53:50.358",
+            "groups": [],
+            "user_permissions": [],
+            "password": "asd",
+            "email": "noemail@email.com",
+            "date_joined": "2012-08-18T15:49:05.633"
+        }
+    }
+]

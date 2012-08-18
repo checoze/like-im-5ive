@@ -7,6 +7,7 @@ from django.forms.models import inlineformset_factory
 
 from django.utils import simplejson
 from django.contrib import messages
+from django.contrib.auth.models import User
 from django.http import HttpResponse
 
 
@@ -52,9 +53,7 @@ def entry_detail(request, hex):
     
     
 def entry_prompt(request, search_term=None):
-        
     context = {}
-
     if request.method == "POST":
         entry_form = EntryForm(request.POST)
         print("validate")
@@ -72,7 +71,7 @@ def entry_prompt(request, search_term=None):
         if request.user.is_authenticated():
             context['current_user'] = request.user.id
         else:
-            context['current_user'] = "garrett"
+            context['current_user'] = User.objects.get(username="anon").id
 
         context['term'] = search_term
         initial_data = {'name': search_term }
@@ -82,23 +81,7 @@ def entry_prompt(request, search_term=None):
     context['formset'] = formset
 
     return render(request, 'explain/entry_prompt.html', context)
-    
-def entry_submit(request):
-    context = {}
 
-    if request.method == "POST":
-        entry_form = EntryForm(request.POST)
-        if entry_form.is_valid():
-            entry = entry_form.save(commit=False)
-            formset = ExplanationFormset(request.POST, instance=entry)
-            if formset.is_valid():
-                entry_form.save()
-                formset.save()
-            
-            return HttpResponseRedirect(reverse('entry_detail', args=[entry.hex]))
-            
-            
-    return render(request, 'explain/entry_detail.html', context)
     
 def explanation_submit(request):
     context = {}
@@ -124,6 +107,10 @@ def registration(request):
             if created:
                 user.set_password(password)
                 user.save()
+                from django.contrib.auth import authenticate, login
+                user = authenticate(username=username, password=password)
+                if user.is_active:
+                    login(request, user)
                 return redirect("explain.views.home")
             else:
                 messages.add_message(request, messages.ERROR, "Use account %s already exists." % username)
