@@ -4,14 +4,15 @@ __init__                                                    0      0   100%
 apps/explain/__init__                                       0      0   100%   
 apps/explain/admin                                         11      0   100%   
 apps/explain/api                                           14      0   100%   
-apps/explain/forms                                          6      0   100%   
-apps/explain/models                                        41     14    66%   17-22, 37, 40-46, 59, 69
-apps/explain/tests/__init__                                 2      0   100%   
+apps/explain/forms                                         12      0   100%   
+apps/explain/models                                        43     14    67%   19-24, 39, 42-48, 61, 71
+apps/explain/tests/__init__                                 3      0   100%   
 apps/explain/tests/selenium/__init__                        2      0   100%   
+apps/explain/tests/selenium/enter_new_item_test_case       15      0   100%   
 apps/explain/tests/selenium/home_test_case                  9      0   100%   
-apps/explain/tests/selenium/search_homepage_test_case      13      0   100%   
+apps/explain/tests/selenium/search_homepage_test_case      11      0   100%   
 apps/explain/urls                                           7      0   100%   
-apps/explain/views                                         38     13    66%   32-38, 46, 56-66
+apps/explain/views                                         45     12    73%   30-35, 43, 64-71
 apps/profile/__init__                                       0      0   100%   
 apps/profile/admin                                          5      0   100%   
 apps/profile/models                                         8      1    88%   15
@@ -21,7 +22,7 @@ conf/project                                                3      0   100%
 manage                                                      7      0   100%   
 settings/__init__                                           0      0   100%   
 settings/common                                            30      0   100%   
-settings/local                                             10      0   100%   
+settings/local                                              9      0   100%   
 urls                                                       10      3    70%   15-21
 -------------------------------------------------------------------------------------
-TOTAL                                                     229     31    86%   
+TOTAL                                                     257     30    88%   
