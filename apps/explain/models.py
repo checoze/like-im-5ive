@@ -17,7 +17,15 @@ class Base(models.Model):
     
     class Meta:
         abstract = True
+        
+class Tag(models.Model):
+    """ Tags for Entry types with URL  """
 
+    name = models.CharField(max_length=255)
+    
+    def __unicode__(self):
+        return str(self.name)
+    
 class Entry(Base):
     """ Describes an Entry"""
     
@@ -26,7 +34,12 @@ class Entry(Base):
     hex = models.CharField(max_length=10, blank=True)
     name = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255)
-    type  = models.CharField(max_length=40)
+    type = models.CharField(max_length=40)
+    
+    #URL specific fields
+    url = models.URLField(max_length=255, blank=True)
+    tags = models.ManyToManyField(Tag)
+    nsfw_tags = models.ManyToManyField(Tag)
     
     original_creator = models.ForeignKey(User, default="1")
         
