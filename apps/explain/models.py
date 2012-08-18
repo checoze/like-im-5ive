@@ -46,16 +46,20 @@ class Entry(Base):
         self.slug = slugify(self.name)
             
         super(Entry, self).save(*args, **kwargs)
+    
+    def get_most_popular_explanation(self):
+        return self.explanation_set.all().get(id=2)
+
         
 class Explanation(Base):
     """ An Explanation that points to an Entry """
+
+    objects = EntryManager()
     
     entry = models.ForeignKey(Entry)
     body = models.TextField()
 
-    #upvotes
-    #downvotes
-    #submitted
+    #submitted #
         
     def __unicode__(self):
         return str(self.body)
@@ -69,3 +73,10 @@ class Comment(Base):
     
     def __unicode__(self):
         return str(self.body)
+        
+        
+class Vote(Base):
+    object = models.ForeignKey(ContentType)
+    user = models.ForeignKey(User)
+    value = models.BooleanField(default=False)
+    
