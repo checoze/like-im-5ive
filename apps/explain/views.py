@@ -67,6 +67,7 @@ def entry_prompt(request, search_term=None):
                 print("save")
                 entry_form.save()
                 formset.save()
+                return HttpResponseRedirect(reverse('entry_detail', args=[entry.hex]))
     else:
         if request.user.is_authenticated():
             context['current_user'] = request.user.id

@@ -14,7 +14,10 @@
         {% endif %}
     </div><!-- /.control-group -->
 
+    {{ formset.management_form }}
+
     {% for form in formset %}
+
         <div class="control-group">
             {{ form.id }}
             {{ form.body.label_tag }}
