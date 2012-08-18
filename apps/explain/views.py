@@ -26,7 +26,7 @@ def home(request):
 
     
 def entry_detail(request, hex):
-    """ Simple homepage invites users to search for or create an entry """
+    """ Entry Detail """
     context = {}
     
     entry = get_object_or_404(Entry, hex=hex)
