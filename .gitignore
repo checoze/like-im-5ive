@@ -32,3 +32,5 @@ pip-log.txt
 
 # OSX
 *.DS_Store
+
+*.db
