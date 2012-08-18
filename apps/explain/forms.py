@@ -20,12 +20,13 @@ class ExplanationForm(forms.ModelForm):
         exclude = BASE_EXCLUDE_FIELDS
 
 
+"""
 class CommentForm(forms.ModelForm):
     
     class Meta:
         model = Explanation
         exclude = BASE_EXCLUDE_FIELDS
-
+"""
 
 class RegistrationForm(forms.Form):
     username = forms.CharField()
