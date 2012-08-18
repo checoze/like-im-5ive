@@ -3,7 +3,7 @@ from django.utils.encoding import force_unicode
 from django.db.models.query import QuerySet
 from django.db.models import Manager
 
-class EntryManager(models.Manager):
+class EntryManager(Manager):
     def get_until_create(self):
         created = False
         while not created:
