@@ -2,6 +2,7 @@ import random
 
 from django.db import models
 from django.contrib.auth.models import User
+from django.template.defaultfilters import slugify
 
 class Base(models.Model):
     """ Base model that contains creation data """
@@ -39,6 +40,9 @@ class Entry(Base):
         if not self.hex:
             _hex = ''.join(random.choice('0123456789abcdef') for i in range(6))
             self.hex = _hex
+        
+        self.slug = slugify(self.name)
+            
         super(Entry, self).save(*args, **kwargs)
         
 class Explanation(Base):
