@@ -9,7 +9,9 @@ class Base(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
     deleted_date = models.DateTimeField(blank=True, null=True)
     deleted = models.BooleanField(default=False)
-
+    
+    class Meta:
+        abstract = True
 
 class Entry(Base):
     """ Describes an Entry"""
