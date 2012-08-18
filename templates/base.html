@@ -16,7 +16,7 @@
     {% block extra_js %}{% endblock extra_js %}
 </head>
 <body id="{% block body_id %}{% endblock %}" class="{% block body_class %}{% endblock %}">
-    <header role="banner">
+    <header role="banner" id="lif-header">
         <nav id="top-nav">
             <h1><a href="/">Like I&rsquo;m 5ive</a></h1>
             {% if not request.user.is_authenticated %}
@@ -63,6 +63,9 @@
         {% block content %}
         {% endblock content %}
     </div><!-- /#main -->
+    <footer role="contentinfo" id="lif-footer">
+        
+    </footer>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="static/js/jquery/1.7.2/jquery.min.js"><\/script>')</script>
     <script src="{{ STATIC_URL }}js/bootstrap/bootstrap-dropdown.js"></script>
