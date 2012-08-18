@@ -33,7 +33,6 @@ DATABASES = {
     }
 }
 
-ROOT_URLCONF = 'urls.production'
 
 INSTALLED_APPS = (
     'django.contrib.auth',

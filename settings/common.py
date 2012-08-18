@@ -23,6 +23,8 @@ TIME_ZONE = 'America/Chicago'
 LANGUAGE_CODE = 'en-us'
 SITE_ID = 1
 
+ROOT_URLCONF = 'urls'
+
 # Django settings
 TEMPLATE_CONTEXT_PROCESSORS = (
     "django.contrib.auth.context_processors.auth",

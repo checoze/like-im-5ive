@@ -37,7 +37,7 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
 
-ROOT_URLCONF = 'urls.local'
+
 
 INSTALLED_APPS = (
     'django.contrib.auth',
