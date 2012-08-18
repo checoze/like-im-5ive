@@ -1,4 +1,6 @@
 import random
+import urllib
+from bs4 import BeautifulSoup
 
 from django.db import models
 from django.contrib.auth.models import User
@@ -44,7 +46,7 @@ class Entry(Base):
     
     #URL specific fields
     url = models.URLField(max_length=255, blank=True)
-    tags = models.ManyToManyField(Tag)
+    tags = models.ManyToManyField(Tag, blank=True)
     
     original_creator = models.ForeignKey(User, default="1")
         
@@ -55,6 +57,22 @@ class Entry(Base):
         if not self.hex:
             _hex = ''.join(random.choice('0123456789abcdef') for i in range(6))
             self.hex = _hex
+        
+        
+        if self.name.startswith('http' or 'www'):
+            try:
+            	url_data = urllib.urlopen(self.name)
+            	url_html = url_data.read()
+
+                try:
+                    soup = BeautifulSoup(url_html)
+                    self.url = self.name
+                    self.name = soup.title.string
+                except:
+                    pass
+            except Exception, e:
+                print e
+                pass
         
         self.slug = slugify(self.name)
             
