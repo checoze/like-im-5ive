@@ -5483,21 +5483,10 @@ header[role=banner] > nav > h1 > a:active, header[role=banner] > nav > h1 > a:fo
   text-decoration: none;
   text-shadow: 3px 3px 1px black;
 }
+
 /* line 29, ../../src/sass/like-im-5ive.sass */
-header[role=banner] > nav > ul {
-  font-size: 20px;
-  list-style: none;
-  margin: 0;
+#signin {
   position: absolute;
-  right: 0;
-  top: 15px;
-}
-/* line 36, ../../src/sass/like-im-5ive.sass */
-header[role=banner] > nav > ul > li {
-  display: inline;
-}
-/* line 38, ../../src/sass/like-im-5ive.sass */
-header[role=banner] > nav > ul > li > a {
-  color: white;
-  padding: 0 0.5em;
+  right: 10px;
+  top: 5px;
 }
