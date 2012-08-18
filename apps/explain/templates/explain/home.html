@@ -4,10 +4,12 @@
 <h1>Explain it to me.</h1>
 <div id='lif-home-search'>
     <p>Search for a person, place, thing, concept, website or URL</p>
-    <form action='.' method='post'>
+    <form action="." method="post" class="well">
         {% csrf_token %}
-        <input id="search" name="search" type="text" />
-        <input type="submit" id="search-button"/>
+        <input id="search" name="search" type="text" placeholder="Word, phrase or URL&hellip;">
+        <div class="form-actions">
+            <input type="submit" value="Search or Explain" id="search-button" class="btn btn-primary btn-large">
+        </div><!-- /.form-actions -->
     </form>
 </div>
 {% endblock content %}
