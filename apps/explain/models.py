@@ -10,23 +10,30 @@ class Base(models.Model):
     deleted_date = models.DateTimeField(blank=True, null=True)
     deleted = models.BooleanField(default=False)
     
-    class Meta:
-        abstract = True
+    
+class EntryManager(models.Manager):
+    def get_until_create(self):
+        created = False
+        while not created:
+            hex = ''.join(random.choice('0123456789abcdef') for i in range(6))
+            entry, created = Entry.objects.get_or_create(hex=hex)
+            if created:
+                return entry
 
 class Entry(Base):
     """ Describes an Entry"""
     
-    #objects = EntryManager()
+    objects = EntryManager()
     
     hex = models.CharField(max_length=10, blank=True)
     name = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255)
     type  = models.CharField(max_length=40)
     
-    original_creator = models.ForeignKey(User)
+    original_creator = models.ForeignKey(User, default="1")
         
     def __unicode__(self):
-        return str(self.slug)
+        return str("%s - %s" % (self.hex, self.name))
     
     def save(self, *args, **kwargs):
         if not self.hex:

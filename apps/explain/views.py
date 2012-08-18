@@ -7,9 +7,16 @@ from explain.models import Entry
 def home(request):
     """ Simple homepage invites users to search for or create an entry """
     context = {}
-    print request.POST
     
-    #term, created = Entry.objects.get_or_create()
+    if request.method == "POST":
+        term = request.POST.get('search')
+        print term
     
-
+    
+        entry = Entry.objects.get_until_create()
+        entry.name = term
+        entry.save()
+    else:
+        pass
+    
     return render(request, 'explain/home.html', context)
