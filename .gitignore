@@ -20,9 +20,18 @@ pip-log.txt
 .coverage
 .tox
 
-#Translations
+# Translations
 *.mo
 
 #Mr Developer
 .mr.developer.cfg
 .idea
+
+# Sass
+*.sass-cache
+
+# OSX
+*.DS_Store
+
+*.db
+
