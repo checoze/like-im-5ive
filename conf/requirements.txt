@@ -7,3 +7,4 @@ django-tastypie==0.9.11
 django-debug-toolbar==0.9.4
 hadrian==1.1.4
 selenium==2.25.0
+coverage==3.5.2
