@@ -30,7 +30,8 @@ def home(request):
             from django.db.models.query import Q
             entries = Entry.objects.filter(Q(name__istartswith=term) | Q(name__iendswith=term))
             if not entries.exists():
-                return redirect("entry_prompt", search_term=term)
+                request.method = "GET"
+                return entry_prompt(request, term)
 
             context['entries'] = entries
             return render(request, "explain/search_results.html", context)
@@ -56,10 +57,14 @@ def entry_prompt(request, search_term=None):
 
     if request.method == "POST":
         entry_form = EntryForm(request.POST)
+        print("validate")
+        print(entry_form.errors)
         if entry_form.is_valid():
+            print('step 1')
             entry = entry_form.save(commit=False)
             formset = ExplanationFormset(request.POST, instance=entry)
             if formset.is_valid():
+                print("save")
                 entry_form.save()
                 formset.save()
     else:
@@ -72,7 +77,6 @@ def entry_prompt(request, search_term=None):
         initial_data = {'name': search_term }
         entry_form = EntryForm(initial_data)
         formset = ExplanationFormset()
-
     context['entry_form'] = entry_form
     context['formset'] = formset
 
