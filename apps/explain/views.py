@@ -81,4 +81,12 @@ def explanation_submit(request):
             print "is valid"
             explanation_form.save()
             
-    return HttpResponseRedirect(reverse('entry_detail', args=[entry_hex]))            
+    return HttpResponseRedirect(reverse('entry_detail', args=[entry_hex]))
+    
+    
+def vote(request, id, type):
+    context = {}
+    
+    print id, type
+            
+    return HttpResponseRedirect(reverse('home'))   
