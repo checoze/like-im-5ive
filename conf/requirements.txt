@@ -1,0 +1,10 @@
+django==1.4.1
+south==0.7.3
+
+celery==2.5.5
+django-celery==2.5.5
+django-kombu
+
+django-tastypie
+django-debug-toolbar
+
