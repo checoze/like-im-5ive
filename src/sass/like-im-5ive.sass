@@ -11,8 +11,10 @@
         max-width: 1024px
         min-width: 1204px
 
-header[role=banner]
+#lif-header,
+#lif-footer
     background: rgb(200,0,0)
+    width: 100%
 #top-nav
     height: 50px
     margin: 0 auto
@@ -44,20 +46,29 @@ header[role=banner]
     margin: 100px auto
     > h1
         font-family: $serifFontFamily
+        letter-spacing: -1px
         margin-left: 20px
-    > form > .control-group
-        > label,
-        > .help-block
-            font-size: 20px
-            margin-bottom: .5em
-        > input[type=search],
-        > input[type=text]
-            font-size: 20px
-            height: auto
-            margin-bottom: 10px
+    > form
+        margin-top: -5px
+        > .control-group
+            > label,
+            > .help-block
+                font-size: 20px
+                margin-bottom: .5em
+            > input[type=search],
+            > input[type=text]
+                font-size: 20px
+                height: auto
+                margin-bottom: 10px
     .btn,
     input[type=search],
     input[type=text]
         width: 100%
     @media only screen and (min-width: 1024px)
         width: (1024px/2)
+        
+#lif-footer
+    bottom: 0
+    left: 0
+    min-height: 100px
+    position: absolute
