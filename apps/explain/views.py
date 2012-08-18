@@ -30,7 +30,7 @@ def home(request):
             from django.db.models.query import Q
             entries = Entry.objects.filter(Q(name__istartswith=term) | Q(name__iendswith=term))
             if not entries.exists():
-                return entry_prompt(request)
+                return redirect("entry_prompt", search_term=term)
 
             context['entries'] = entries
             return render(request, "explain/search_results.html", context)
@@ -50,7 +50,7 @@ def entry_detail(request, hex):
     return render(request, 'explain/entry_detail.html', context)
     
     
-def entry_prompt(request):
+def entry_prompt(request, search_term=None):
         
     context = {}
 
@@ -68,12 +68,12 @@ def entry_prompt(request):
         else:
             context['current_user'] = "garrett"
 
-        context['term'] = request.POST.get('search')
-        initial_data = {'name': request.POST.get('search') }
-        form = EmptyForm(initial_data)
+        context['term'] = search_term
+        initial_data = {'name': search_term }
+        entry_form = EntryForm(initial_data)
         formset = ExplanationFormset()
 
-    context['entry_form'] = form
+    context['entry_form'] = entry_form
     context['formset'] = formset
 
     return render(request, 'explain/entry_prompt.html', context)
@@ -118,6 +118,7 @@ def registration(request):
             user, created = User.objects.get_or_create(username=username)
             if created:
                 user.set_password(password)
+                
                 return redirect("explain.views.home")
             else:
                 messages.add_message(request, messages.ERROR, "Use account %s already exists." % username)
