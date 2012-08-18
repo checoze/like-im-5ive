@@ -8,7 +8,7 @@ from django.contrib.contenttypes import generic
 
 from explain.managers import VoteManager, EntryManager
 
-UNDERWEAR_CHOICES= (
+TAG_CHOICES= (
     ('sfw', 'Safe For Work'),
     ('nsfw', 'Not Safe For Work')
 )
