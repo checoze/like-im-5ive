@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{{ term }} doesn't exist.
+
+Would you like to create an Explanation for it?
+<form method='POST' action='/entry/submit'>
+    {% csrf_token %}
+    <p>
+    {{ entry_form.name.label }}
+    {{ entry_form.name }}
+    </p>
+    
+    <p>
+    {{ entry_form.type.label }}
+    {{ entry_form.type }}
+    </p>
+    
+    <input type='hidden' name='original_creator' value='{{ current_user }}' />
+    
+    <input type='submit' />
+</form>
+
+{% endblock content %}
