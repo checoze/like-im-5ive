@@ -1,9 +1,3 @@
-'''
-Global settings
-
-'''
-
-# Django settings for your project.
 from conf.project import *
 import conf.paths
 import os
@@ -64,7 +58,6 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-
     'django.middleware.doc.XViewMiddleware',
 )
 

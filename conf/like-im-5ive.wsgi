@@ -17,10 +17,7 @@ sys.path.insert(0, os.path.join(PROJECT_ROOT, "apps"))
 from conf.environment import PROJECT_ENV
 os.environ['DJANGO_SETTINGS_MODULE'] = 'settings.%s' % PROJECT_ENV
 
-import newrelic.agent
-newrelic.agent.initialize('/srv/www/projects/PROJECT/conf/newrelic_%s.ini' % PROJECT_ENV)
-
-from django.core.handlers.wsgi import WSGIHandler
+rom django.core.handlers.wsgi import WSGIHandler
 application = WSGIHandler()
 application = newrelic.agent.wsgi_application()(application)
 
