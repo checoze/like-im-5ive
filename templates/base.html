@@ -42,11 +42,11 @@
                 </ul>
             </div><!-- /.btn-group -->
             {% else %}
-            <ul class="nav pull-right">
+            <ul id="lif-auth">
+                <li id="lif-user">{{ request.user }}</li>
                 <li><a href="{% url logout %}">Logout</a></li>
                 <li><a href="/help">Help</a></li>
             </ul>
-
             {% endif %}
         </nav>
     </header>
