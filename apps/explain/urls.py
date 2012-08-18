@@ -9,6 +9,8 @@ v1_api.register(CommentAPIResource())
 urlpatterns = patterns('',
 
     url(r'^$', 'explain.views.home', name='home'),
+
+    url(r'^entry/create$', 'explain.views.entry_prompt', name='entry_prompt'),
     url(r'^([a-f0-9]{6})/', 'explain.views.entry_detail', name='entry_detail'),
     
     url(r'api/', include(v1_api.urls)),

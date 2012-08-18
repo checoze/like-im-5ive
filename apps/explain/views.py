@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from django.conf import settings
 from django.views.generic import DetailView, ListView
-
+from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect
 
 from explain.models import Entry
 
@@ -10,17 +11,19 @@ def home(request):
     context = {}
     
     if request.method == "POST":
-        term = request.POST.get('search')
-        print term
+        term = request.POST.get('search')    
     
+        try:
+            entry = Entry.objects.get(name=term)
+        except:
+            return entry_prompt(request)
+            #return HttpResponseRedirect(reverse('entry_prompt'))
     
-        entry = Entry.objects.get_until_create()
-        entry.name = term
-        entry.save()
+        #entry = Entry.objects.get_until_create()
+        #entry.name = term
+        #entry.save()
     else:
-        pass
-    
-    return render(request, 'explain/home.html', context)
+        return render(request, 'explain/home.html', context)
     
 def entry_detail(request, hex):
     """ Simple homepage invites users to search for or create an entry """
@@ -31,3 +34,11 @@ def entry_detail(request, hex):
     context['entry'] = entry
     
     return render(request, 'explain/entry_detail.html', context)
+    
+    
+def entry_prompt(request):
+    context = {}
+
+    context['term'] = request.POST.get('search')
+    
+    return render(request, 'explain/entry_prompt.html', context)
