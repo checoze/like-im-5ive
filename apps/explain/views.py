@@ -31,6 +31,7 @@ def entry_detail(request, hex):
     
     entry = get_object_or_404(Entry, hex=hex)
     context['entry'] = entry
+    context['explanation_form'] = ExplanationForm()
     
     return render(request, 'explain/entry_detail.html', context)
     
@@ -56,11 +57,8 @@ def entry_submit(request):
     context = {}
 
     if request.method == "POST":
-
         entry_form = EntryForm(request.POST)
-        
         if entry_form.is_valid():
-
             print "is valid"
             entry = entry_form.save(commit=False)
             formset = ExplanationFormset(request.POST, instance=entry)
@@ -72,3 +70,15 @@ def entry_submit(request):
             
             
     return render(request, 'explain/entry_detail.html', context)
+    
+def explanation_submit(request):
+    context = {}
+    
+    if request.method == "POST":
+        entry_hex = request.POST.get('entry_hex')
+        explanation_form = ExplanationForm(request.POST)
+        if explanation_form.is_valid():
+            print "is valid"
+            explanation_form.save()
+            
+    return HttpResponseRedirect(reverse('entry_detail', args=[entry_hex]))            

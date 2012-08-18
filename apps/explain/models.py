@@ -6,6 +6,8 @@ from django.template.defaultfilters import slugify
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 
+from explain.managers import VoteManager, EntryManager
+
 class Base(models.Model):
     """ Base model that contains creation data """
 
@@ -15,15 +17,6 @@ class Base(models.Model):
     
     class Meta:
         abstract = True
-    
-class EntryManager(models.Manager):
-    def get_until_create(self):
-        created = False
-        while not created:
-            hex = ''.join(random.choice('0123456789abcdef') for i in range(6))
-            entry, created = Entry.objects.get_or_create(hex=hex)
-            if created:
-                return entry
 
 class Entry(Base):
     """ Describes an Entry"""
@@ -50,7 +43,11 @@ class Entry(Base):
         super(Entry, self).save(*args, **kwargs)
     
     def get_most_popular_explanation(self):
-        return self.explanation_set.all().get(id=2)
+        explanations = self.explanation_set.all()
+        for ex in explanations:
+            return ex
+
+        return self.explanation_set.all().get('')
 
         
 class Explanation(Base):
@@ -66,6 +63,19 @@ class Explanation(Base):
     def __unicode__(self):
         return str(self.body)
 
+    @property        
+    def up_votes(self):
+        up_votes = Vote.objects.for_model(self).get_up_votes().count()
+        print up_votes
+        return up_votes
+        
+    @property        
+    def down_votes(self):
+        down_votes = Vote.objects.for_model(self).get_down_votes().count()
+        print down_votes
+        return down_votes
+
+
 
 class Comment(Base):
     """ Comments on an Explanation. """
@@ -73,12 +83,25 @@ class Comment(Base):
     user = models.ForeignKey(User)
     body = models.TextField()
     
+    @property        
+    def up_votes(self):
+        up_votes = Vote.objects.for_model(self).get_up_votes().count()
+        print up_votes
+        return up_votes
+        
+    @property        
+    def down_votes(self):
+        down_votes = Vote.objects.for_model(self).get_down_votes().count()
+        print down_votes
+        return down_votes
+    
     def __unicode__(self):
         return str(self.body)
         
         
 class Vote(Base):
-    object = models.ForeignKey(ContentType)
+    """ Keep track of votes for objects on the site. """
+
     user = models.ForeignKey(User)
     value = models.BooleanField(default=False)
     
@@ -88,4 +111,5 @@ class Vote(Base):
             related_name="content_type_set_for_%(class)s")
     object_pk = models.TextField(('object ID'))
     content_object = generic.GenericForeignKey(ct_field="content_type", fk_field="object_pk")
-    
+
+    objects = VoteManager()

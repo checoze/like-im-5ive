@@ -3,7 +3,8 @@
 {% block content %}
 
 {{ entry }}
-//Foo
+
+<p>Popular:</p>
 {{ entry.get_most_popular_explanation }}
 
 
@@ -14,9 +15,17 @@
 
 //Explanations
 {% for ex in entry.explanation_set.all %}
-    <p>{{ ex }}</p>
+    <p>{{ ex }} - {{ ex.up_votes }}</p>
 {% endfor %}
 
 //Submit New Explanation
+<form method='POST' action='/explanation/submit'>
+    {% csrf_token %}
+    <input type='hidden' name="entry_hex" value='{{ entry.hex }}' />
+    
+    <input type='hidden' id="id_entry" name='entry' value='{{ entry.id }}' />
+    {{ explanation_form.body }}
+    <input type='submit' />
+</form>
 
 {% endblock content %}

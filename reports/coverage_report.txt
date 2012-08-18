@@ -2,17 +2,18 @@ Name                                                    Stmts   Miss  Cover   Mi
 -------------------------------------------------------------------------------------
 __init__                                                    0      0   100%   
 apps/explain/__init__                                       0      0   100%   
-apps/explain/admin                                         11      0   100%   
+apps/explain/admin                                         14      0   100%   
 apps/explain/api                                           14      0   100%   
 apps/explain/forms                                         12      0   100%   
-apps/explain/models                                        43     14    67%   19-24, 39, 42-48, 61, 71
+apps/explain/managers                                      21      8    62%   8-9, 12, 15, 19, 22, 25, 28
+apps/explain/models                                        56     15    73%   21-26, 41, 44-50, 53, 67, 77
 apps/explain/tests/__init__                                 3      0   100%   
 apps/explain/tests/selenium/__init__                        2      0   100%   
 apps/explain/tests/selenium/enter_new_item_test_case       15      0   100%   
 apps/explain/tests/selenium/home_test_case                  9      0   100%   
 apps/explain/tests/selenium/search_homepage_test_case      11      0   100%   
 apps/explain/urls                                           7      0   100%   
-apps/explain/views                                         45     12    73%   30-35, 43, 64-71
+apps/explain/views                                         55     21    62%   30-36, 44, 62-69, 75-84
 apps/profile/__init__                                       0      0   100%   
 apps/profile/admin                                          5      0   100%   
 apps/profile/models                                         8      1    88%   15
@@ -25,4 +26,4 @@ settings/common                                            30      0   100%
 settings/local                                              9      0   100%   
 urls                                                       10      3    70%   15-21
 -------------------------------------------------------------------------------------
-TOTAL                                                     257     30    88%   
+TOTAL                                                     304     48    84%   
