@@ -1,9 +1,11 @@
 from django.conf.urls.defaults import patterns, include, url
 from tastypie.api import Api
-from explain.api import EntryResource
+from explain.api import EntryResource, CommentAPIResource
 
 v1_api = Api(api_name="v1")
 v1_api.register(EntryResource())
+v1_api.register(CommentAPIResource())
+
 urlpatterns = patterns('',
 
     url(r'^$', 'explain.views.home', name='home'),
