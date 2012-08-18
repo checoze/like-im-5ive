@@ -5449,18 +5449,28 @@ a.label:hover, a.badge:hover {
   visibility: hidden;
 }
 
-/* line 7, ../../src/sass/like-im-5ive.sass */
+@media only screen and (min-width: 1024px) {
+  /* line 8, ../../src/sass/like-im-5ive.sass */
+  #top-nav,
+  #main {
+    max-width: 1024px;
+    min-width: 1204px;
+  }
+}
+
+/* line 14, ../../src/sass/like-im-5ive.sass */
 header[role=banner] {
   background: #c80000;
-  position: relative;
 }
-/* line 10, ../../src/sass/like-im-5ive.sass */
-header[role=banner] > nav {
+
+/* line 16, ../../src/sass/like-im-5ive.sass */
+#top-nav {
   height: 50px;
   margin: 0 auto;
+  position: relative;
 }
-/* line 14, ../../src/sass/like-im-5ive.sass */
-header[role=banner] > nav > h1 > a {
+/* line 21, ../../src/sass/like-im-5ive.sass */
+#top-nav > h1 > a {
   color: white;
   font: bold 40px/1 Georgia, serif;
   left: 0;
@@ -5474,15 +5484,20 @@ header[role=banner] > nav > h1 > a {
   -o-transition: text-shadow 1s;
   transition: text-shadow 1s;
 }
-/* line 23, ../../src/sass/like-im-5ive.sass */
-header[role=banner] > nav > h1 > a:active, header[role=banner] > nav > h1 > a:focus, header[role=banner] > nav > h1 > a:hover {
+/* line 30, ../../src/sass/like-im-5ive.sass */
+#top-nav > h1 > a:active, #top-nav > h1 > a:focus, #top-nav > h1 > a:hover {
   text-decoration: none;
   text-shadow: 3px 3px 1px black;
 }
 
-/* line 28, ../../src/sass/like-im-5ive.sass */
+/* line 35, ../../src/sass/like-im-5ive.sass */
 #signin {
   position: absolute;
   right: 10px;
   top: 5px;
+}
+
+/* line 40, ../../src/sass/like-im-5ive.sass */
+#main {
+  margin: 0 auto;
 }
