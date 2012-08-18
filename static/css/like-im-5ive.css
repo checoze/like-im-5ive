@@ -5451,3 +5451,53 @@ a.label:hover, a.badge:hover {
 .invisible {
   visibility: hidden;
 }
+
+/* line 7, ../../src/sass/like-im-5ive.sass */
+header[role=banner] {
+  background: #c80000;
+  position: relative;
+}
+/* line 10, ../../src/sass/like-im-5ive.sass */
+header[role=banner] > nav {
+  height: 50px;
+  margin: 0 auto;
+}
+/* line 14, ../../src/sass/like-im-5ive.sass */
+header[role=banner] > nav > h1 > a {
+  color: white;
+  font: bold 40px/1 Georgia, serif;
+  left: 0;
+  letter-spacing: -1px;
+  padding: 0.25em;
+  position: relative;
+  top: 5px;
+  text-shadow: 3px 3px 1px rgba(0, 0, 0, 0.25);
+  -webkit-transition: text-shadow 1s;
+  -moz-transition: text-shadow 1s;
+  -ms-transition: text-shadow 1s;
+  -o-transition: text-shadow 1s;
+  transition: text-shadow 1s;
+}
+/* line 24, ../../src/sass/like-im-5ive.sass */
+header[role=banner] > nav > h1 > a:active, header[role=banner] > nav > h1 > a:focus, header[role=banner] > nav > h1 > a:hover {
+  text-decoration: none;
+  text-shadow: 3px 3px 1px black;
+}
+/* line 29, ../../src/sass/like-im-5ive.sass */
+header[role=banner] > nav > ul {
+  font-size: 20px;
+  list-style: none;
+  margin: 0;
+  position: absolute;
+  right: 0;
+  top: 15px;
+}
+/* line 36, ../../src/sass/like-im-5ive.sass */
+header[role=banner] > nav > ul > li {
+  display: inline;
+}
+/* line 38, ../../src/sass/like-im-5ive.sass */
+header[role=banner] > nav > ul > li > a {
+  color: white;
+  padding: 0 0.5em;
+}
