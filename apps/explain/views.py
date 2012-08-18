@@ -80,8 +80,7 @@ def explanation_submit(request):
         if explanation_form.is_valid():
             print "is valid"
             explanation_form.save()
-            
-    return HttpResponseRedirect(reverse('entry_detail', args=[entry_hex]))            
+    return HttpResponseRedirect(reverse('entry_detail', args=[entry_hex]))
 
 def registration(request):
     context = {}
@@ -104,4 +103,12 @@ def registration(request):
         form = RegistrationForm()
     context['form'] = form
     return render(request, "registration.html", context)
+
+
+def vote(request, id, type):
+    context = {}
+    
+    print id, type
+            
+    return HttpResponseRedirect(reverse('home'))   
 
