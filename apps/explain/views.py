@@ -30,7 +30,8 @@ def home(request):
             from django.db.models.query import Q
             entries = Entry.objects.filter(Q(name__istartswith=term) | Q(name__iendswith=term))
             if not entries.exists():
-                return entry_prompt(request)
+                request.method = "GET"
+                return entry_prompt(request, term)
 
             context['entries'] = entries
             return render(request, "explain/search_results.html", context)
@@ -50,20 +51,36 @@ def entry_detail(request, hex):
     return render(request, 'explain/entry_detail.html', context)
     
     
-def entry_prompt(request):
+def entry_prompt(request, search_term=None):
         
     context = {}
-    
-    if request.user.is_authenticated():
-        context['current_user'] = request.user.id
+
+    if request.method == "POST":
+        entry_form = EntryForm(request.POST)
+        print("validate")
+        print(entry_form.errors)
+        if entry_form.is_valid():
+            print('step 1')
+            entry = entry_form.save(commit=False)
+            formset = ExplanationFormset(request.POST, instance=entry)
+            if formset.is_valid():
+                print("save")
+                entry_form.save()
+                formset.save()
+                return HttpResponseRedirect(reverse('entry_detail', args=[entry.hex]))
     else:
-        context['current_user'] = "garrett"
-    
-    context['term'] = request.POST.get('search')
-    initial_data = {'name': request.POST.get('search') }
-    context['entry_form'] = EntryForm(initial_data)
-    context['formset'] = ExplanationFormset()
-    
+        if request.user.is_authenticated():
+            context['current_user'] = request.user.id
+        else:
+            context['current_user'] = "garrett"
+
+        context['term'] = search_term
+        initial_data = {'name': search_term }
+        entry_form = EntryForm(initial_data)
+        formset = ExplanationFormset()
+    context['entry_form'] = entry_form
+    context['formset'] = formset
+
     return render(request, 'explain/entry_prompt.html', context)
     
 def entry_submit(request):
@@ -72,7 +89,6 @@ def entry_submit(request):
     if request.method == "POST":
         entry_form = EntryForm(request.POST)
         if entry_form.is_valid():
-            print "is valid"
             entry = entry_form.save(commit=False)
             formset = ExplanationFormset(request.POST, instance=entry)
             if formset.is_valid():

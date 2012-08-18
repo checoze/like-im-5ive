@@ -2,10 +2,9 @@
 
 {% block content %}
 <h1>{{ term }} doesn&rsquo;t exist.</h1>
-
 <h2>Would you like to create an Explanation for it?</h2>
 
-<form method='POST' action='/entry/submit' class="well">
+<form method='POST' action='{% url entry_prompt %}' class="well">
     {% csrf_token %}
     <div class="control-group">
         {{ entry_form.name.label_tag }}
@@ -14,14 +13,11 @@
             <span class="help-block">{{ entry_form.name.help_text }}</span>
         {% endif %}
     </div><!-- /.control-group -->
-    <div class="control-group">
-        {{ entry_form.type.label_tag }}
-        {{ entry_form.type }}
-        {% if entry_form.type.help_text %}
-            <span class="help-block">{{ entry_form.type.help_text }}</span>
-        {% endif %}
-    </div><!-- /.control-group -->
+
+    {{ formset.management_form }}
+
     {% for form in formset %}
+
         <div class="control-group">
             {{ form.id }}
             {{ form.body.label_tag }}
@@ -35,6 +31,7 @@
         <input type='hidden' name='original_creator' value='{{ current_user }}'>
         <input type='submit' class="btn btn-primary">
     </div><!-- /.form-actions -->
+
 </form>
 
 {% endblock content %}
