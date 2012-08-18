@@ -5459,17 +5459,19 @@ a.label:hover, a.badge:hover {
 }
 
 /* line 14, ../../src/sass/like-im-5ive.sass */
-header[role=banner] {
+#lif-header,
+#lif-footer {
   background: #c80000;
+  width: 100%;
 }
 
-/* line 16, ../../src/sass/like-im-5ive.sass */
+/* line 18, ../../src/sass/like-im-5ive.sass */
 #top-nav {
   height: 50px;
   margin: 0 auto;
   position: relative;
 }
-/* line 21, ../../src/sass/like-im-5ive.sass */
+/* line 23, ../../src/sass/like-im-5ive.sass */
 #top-nav > h1 > a {
   color: white;
   font: bold 40px/1 Georgia, "Times New Roman", Times, serif;
@@ -5484,55 +5486,81 @@ header[role=banner] {
   -o-transition: text-shadow 1s;
   transition: text-shadow 1s;
 }
-/* line 30, ../../src/sass/like-im-5ive.sass */
+/* line 32, ../../src/sass/like-im-5ive.sass */
 #top-nav > h1 > a:active, #top-nav > h1 > a:focus, #top-nav > h1 > a:hover {
   text-decoration: none;
   text-shadow: 3px 3px 1px black;
 }
 
-/* line 35, ../../src/sass/like-im-5ive.sass */
+/* line 37, ../../src/sass/like-im-5ive.sass */
 #signin {
   position: absolute;
   right: 10px;
   top: 5px;
 }
 
-/* line 40, ../../src/sass/like-im-5ive.sass */
+/* line 42, ../../src/sass/like-im-5ive.sass */
 #main {
   margin: 0 auto;
 }
 
-/* line 43, ../../src/sass/like-im-5ive.sass */
-#lif-home-search {
+/* line 45, ../../src/sass/like-im-5ive.sass */
+#lif-home-search,
+#lif-signup {
   margin: 100px auto;
 }
-/* line 45, ../../src/sass/like-im-5ive.sass */
-#lif-home-search > h1 {
+/* line 48, ../../src/sass/like-im-5ive.sass */
+#lif-home-search > h1,
+#lif-signup > h1 {
   font-family: Georgia, "Times New Roman", Times, serif;
+  letter-spacing: -1px;
   margin-left: 20px;
 }
-/* line 49, ../../src/sass/like-im-5ive.sass */
+/* line 52, ../../src/sass/like-im-5ive.sass */
+#lif-home-search > form,
+#lif-signup > form {
+  margin-top: -5px;
+}
+/* line 55, ../../src/sass/like-im-5ive.sass */
 #lif-home-search > form > .control-group > label,
-#lif-home-search > form > .control-group > .help-block {
+#lif-home-search > form > .control-group > .help-block,
+#lif-signup > form > .control-group > label,
+#lif-signup > form > .control-group > .help-block {
   font-size: 20px;
   margin-bottom: 0.5em;
 }
-/* line 53, ../../src/sass/like-im-5ive.sass */
+/* line 59, ../../src/sass/like-im-5ive.sass */
 #lif-home-search > form > .control-group > input[type=search],
-#lif-home-search > form > .control-group > input[type=text] {
+#lif-home-search > form > .control-group > input[type=text],
+#lif-signup > form > .control-group > input[type=search],
+#lif-signup > form > .control-group > input[type=text] {
   font-size: 20px;
   height: auto;
   margin-bottom: 10px;
 }
-/* line 58, ../../src/sass/like-im-5ive.sass */
+/* line 64, ../../src/sass/like-im-5ive.sass */
 #lif-home-search .btn,
 #lif-home-search input[type=search],
-#lif-home-search input[type=text] {
+#lif-home-search input[type=text],
+#lif-home-search input[type=password],
+#lif-signup .btn,
+#lif-signup input[type=search],
+#lif-signup input[type=text],
+#lif-signup input[type=password] {
   width: 100%;
 }
 @media only screen and (min-width: 1024px) {
-  /* line 43, ../../src/sass/like-im-5ive.sass */
-  #lif-home-search {
+  /* line 45, ../../src/sass/like-im-5ive.sass */
+  #lif-home-search,
+  #lif-signup {
     width: 512px;
   }
+}
+
+/* line 72, ../../src/sass/like-im-5ive.sass */
+#lif-footer {
+  bottom: 0;
+  left: 0;
+  min-height: 100px;
+  position: absolute;
 }
