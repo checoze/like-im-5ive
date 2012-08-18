@@ -1,1 +1,13 @@
-//home html
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Explain it to me.</h1>
+<div id='lif-home-search'>
+    <p>Search for a person, place, thing, concept, website or URL</p>
+    <form action='.' method='post'>
+        {% csrf_token %}
+        <input id="search" name="search" type="text" />
+        <input type="submit" />
+    </form>
+</div>
+{% endblock content %}

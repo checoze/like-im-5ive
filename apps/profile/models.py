@@ -3,14 +3,13 @@ from django.contrib.auth.models import User
 
 class UserProfile(models.Model):
     """ Extended information stored about the user """
-    #user = models.ForeignKey(User, unique=True)
+    user = models.ForeignKey(User, unique=True)
     
-    #bio = models.TextField(blank=True)
+    bio = models.TextField(blank=True)
     
     #Entries submitted
     #submited
     #comments
-    
     
     def __unicode__(self):
         return str(self.user)

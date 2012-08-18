@@ -81,6 +81,8 @@ INSTALLED_APPS = (
     'django_extensions',
 
     #Site specific apps
+    'explain',
+    'profile',
     )
 
 #Uncomment this to use profile app
