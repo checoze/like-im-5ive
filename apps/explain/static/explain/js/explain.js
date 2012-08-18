@@ -13,7 +13,7 @@ $(document).ready( function(){
 			type: "POST",
 			url: "/vote/" + $(elem).attr('data-type') + "/" + $(elem).attr('data-id') + "/",
 			dataType: 'json',
-			data: "csrfmiddlewaretoken=" + csrf_token,
+			data: "csrfmiddlewaretoken=" + csrf_token + "&direction=" + direction,
 			success: function(data){
 			    alert('success!');
 			},
