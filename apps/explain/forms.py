@@ -19,7 +19,6 @@ class ExplanationForm(forms.ModelForm):
         model = Explanation
         exclude = BASE_EXCLUDE_FIELDS
 
-
         
 class CommentForm(forms.ModelForm):
     
