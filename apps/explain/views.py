@@ -6,11 +6,9 @@ from django.http import HttpResponseRedirect
 from django.forms.models import inlineformset_factory
 
 from django.utils import simplejson
-<<<<<<< HEAD
 from django.contrib import messages
-=======
 from django.http import HttpResponse
->>>>>>> develop
+
 
 from explain.models import Entry, Explanation, Vote
 from explain.forms import EntryForm, ExplanationForm, ExplanationFormset, RegistrationForm
