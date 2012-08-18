@@ -19,12 +19,21 @@ def home(request):
     context = {}
     
     if request.method == "POST":
-        term = request.POST.get('search')    
-    
+        term = request.POST.get('search')
+
         try:
             entry = Entry.objects.get(name=term)
-        except:
-            return entry_prompt(request)
+            return redirect(reverse('entry_detail', args=[entry.hex]))
+
+        except Entry.DoesNotExist:
+            # Try to find similar ones
+            from django.db.models.query import Q
+            entries = Entry.objects.filter(Q(name__istartswith=term) | Q(name__iendswith=term))
+            if not entries.exists():
+                return entry_prompt(request)
+
+            context['entries'] = entries
+            return render(request, "explain/search_results.html", context)
 
     else:
         return render(request, 'explain/home.html', context)
@@ -54,7 +63,6 @@ def entry_prompt(request):
     initial_data = {'name': request.POST.get('search') }
     context['entry_form'] = EntryForm(initial_data)
     context['formset'] = ExplanationFormset()
-    
     
     return render(request, 'explain/entry_prompt.html', context)
     
