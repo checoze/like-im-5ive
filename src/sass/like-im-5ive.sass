@@ -3,3 +3,29 @@
 
 // include Twitter Bootstrap
 @import bootstrap/bootstrap
+
+header[role=banner]
+    background: rgb(200,0,0)
+    position: relative
+    > nav
+        height: 50px
+        margin: 0 auto
+        > h1
+            > a
+                color: rgb(255,255,255)
+                font: bold 40px/1 Georgia, serif
+                left: 0
+                letter-spacing: -1px
+                position: relative
+                top: 5px
+                +text-shadow(3px 3px 1px rgba(0,0,0,.25))
+                +transition(text-shadow 1s)
+                &:active,
+                &:focus,
+                &:hover
+                    text-decoration: none
+                    +text-shadow(3px 3px 1px rgba(0,0,0,1))
+#signin
+    position: absolute
+    right: 10px
+    top: 5px
