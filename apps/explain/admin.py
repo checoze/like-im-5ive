@@ -9,9 +9,11 @@ class ExplanationAdmin(admin.ModelAdmin):
     pass
 admin.site.register(Explanation, ExplanationAdmin)
 
+"""
 class CommentAdmin(admin.ModelAdmin):
     pass
 admin.site.register(Comment, CommentAdmin)
+"""
 
 class VoteAdmin(admin.ModelAdmin):
     pass

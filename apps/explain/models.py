@@ -82,7 +82,7 @@ class Entry(Base):
         for ex in explanations:
             return ex
 
-        return self.explanation_set.all().get('')
+        return self.explanation_set.all().get(id=1)
 
         
 class Explanation(Base):
