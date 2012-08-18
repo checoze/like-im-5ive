@@ -40,12 +40,25 @@ def entry_detail(request, hex):
 def entry_prompt(request):
     context = {}
 
+
     if request.user.is_authenticated():
-        context['current_user'] = request.user
+        context['current_user'] = request.user.id
     else:
         context['current_user'] = "garrett"
-        
+    
     context['term'] = request.POST.get('search')
     context['entry_form'] = EntryForm()
     
     return render(request, 'explain/entry_prompt.html', context)
+    
+def entry_submit(request):
+    context = {}
+
+    if request.method == "POST":
+        entry_form = EntryForm(request.POST)
+        if entry_form.is_valid():
+            print "is valid"
+            entry_form.save()
+            
+            
+    return render(request, 'explain/entry_detail.html', context)

@@ -4,7 +4,8 @@
 {{ term }} doesn't exist.
 
 Would you like to create an Explanation for it?
-<form>
+<form method='POST' action='/entry/submit'>
+    {% csrf_token %}
     <p>
     {{ entry_form.name.label }}
     {{ entry_form.name }}
