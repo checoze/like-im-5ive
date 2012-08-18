@@ -22,7 +22,7 @@ class VoteManager(Manager):
         return self.get_query_set().for_model(model)
 
     def get_up_votes(self):
-        return self.get_query_set().up_vote()
+        return self.get_query_set().get_up_votes()
 
     def get_down_votes(self):
-        return self.get_query_set().down_vote()
+        return self.get_query_set().get_down_votes()
