@@ -43,6 +43,15 @@
         </nav>
     </header>
     <div id="main" role="main">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert {% alert_type %}%alert-info{% endblock alert_type %}">
+                    <a class="close" data-dismiss="alert">×</a>
+                    <h1 class="alert-heading">{{ message.tags }}</h1>
+                    <p>{{ message }}</p>
+                </div><!-- /.alert -->
+            {% endfor %}
+        {% endif %}
         {% block content %}
         {% endblock content %}
     </div><!-- /#main -->
