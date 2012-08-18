@@ -12,8 +12,11 @@ urlpatterns = patterns('',
 )
 
 if settings.DEBUG:
+    import os
+
     urlpatterns += patterns('',
         url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT }),
+        url(r'^help/(?P<path>.*)$', 'django.views.static.serve', {'document_root': os.path.join(settings.SITE_ROOT, "docs/build/html") }),
     )
     urlpatterns += staticfiles_urlpatterns()
 

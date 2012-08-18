@@ -3,20 +3,18 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Like I'm 5ive's documentation!
-=========================================
+Welcome to Like I'm 5ive's Help Documentation
+=============================================
+
+About
+-----
+
+Like I'm 5ive is an application that provides simple, laymen's explanations for everything.
+Search for and provide short explanations about people, places, concepts, youtube videos, news articles, or any URL or thing.
 
 Contents:
 
 .. toctree::
    :maxdepth: 2
 
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
 
