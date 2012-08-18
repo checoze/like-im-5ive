@@ -5,4 +5,4 @@ class EntryForm(ModelForm):
     
     class Meta:
         model = Entry
-        #exclude = ('user',)
+        exclude = ('deleted_date', 'deleted', 'hex', 'slug',)

@@ -40,6 +40,11 @@ def entry_detail(request, hex):
 def entry_prompt(request):
     context = {}
 
+    if request.user.is_authenticated():
+        context['current_user'] = request.user
+    else:
+        context['current_user'] = "garrett"
+        
     context['term'] = request.POST.get('search')
     context['entry_form'] = EntryForm()
     
