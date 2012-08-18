@@ -17,8 +17,8 @@ class ExplanationForm(forms.ModelForm):
         model = Explanation
         exclude = ('deleted_date', 'deleted', )
         
-#class RegistrationForm(forms.Form):
-#    username = forms.CharField()
-#    password = forms.PasswordField()
+class RegistrationForm(forms.Form):
+    username = forms.CharField()
+    password = forms.CharField(widget=forms.PasswordInput)
 
 ExplanationFormset = inlineformset_factory(Entry, Explanation, max_num=1, can_delete=False, form=ExplanationForm)
