@@ -1,4 +1,5 @@
 import random
+import urllib
 
 from django.db import models
 from django.contrib.auth.models import User
@@ -55,6 +56,16 @@ class Entry(Base):
         if not self.hex:
             _hex = ''.join(random.choice('0123456789abcdef') for i in range(6))
             self.hex = _hex
+        
+        
+        if self.name.startswith('http' or 'www'):
+            try:
+            	url_data = urllib.urlopen(self.name)
+            	url_html = url_data.read()
+            	print url_html
+            except Exception, e:
+                print e
+                pass
         
         self.slug = slugify(self.name)
             
