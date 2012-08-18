@@ -59,9 +59,7 @@ class Explanation(Base):
     entry = models.ForeignKey(Entry)
     body = models.TextField()
 
-    #upvotes
-    #downvotes
-    #submitted
+    #submitted #
         
     def __unicode__(self):
         return str(self.body)
@@ -75,3 +73,10 @@ class Comment(Base):
     
     def __unicode__(self):
         return str(self.body)
+        
+        
+class Vote(Base):
+    object = models.ForeignKey(ContentType)
+    user = models.ForeignKey(User)
+    value = models.BooleanField(default=False)
+    
