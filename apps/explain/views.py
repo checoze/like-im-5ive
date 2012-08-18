@@ -25,6 +25,7 @@ def home(request):
         #entry.save()
     else:
         return render(request, 'explain/home.html', context)
+
     
 def entry_detail(request, hex):
     """ Simple homepage invites users to search for or create an entry """
