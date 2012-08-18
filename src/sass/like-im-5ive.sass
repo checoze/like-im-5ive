@@ -20,7 +20,7 @@ header[role=banner]
     > h1
         > a
             color: rgb(255,255,255)
-            font: bold 40px/1 Georgia, serif
+            font: bold 40px/1 $serifFontFamily
             left: 0
             letter-spacing: -1px
             position: relative
@@ -39,3 +39,25 @@ header[role=banner]
 
 #main
     margin: 0 auto
+
+#lif-home-search
+    margin: 100px auto
+    > h1
+        font-family: $serifFontFamily
+        margin-left: 20px
+    > form > .control-group
+        > label,
+        > .help-block
+            font-size: 20px
+            margin-bottom: .5em
+        > input[type=search],
+        > input[type=text]
+            font-size: 20px
+            height: auto
+            margin-bottom: 10px
+    .btn,
+    input[type=search],
+    input[type=text]
+        width: 100%
+    @media only screen and (min-width: 1024px)
+        width: (1024px/2)
