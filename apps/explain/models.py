@@ -1,5 +1,5 @@
 import random
-
+from explain.managers import VoteManager
 from django.db import models
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
@@ -78,7 +78,8 @@ class Comment(Base):
         
         
 class Vote(Base):
-    object = models.ForeignKey(ContentType)
+    """ Keep track of votes for objects on the site. """
+
     user = models.ForeignKey(User)
     value = models.BooleanField(default=False)
     
@@ -88,4 +89,5 @@ class Vote(Base):
             related_name="content_type_set_for_%(class)s")
     object_pk = models.TextField(('object ID'))
     content_object = generic.GenericForeignKey(ct_field="content_type", fk_field="object_pk")
-    
+
+    objects = VoteManager()
