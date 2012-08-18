@@ -42,9 +42,6 @@ class Entry(Base):
             
         super(Entry, self).save(*args, **kwargs)
     
-    def get_most_popular_explanation(self):
-        return self.explanation_set.all().get(id=2)
-
         
 class Explanation(Base):
     """ An Explanation that points to an Entry """
@@ -58,6 +55,13 @@ class Explanation(Base):
         
     def __unicode__(self):
         return str(self.body)
+
+    @property        
+    def up_votes(self):
+        up_votes = Vote.objects.for_model(self).get_up_votes().count()
+        print up_votes
+        return up_votes
+
 
 
 class Comment(Base):
