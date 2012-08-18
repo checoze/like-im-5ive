@@ -19,7 +19,7 @@ class ExplanationForm(forms.ModelForm):
         model = Explanation
         exclude = BASE_EXCLUDE_FIELDS
 
-        
+
 class CommentForm(forms.ModelForm):
     
     class Meta:
@@ -27,8 +27,9 @@ class CommentForm(forms.ModelForm):
         exclude = BASE_EXCLUDE_FIELDS
 
 
-#class RegistrationForm(forms.Form):
-#    username = forms.CharField()
-#    password = forms.PasswordField()
+class RegistrationForm(forms.Form):
+    username = forms.CharField()
+    password = forms.CharField(widget=forms.PasswordInput)
+
 
 ExplanationFormset = inlineformset_factory(Entry, Explanation, max_num=1, can_delete=False, form=ExplanationForm)

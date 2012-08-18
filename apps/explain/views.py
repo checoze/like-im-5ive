@@ -1,14 +1,18 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.conf import settings
 from django.views.generic import DetailView, ListView
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.forms.models import inlineformset_factory
+
 from django.utils import simplejson
+from django.contrib import messages
 from django.http import HttpResponse
 
+
 from explain.models import Entry, Explanation, Vote
-from explain.forms import EntryForm, ExplanationForm, ExplanationFormset
+from explain.forms import EntryForm, ExplanationForm, ExplanationFormset, RegistrationForm
+
 
 def home(request):
     """ Simple homepage invites users to search for or create an entry """
@@ -81,13 +85,34 @@ def explanation_submit(request):
         if explanation_form.is_valid():
             print "is valid"
             explanation_form.save()
-            
     return HttpResponseRedirect(reverse('entry_detail', args=[entry_hex]))
-    
-    
+
+def registration(request):
+    context = {}
+    if request.method == "POST":
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            # Register
+            from django.contrib.auth.models import User
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user, created = User.objects.get_or_create(username=username)
+            if created:
+                user.set_password(password)
+                return redirect("explain.views.home")
+            else:
+                messages.add_message(request, messages.ERROR, "Use account %s already exists." % username)
+                return redirect("explain.views.registartion")
+
+    else:
+        form = RegistrationForm()
+    context['form'] = form
+    return render(request, "registration.html", context)
+
+
 def vote(request, id, type):
     context = {}
-    
+
     direction = request.POST.get('direction')
     
     if type == 'explanation':
@@ -107,3 +132,4 @@ def vote(request, id, type):
     
     response = simplejson.dumps({ 'success': True })        
     return HttpResponse(response, mimetype='application/json', status=200)
+

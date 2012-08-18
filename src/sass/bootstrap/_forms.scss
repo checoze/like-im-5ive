@@ -323,7 +323,7 @@ select:focus:required:invalid {
 // ------------
 
 .form-actions {
-  padding: ($baseLineHeight - 1) 20px $baseLineHeight;
+  padding: $baseLineHeight 0;
   margin-top: $baseLineHeight;
   margin-bottom: $baseLineHeight;
   background-color: inherit;
