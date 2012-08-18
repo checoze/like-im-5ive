@@ -107,6 +107,10 @@ def registration(request):
             if created:
                 user.set_password(password)
                 user.save()
+                from django.contrib.auth import authenticate, login
+                user = authenticate(username=username, password=password)
+                if user.is_active:
+                    login(request, user)
                 return redirect("explain.views.home")
             else:
                 messages.add_message(request, messages.ERROR, "Use account %s already exists." % username)
