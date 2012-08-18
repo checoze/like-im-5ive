@@ -58,7 +58,8 @@ def entry_submit(request):
         entry_form = EntryForm(request.POST)
         if entry_form.is_valid():
             print "is valid"
-            entry_form.save()
+            entry = entry_form.save()
+            return HttpResponseRedirect(reverse('entry_detail', args=[entry.hex]))
             
             
     return render(request, 'explain/entry_detail.html', context)
