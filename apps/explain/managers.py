@@ -8,10 +8,10 @@ class VoteQuerySet(QuerySet):
         ct = ContentType.objects.get_for_model(model)
         return self.filter(content_type=ct, object_pk=force_unicode(model._get_pk_val()))
 
-    def up_vote(self):
+    def get_up_votes(self):
         return self.filter(value=True)
 
-    def down_vote(self):
+    def get_down_votes(self):
         return self.filter(value=False)
 
 class VoteManager(Manager):
@@ -21,8 +21,8 @@ class VoteManager(Manager):
     def for_model(self, model):
         return self.get_query_set().for_model(model)
 
-    def up_vote(self):
+    def get_up_votes(self):
         return self.get_query_set().up_vote()
 
-    def down_vote(self):
+    def get_down_votes(self):
         return self.get_query_set().down_vote()
