@@ -39,6 +39,22 @@
     right: 10px
     top: 5px
 
+#lif-auth
+    color: rgb(255,255,255)
+    font-size: 20px
+    line-height: 50px
+    position: absolute
+    right: 10px
+    top: 0
+    > li
+        display: inline
+        &:first-child
+            border-right: 1px solid rgb(255,255,255)
+            padding-right: .5em
+        > a
+            color: rgb(255,255,255)
+            padding-left: .5em
+
 #main
     margin: 0 auto
 
@@ -57,7 +73,8 @@
                 font-size: 20px
                 margin-bottom: .5em
             > input[type=search],
-            > input[type=text]
+            > input[type=text],
+            > input[type=password]
                 font-size: 20px
                 height: auto
                 margin-bottom: 10px
