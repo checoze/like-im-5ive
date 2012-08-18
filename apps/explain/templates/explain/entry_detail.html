@@ -3,6 +3,7 @@
 
 {% block content %}
 <script>
+    //For ajax
     var csrf_token = "{{ csrf_token }}";
 </script>
 {{ entry }}
@@ -12,7 +13,15 @@
 
 
 <h2>Comments</h2>
-<p>...</p>
+<form method='POST' action='/comment/submit'>
+    {% csrf_token %}
+    <input type='hidden' name="entry_hex" value='{{ entry.hex }}' />
+    
+    <input type='hidden' id="id_entry" name='entry' value='{{ entry.id }}' />
+    {{ explanation_form.body }}
+    <input type='submit' />
+</form>
+
 <h2>Other Explanations</h2>
 {% for ex in entry.explanation_set.all %}
     <p>{{ ex }}</p>
