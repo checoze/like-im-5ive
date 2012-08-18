@@ -42,6 +42,13 @@ class Entry(Base):
             
         super(Entry, self).save(*args, **kwargs)
     
+    def get_most_popular_explanation(self):
+        explanations = self.explanation_set.all()
+        for ex in explanations:
+            return ex
+
+        return self.explanation_set.all().get('')
+
         
 class Explanation(Base):
     """ An Explanation that points to an Entry """
@@ -61,6 +68,12 @@ class Explanation(Base):
         up_votes = Vote.objects.for_model(self).get_up_votes().count()
         print up_votes
         return up_votes
+        
+    @property        
+    def down_votes(self):
+        down_votes = Vote.objects.for_model(self).get_down_votes().count()
+        print down_votes
+        return down_votes
 
 
 
