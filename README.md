@@ -1,6 +1,8 @@
 like-lm-5ive
 ============
 
+[![Build Status](https://secure.travis-ci.org/checoze/like-im-5ive.png?branch=develop)](http://travis-ci.org/checoze/like-im-5ive)
+
 To get up and running::
 
     pip install conf/requirements.txt
