@@ -7,19 +7,20 @@
 </script>
 {{ entry }}
 
-<p>Popular:</p>
-{{ entry.get_most_popular_explanation }}
-
-//Tabs
-//Comments
+<h2>Best Explanation</h2>
+<p>{{ entry.get_most_popular_explanation }}</p>
 
 
-//Explanations
+<h2>Comments</h2>
+<p>...</p>
+<h2>Other Explanations</h2>
 {% for ex in entry.explanation_set.all %}
-    <p>{{ ex }} - {{ ex.up_votes }} <a href='/vote/explanation' class='lif-upvote' data-type='explanation' data-id='{{ ex.id }}'>UPVOTE</a> / <a href='/vote/explanation' class='lif-downvote' data-type='explanation' data-id='{{ ex.id }}'>DOWNVOTE</a></p>
+    <p>{{ ex }}</p>
+    <p>Score: <span>{{ ex.score }}</span> <a href='/vote/explanation' class='lif-upvote' data-type='explanation' data-id='{{ ex.id }}'>UPVOTE</a> / <a href='/vote/explanation' class='lif-downvote' data-type='explanation' data-id='{{ ex.id }}'>DOWNVOTE</a></p>
+    <br/>
 {% endfor %}
 
-//Submit New Explanation
+<h2>Submit New Explanation</h2>
 <form method='POST' action='/explanation/submit'>
     {% csrf_token %}
     <input type='hidden' name="entry_hex" value='{{ entry.hex }}' />

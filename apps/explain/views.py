@@ -5,6 +5,7 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.forms.models import inlineformset_factory
 from django.utils import simplejson
+from django.http import HttpResponse
 
 from explain.models import Entry, Explanation, Vote
 from explain.forms import EntryForm, ExplanationForm, ExplanationFormset
