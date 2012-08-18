@@ -3,20 +3,23 @@ from django.forms.models import inlineformset_factory
 
 from explain.models import Entry, Explanation
 
+BASE_EXCLUDE_FIELDS = ('deleted_date','deleted',)
+
 class EntryForm(forms.ModelForm):
     
     class Meta:
         model = Entry
-        exclude = ('deleted_date', 'deleted', 'hex', 'slug',)
-        
+        exclude = BASE_EXCLUDE_FIELDS
+        exclude += ('hex', 'slug',)
         
 
 class ExplanationForm(forms.ModelForm):
     
     class Meta:
         model = Explanation
-        exclude = ('deleted_date', 'deleted', )
-        
+        exclude = BASE_EXCLUDE_FIELDS
+
+
 #class RegistrationForm(forms.Form):
 #    username = forms.CharField()
 #    password = forms.PasswordField()
