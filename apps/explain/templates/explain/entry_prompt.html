@@ -1,27 +1,40 @@
 {% extends 'base.html' %}
 
 {% block content %}
-{{ term }} doesn't exist.
+<h1>{{ term }} doesn&rsquo;t exist.</h1>
+<h2>Would you like to create an Explanation for it?</h2>
 
-Would you like to create an Explanation for it?
-<form method='POST' action='{% url entry_prompt %}'>
-    {{ formset.management_form }}
+<form method='POST' action='{% url entry_prompt %}' class="well">
     {% csrf_token %}
-    <p>
-    {{ entry_form.name.label }}
-    {{ entry_form.name }}
-    </p>
-    
-    <p>
-    {{ entry_form.type.label }}
-    {{ entry_form.type }}
-    </p>
-    
-    {{ formset.as_p }}
-    
-    <input type='hidden' name='original_creator' value='{{ current_user }}' />
-    
-    <input type='submit' class="btn btn-primary" value="Create" />
+    <div class="control-group">
+        {{ entry_form.name.label_tag }}
+        {{ entry_form.name }}
+        {% if entry_form.name.help_text %}
+            <span class="help-block">{{ entry_form.name.help_text }}</span>
+        {% endif %}
+    </div><!-- /.control-group -->
+    <div class="control-group">
+        {{ entry_form.type.label_tag }}
+        {{ entry_form.type }}
+        {% if entry_form.type.help_text %}
+            <span class="help-block">{{ entry_form.type.help_text }}</span>
+        {% endif %}
+    </div><!-- /.control-group -->
+    {% for form in formset %}
+        <div class="control-group">
+            {{ form.id }}
+            {{ form.body.label_tag }}
+            {{ form.body }}
+            {% if form.help_text %}
+                <span class="help-block">{{ form.help_text }}</span>
+            {% endif %}
+        </div><!-- /.control-group -->
+    {% endfor %}
+    <div class="form-actions">
+        <input type='hidden' name='original_creator' value='{{ current_user }}'>
+        <input type='submit' class="btn btn-primary">
+    </div><!-- /.form-actions -->
+
 </form>
 
 {% endblock content %}

@@ -122,7 +122,7 @@ def registration(request):
             user, created = User.objects.get_or_create(username=username)
             if created:
                 user.set_password(password)
-                
+                user.save()
                 return redirect("explain.views.home")
             else:
                 messages.add_message(request, messages.ERROR, "Use account %s already exists." % username)
