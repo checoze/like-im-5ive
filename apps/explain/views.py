@@ -5,6 +5,7 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 
 from explain.models import Entry
+from explain.forms import EntryForm
 
 def home(request):
     """ Simple homepage invites users to search for or create an entry """
@@ -40,5 +41,6 @@ def entry_prompt(request):
     context = {}
 
     context['term'] = request.POST.get('search')
+    context['entry_form'] = EntryForm()
     
     return render(request, 'explain/entry_prompt.html', context)
