@@ -2,6 +2,7 @@ from conf.project import *
 import conf.paths
 import os
 
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
 
 # Admins & Managers
 ADMINS = (
@@ -24,6 +25,9 @@ AUTHENTICATION_BACKENDS = (
 )
 
 
+TEMPLATE_CONTEXT_PROCESSORS = TEMPLATE_CONTEXT_PROCESSORS + (
+    'django.core.context_processors.request',
+)
 
 SITE_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 
