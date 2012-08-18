@@ -3,4 +3,20 @@
 {% block content %}
 
 {{ entry }}
+//Foo
+{{ entry.get_most_popular_explanation }}
+
+
+
+//Tabs
+//Comments
+
+
+//Explanations
+{% for ex in entry.explanation_set.all %}
+    <p>{{ ex }}</p>
+{% endfor %}
+
+//Submit New Explanation
+
 {% endblock content %}
