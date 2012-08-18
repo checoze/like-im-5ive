@@ -11,6 +11,8 @@ class Base(models.Model):
     deleted_date = models.DateTimeField(blank=True, null=True)
     deleted = models.BooleanField(default=False)
     
+    class Meta:
+        abstract = True
     
 class EntryManager(models.Manager):
     def get_until_create(self):
