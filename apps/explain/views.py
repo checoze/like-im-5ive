@@ -60,7 +60,9 @@ def entry_detail(request, hex):
     
     
 def entry_prompt(request, search_term=None):
-    """ Prompt the user with the ability to add an entry.  Auto fill out part of the form for them."""
+    """ Entry Prompt
+    Prompt the user with the ability to add an entry.  Auto fill out part of the form for them.
+    """
     context = {}
     if request.method == "POST":
         entry_form = EntryForm(request.POST)
@@ -84,6 +86,7 @@ def entry_prompt(request, search_term=None):
         initial_data = {'name': search_term }
         entry_form = EntryForm(initial_data)
         formset = ExplanationFormset()
+
     context['entry_form'] = entry_form
     context['formset'] = formset
 
@@ -91,6 +94,7 @@ def entry_prompt(request, search_term=None):
 
     
 def explanation_submit(request):
+    """ Explanation Submit """
     context = {}
     
     if request.method == "POST":
