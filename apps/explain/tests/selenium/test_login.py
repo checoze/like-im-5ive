@@ -17,7 +17,7 @@ class LoginTestCase(LiveServerTestCase):
         self.browser.find_element_by_id("id_password").send_keys("mypassword")
         self.browser.find_element_by_id("register-button").click()
         self.browser.get(self.live_server_url + "/accounts/logout/")
-        self.browser.get(self.live_server_url + "/accounts/logout/")
+        self.browser.get(self.live_server_url + "/accounts/login/")
         self.browser.find_element_by_id("id_username").send_keys("user")
         self.browser.find_element_by_id("id_password").send_keys("mypassword")
         self.browser.find_element_by_id("login-button").click()
