@@ -9,6 +9,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 
 from explain.managers import VoteManager, EntryManager
+from explain.utils import is_url
 
 TAG_CHOICES= (
     ('sfw', 'Safe For Work'),
@@ -45,7 +46,6 @@ class Entry(Base):
     
     #URL specific fields
     url = models.URLField(max_length=255, blank=True)
-    tags = models.ManyToManyField(Tag, blank=True)
     
     original_creator = models.ForeignKey(User, default="1")
         
@@ -58,7 +58,7 @@ class Entry(Base):
             self.hex = _hex
         
         
-        if self.name.startswith('http' or 'www'):
+        if is_url(self.name):
             try:
             	url_data = urllib.urlopen(self.name)
             	url_html = url_data.read()
@@ -89,6 +89,8 @@ class Explanation(Base):
     entry = models.ForeignKey(Entry)
     body = models.TextField()
 
+
+    tags = models.ManyToManyField(Tag, blank=True)
     #submitted #
         
     def __unicode__(self):
