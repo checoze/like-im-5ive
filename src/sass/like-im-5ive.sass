@@ -5,8 +5,7 @@
 @import bootstrap/bootstrap
 
 
-#lif-top-nav,
-#lif-footer-nav
+#lif-top-nav
     margin: 0 auto
     @media only screen and (min-width: 1024px)
         max-width: 1024px
@@ -51,7 +50,7 @@
             left: 10px
             letter-spacing: -1px
             position: relative
-            top: 0
+            top: -6px
             +text-shadow(3px 3px 1px rgba(0,0,0,.25))
             +transition(text-shadow 1s)
             &:active,
@@ -59,6 +58,9 @@
             &:hover
                 text-decoration: none
                 +text-shadow(3px 3px 1px rgba(0,0,0,1))
+            > b
+                font-size: 60px
+                font-weight: inherit
 #lif-signin
     position: absolute
     right: 10px
@@ -100,4 +102,12 @@
     
 #lif-footer-nav
     color: rgb(255,255,255)
-    padding: 0 10px
+    font-size: 16px
+    line-height: 1.25em
+    padding: 10px
+    margin: 0 auto
+    a
+        color: rgb(255,255,255)
+        text-decoration: underline
+    @media only screen and (min-width: 1024px)
+        width: (1024px/1.5)
