@@ -17,13 +17,11 @@
 </head>
 <body id="{% block body_id %}{% endblock %}" class="{% block body_class %}{% endblock %}">
     <header role="banner" id="lif-header">
-        <nav id="top-nav">
+        <nav id="lif-top-nav">
             <h1><a href="/">Like I&rsquo;m 5ive</a></h1>
-
             {% if not request.user.is_authenticated %}
-            <div id="signin" class="btn-group">
-
-                <a class="btn btn-large dropdown-toggle" data-toggle="dropdown" href="#">Sign In or Sign Up <span class="caret"></span></a>
+            <div id="lif-signin" class="btn-group">
+                <a class="btn btn-large dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-user"></i> <b>Sign In or Sign Up</b> <span class="caret"></span></a>
                 <ul id="signin-dropdown" class="dropdown-menu dropdown-form pull-right">
                     <li>
                         <form method="POST" action="{% url login %}?next={{ request.get_full_path }}">{% csrf_token %}
