@@ -4515,6 +4515,16 @@ a.label:hover, a.badge:hover {
   list-style: none;
   margin: 0;
 }
+/* line 104, ../../src/sass/like-im-5ive.sass */
+#lif-main fieldset > ul > li {
+  display: inline-block;
+  font-size: inherit;
+  width: 49%;
+}
+/* line 108, ../../src/sass/like-im-5ive.sass */
+#lif-main fieldset > ul > li > label {
+  font-size: inherit;
+}
 @media only screen and (min-width: 1024px) {
   /* line 73, ../../src/sass/like-im-5ive.sass */
   #lif-main {
@@ -4523,12 +4533,12 @@ a.label:hover, a.badge:hover {
   }
 }
 
-/* line 108, ../../src/sass/like-im-5ive.sass */
+/* line 114, ../../src/sass/like-im-5ive.sass */
 #lif-footer {
   min-height: 100px;
 }
 
-/* line 111, ../../src/sass/like-im-5ive.sass */
+/* line 117, ../../src/sass/like-im-5ive.sass */
 #lif-footer-nav {
   color: white;
   font-size: 16px;
@@ -4536,24 +4546,24 @@ a.label:hover, a.badge:hover {
   padding: 10px;
   margin: 0 auto;
 }
-/* line 117, ../../src/sass/like-im-5ive.sass */
+/* line 123, ../../src/sass/like-im-5ive.sass */
 #lif-footer-nav a {
   color: white;
   text-decoration: underline;
 }
 @media only screen and (min-width: 1024px) {
-  /* line 111, ../../src/sass/like-im-5ive.sass */
+  /* line 117, ../../src/sass/like-im-5ive.sass */
   #lif-footer-nav {
     width: 682.667px;
   }
 }
 
-/* line 123, ../../src/sass/like-im-5ive.sass */
+/* line 129, ../../src/sass/like-im-5ive.sass */
 h1.pre-well {
   margin-left: 20px;
 }
 
-/* line 126, ../../src/sass/like-im-5ive.sass */
+/* line 132, ../../src/sass/like-im-5ive.sass */
 .lif-even {
   background-color: #f5f5f5;
 }
