@@ -21,6 +21,7 @@ def home(request):
     
     if request.method == "POST":
         term = request.POST.get('search')
+        context['search'] = term
 
         try:
             entry = Entry.objects.get(name=term)
