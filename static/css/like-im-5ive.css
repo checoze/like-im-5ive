@@ -5586,7 +5586,6 @@ a.label:hover, a.badge:hover {
 /* line 89, ../../src/sass/like-im-5ive.sass */
 #lif-footer {
   bottom: 0;
-  left: 0;
   min-height: 100px;
   position: absolute;
 }
