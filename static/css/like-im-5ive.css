@@ -635,39 +635,38 @@ em {
 /* line 169, ../../src/sass/bootstrap/_type.scss */
 abbr[title] {
   cursor: help;
-  border-bottom: 1px dotted #999999;
 }
 
-/* line 173, ../../src/sass/bootstrap/_type.scss */
+/* line 172, ../../src/sass/bootstrap/_type.scss */
 abbr.initialism {
   font-size: 90%;
   text-transform: uppercase;
 }
 
-/* line 179, ../../src/sass/bootstrap/_type.scss */
+/* line 178, ../../src/sass/bootstrap/_type.scss */
 blockquote {
   padding: 0 0 0 15px;
   margin: 0 0 18px;
   border-left: 5px solid #eeeeee;
 }
-/* line 183, ../../src/sass/bootstrap/_type.scss */
+/* line 182, ../../src/sass/bootstrap/_type.scss */
 blockquote p {
   margin-bottom: 0;
   font-size: 16px;
   font-weight: 300;
   line-height: 22.5px;
 }
-/* line 187, ../../src/sass/bootstrap/_type.scss */
+/* line 186, ../../src/sass/bootstrap/_type.scss */
 blockquote small {
   display: block;
   line-height: 18px;
   color: #999999;
 }
-/* line 191, ../../src/sass/bootstrap/_type.scss */
+/* line 190, ../../src/sass/bootstrap/_type.scss */
 blockquote small:before {
   content: '\2014 \00A0';
 }
-/* line 197, ../../src/sass/bootstrap/_type.scss */
+/* line 196, ../../src/sass/bootstrap/_type.scss */
 blockquote.pull-right {
   float: right;
   padding-right: 15px;
@@ -675,13 +674,13 @@ blockquote.pull-right {
   border-right: 5px solid #eeeeee;
   border-left: 0;
 }
-/* line 204, ../../src/sass/bootstrap/_type.scss */
+/* line 203, ../../src/sass/bootstrap/_type.scss */
 blockquote.pull-right p,
 blockquote.pull-right small {
   text-align: right;
 }
 
-/* line 214, ../../src/sass/bootstrap/_type.scss */
+/* line 213, ../../src/sass/bootstrap/_type.scss */
 q:before,
 q:after,
 blockquote:before,
@@ -689,7 +688,7 @@ blockquote:after {
   content: "";
 }
 
-/* line 219, ../../src/sass/bootstrap/_type.scss */
+/* line 218, ../../src/sass/bootstrap/_type.scss */
 address {
   display: block;
   margin-bottom: 18px;
@@ -697,12 +696,12 @@ address {
   line-height: 18px;
 }
 
-/* line 227, ../../src/sass/bootstrap/_type.scss */
+/* line 226, ../../src/sass/bootstrap/_type.scss */
 small {
   font-size: 100%;
 }
 
-/* line 230, ../../src/sass/bootstrap/_type.scss */
+/* line 229, ../../src/sass/bootstrap/_type.scss */
 cite {
   font-style: normal;
 }
@@ -780,9 +779,9 @@ legend {
   display: block;
   width: 100%;
   padding: 0;
-  margin-bottom: 27px;
-  font-size: 19.5px;
-  line-height: 36px;
+  margin-bottom: .5em;
+  font-size: 20px;
+  line-height: 1em;
   color: #333333;
   border: 0;
 }
@@ -4511,6 +4510,11 @@ a.label:hover, a.badge:hover {
   -ms-box-sizing: border-box;
   box-sizing: border-box;
 }
+/* line 101, ../../src/sass/like-im-5ive.sass */
+#lif-main fieldset > ul {
+  list-style: none;
+  margin: 0;
+}
 @media only screen and (min-width: 1024px) {
   /* line 73, ../../src/sass/like-im-5ive.sass */
   #lif-main {
@@ -4519,12 +4523,12 @@ a.label:hover, a.badge:hover {
   }
 }
 
-/* line 104, ../../src/sass/like-im-5ive.sass */
+/* line 108, ../../src/sass/like-im-5ive.sass */
 #lif-footer {
   min-height: 100px;
 }
 
-/* line 107, ../../src/sass/like-im-5ive.sass */
+/* line 111, ../../src/sass/like-im-5ive.sass */
 #lif-footer-nav {
   color: white;
   font-size: 16px;
@@ -4532,24 +4536,24 @@ a.label:hover, a.badge:hover {
   padding: 10px;
   margin: 0 auto;
 }
-/* line 113, ../../src/sass/like-im-5ive.sass */
+/* line 117, ../../src/sass/like-im-5ive.sass */
 #lif-footer-nav a {
   color: white;
   text-decoration: underline;
 }
 @media only screen and (min-width: 1024px) {
-  /* line 107, ../../src/sass/like-im-5ive.sass */
+  /* line 111, ../../src/sass/like-im-5ive.sass */
   #lif-footer-nav {
     width: 682.667px;
   }
 }
 
-/* line 119, ../../src/sass/like-im-5ive.sass */
+/* line 123, ../../src/sass/like-im-5ive.sass */
 h1.pre-well {
   margin-left: 20px;
 }
 
-/* line 122, ../../src/sass/like-im-5ive.sass */
+/* line 126, ../../src/sass/like-im-5ive.sass */
 .lif-even {
   background-color: #f5f5f5;
 }

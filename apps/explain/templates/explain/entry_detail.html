@@ -51,13 +51,18 @@
         <div class="tab-pane" id="submit">
             <form method='POST' action='/explanation/submit' class="well">
                 {% csrf_token %}
-                {% if entry.url %}
-                    {{ explanation_form.tags }}
-                {% endif %}
                 <div class="control-group">
                     <input type='hidden' name="entry_hex" value='{{ entry.hex }}'>
                     <input type='hidden' id="id_entry" name='entry' value='{{ entry.id }}'>
                     <textarea name="body" cols="40" rows="10" id="id_body"></textarea>
+                </div><!-- /.control-group -->
+                <div class="control-group">
+                    <fieldset>
+                        <legend><abbr title="Not Safe for Work">NSFW</abbr> Tags</legend>
+                    {% if entry.url %}
+                        {{ explanation_form.tags }}
+                    {% endif %}
+                    </fieldset>
                 </div><!-- /.control-group -->
                 <div class="form-actions">
                     <input type='submit' value='Add New Explanation' class='btn btn-primary btn-large' id='add-explanation'>
