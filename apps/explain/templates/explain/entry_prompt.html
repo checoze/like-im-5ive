@@ -2,37 +2,38 @@
 
 {% block title %}Explain {{ term }} | {% endblock title %}
 {% block content %}
-<h1>"{{ term }}" doesn&rsquo;t exist.</h1>
-<h2>Would you like to create an Explanation for it?</h2>
+<div style="margin: 20px auto 0 auto; width: 500px;">
+    <h1>"{{ term }}" doesn&rsquo;t exist.</h1>
+    <h2>Would you like to create an Explanation for it?</h2>
 
-<form method='POST' action='{% url entry_prompt %}' class="well">
-    {% csrf_token %}
-    <div class="control-group">
-        {{ entry_form.name.label_tag }}
-        {{ entry_form.name }}
-        {% if entry_form.name.help_text %}
-            <span class="help-block">{{ entry_form.name.help_text }}</span>
-        {% endif %}
-    </div><!-- /.control-group -->
-
-    {{ formset.management_form }}
-
-    {% for form in formset %}
-
+    <form method='POST' action='{% url entry_prompt %}' class="well">
+        {% csrf_token %}
         <div class="control-group">
-            {{ form.id }}
-            {{ form.body.label_tag }}
-            {{ form.body }}
-            {% if form.help_text %}
-                <span class="help-block">{{ form.help_text }}</span>
+            {{ entry_form.name.label_tag }}
+            {{ entry_form.name }}
+            {% if entry_form.name.help_text %}
+                <span class="help-block">{{ entry_form.name.help_text }}</span>
             {% endif %}
         </div><!-- /.control-group -->
-    {% endfor %}
-    <div class="form-actions">
-        <input type='hidden' name='original_creator' value='{{ current_user }}'>
-        <input type='submit' class="btn btn-primary" value="Save">
-    </div><!-- /.form-actions -->
 
-</form>
+        {{ formset.management_form }}
 
+        {% for form in formset %}
+
+            <div class="control-group">
+                {{ form.id }}
+                {{ form.body.label_tag }}
+                {{ form.body }}
+                {% if form.help_text %}
+                    <span class="help-block">{{ form.help_text }}</span>
+                {% endif %}
+            </div><!-- /.control-group -->
+        {% endfor %}
+        <div class="form-actions">
+            <input type='hidden' name='original_creator' value='{{ current_user }}'>
+            <input type='submit' class="btn btn-primary" value="Save">
+        </div><!-- /.form-actions -->
+
+    </form>
+</div>
 {% endblock content %}
