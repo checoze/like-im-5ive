@@ -1,6 +1,4 @@
 import random
-import urllib
-from bs4 import BeautifulSoup
 
 from django.db import models
 from django.contrib.auth.models import User
@@ -10,6 +8,7 @@ from django.contrib.contenttypes import generic
 
 from explain.managers import VoteManager, EntryManager
 from explain.utils import is_url
+from explain.parsers import parse_url
 
 TAG_CHOICES= (
     ('sfw', 'Safe For Work'),
@@ -67,19 +66,7 @@ class Entry(Base):
             self.hex = _hex
         
         if is_url(self.name):
-            try:
-            	url_data = urllib.urlopen(self.name)
-            	url_html = url_data.read()
-
-                try:
-                    soup = BeautifulSoup(url_html)
-                    self.url = self.name
-                    self.name = soup.title.string
-                except:
-                    pass
-            except Exception, e:
-                print e
-                pass
+            self.name, self.url = parse_url(self.name)
         
         self.slug = slugify(self.name)
             
