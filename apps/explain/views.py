@@ -29,6 +29,9 @@ def home(request):
 
         except Entry.DoesNotExist:
             # Try to find similar ones
+            # Sweet lord, replace this with haystack
+            # and not something on the db level
+            # TODO fo sho.
             from django.db.models.query import Q
             entries = Entry.objects.filter(Q(name__istartswith=term) | Q(name__iendswith=term))
             if not entries.exists():
