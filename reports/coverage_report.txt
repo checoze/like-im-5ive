@@ -6,7 +6,7 @@ apps/explain/admin                                         14      0   100%
 apps/explain/api                                            9      0   100%   
 apps/explain/forms                                         17      0   100%   
 apps/explain/managers                                      29      8    72%   8-13, 35, 38
-apps/explain/models                                        87     21    76%   35, 53, 62-74, 126-128, 132-134, 137
+apps/explain/models                                        87     21    76%   35, 53, 62-74, 123-125, 129-131, 134
 apps/explain/tests/__init__                                 8      0   100%   
 apps/explain/tests/selenium/__init__                        2      0   100%   
 apps/explain/tests/selenium/enter_new_item_test_case       14      0   100%   
