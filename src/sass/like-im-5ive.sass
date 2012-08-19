@@ -5,7 +5,7 @@
 @import bootstrap/bootstrap
 
 
-#top-nav,
+#lif-top-nav,
 #lif-footer-nav
     margin: 0 auto
     @media only screen and (min-width: 1024px)
@@ -14,6 +14,7 @@
 
 #lif-main
     margin: 100px auto
+    padding: 0 10px
     h1
         font-family: $serifFontFamily
         letter-spacing: -1px
@@ -28,6 +29,11 @@
         height: auto
         margin-bottom: .5em
         width: 100%
+    input[type=password],
+    input[type=search],
+    input[type=text],
+    textarea
+        +box-sizing(border-box)
     @media only screen and (min-width: 1024px)
         width: (1024px/2)
 
@@ -35,18 +41,17 @@
 #lif-footer
     background: rgb(200,0,0)
     width: 100%
-#top-nav
-    height: 50px
-    margin: 0 auto
+#lif-top-nav
+    height: auto
     position: relative
     > h1
         > a
             color: rgb(255,255,255)
-            font: bold 40px/1 $serifFontFamily
-            left: 0
+            font: bold 40px/50px $serifFontFamily
+            left: 10px
             letter-spacing: -1px
             position: relative
-            top: 5px
+            top: 0
             +text-shadow(3px 3px 1px rgba(0,0,0,.25))
             +transition(text-shadow 1s)
             &:active,
@@ -54,10 +59,20 @@
             &:hover
                 text-decoration: none
                 +text-shadow(3px 3px 1px rgba(0,0,0,1))
-#signin
+#lif-signin
     position: absolute
     right: 10px
     top: 5px
+    .icon-user
+        display: inline-block
+    b
+        display: none
+    @media only screen and (min-width: 1024px)
+        .icon-user
+            display: none
+        b
+            display: inline-block
+            font-weight: normal
 
 #lif-auth
     color: rgb(255,255,255)
@@ -82,3 +97,7 @@
         
 #lif-footer
     min-height: 100px
+    
+#lif-footer-nav
+    color: rgb(255,255,255)
+    padding: 0 10px
