@@ -93,7 +93,6 @@ def explanation_submit(request):
         entry_hex = request.POST.get('entry_hex')
         explanation_form = ExplanationForm(request.POST)
         if explanation_form.is_valid():
-            print "is valid"
             explanation_form.save()
     return HttpResponseRedirect(reverse('entry_detail', args=[entry_hex]))
 

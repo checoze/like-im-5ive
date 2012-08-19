@@ -5,7 +5,6 @@
     //For ajax
     var csrf_token = "{{ csrf_token }}";
 </script>
-<div style="margin: 20px auto 0 auto; width: 500px;">
 <h1>{{ entry.name }}</h1>
 
 <p id="lif-explanation-most-popular" style="margin: 10px 0;">
@@ -57,13 +56,12 @@
                     <textarea name="body" cols="40" rows="10" id="id_body" style="width: 100%;"></textarea>
                 </div><!-- /.control-group -->
                 <div class="form-actions">
-                    <input type='submit' value='Add New Explanation' class='btn btn-primary'>
+                    <input type='submit' value='Add New Explanation' class='btn btn-primary' id='add-explanation'>
                 </div><!-- /.form-actions -->
             </form>
         </div><!-- /#submit -->
     </div><!-- /.tab-content -->
 </div><!-- /.tabbable -->
-</div>
 {% endblock content %}
 
 {% block extra_foot %}
