@@ -13,21 +13,32 @@
     <link rel="author" href="humans.txt">
 
     <script src="{{ STATIC_URL }}js/modernizr/2.5.3/modernizr.min.js"></script>
-
+    <style>
+        .headerlink{
+            display: none;
+        }
+    </style>
 </head>
 <body id="{% block body_id %}{% endblock %}" class="{% block body_class %}{% endblock %}">
 <header role="banner" id="lif-header">
     <nav id="top-nav">
-        <h1><a href="/">Like I&rsquo;m 5ive - Help!</a></h1>
+        <h1><a href="http://likeim5ive.com">Like I&rsquo;m 5ive - Help!</a></h1>
 
 
 
     </nav>
 </header>
 <div id="main" role="main">
+<div class="row">
+    <div class="span4 well">
+        {{ toctree(maxdepth=1) }}
+    </div>
+    <div class="span10 pull-right">
+        {% block body %}
+        {% endblock %}
+    </div>
+</div>
 
-    {% block body %}
-    {% endblock %}
 </div><!-- /#main -->
 <footer role="contentinfo" id="lif-footer">
 

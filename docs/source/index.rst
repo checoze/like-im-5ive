@@ -12,9 +12,14 @@ About
 Like I'm 5ive is an application that provides simple, laymen's explanations for everything.
 Search for and provide short explanations about people, places, concepts, youtube videos, news articles, or any URL or thing.
 
-Contents:
+
 
 .. toctree::
    :maxdepth: 2
+
+   index
+   searching
+   registration
+   adding_new_item
 
 
