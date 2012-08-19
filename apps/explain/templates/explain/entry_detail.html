@@ -36,7 +36,7 @@
     </ul>
     <div class="tab-content">
         <div class="tab-pane active" id="explanations">
-            {% for ex in entry.explanation_set.all %}
+            {% for ex in entry.explanation_set.all|dictsortreversed:"score" %}
             <div class="well {% if forloop.counter|divisibleby:2 %}lif-even{% endif %}"}>
                 <p>{{ ex }}</p>
                 <p class="lif-score">Score: {{ ex.score }}</p>
