@@ -18,6 +18,7 @@
     <p><a href="{{ entry.url }}" class="">{{ entry.url }}</a></p>
     
     {% if entry.tags.all %}
+    <p>Possibly <span class="label label-important">NSFW</span> because:</p>
     <ul>
         {% for tag in entry.tags.all %}
         <li>{{ tag }}</li>
