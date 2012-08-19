@@ -36,7 +36,16 @@ class Tag(models.Model):
         return str(self.name)
     
 class Entry(Base):
-    """ Describes an Entry"""
+    """ Describes an Entry
+    
+    Entries are referenced by Explanations
+    
+    - save: Overides save to do several things
+        - create a unique hex code for the object
+        - if its a url, attempts to parse the remote site and deduce an appropriate title
+        - creates slug, doesn't need to be uniuqe
+    - get_most_popular_explanation: returns the related explanation with the most computer votes
+    """
     
     objects = EntryManager()
     
@@ -56,7 +65,6 @@ class Entry(Base):
         if not self.hex:
             _hex = ''.join(random.choice('0123456789abcdef') for i in range(6))
             self.hex = _hex
-        
         
         if is_url(self.name):
             try:
@@ -137,7 +145,11 @@ class Comment(Base):
         
         
 class Vote(Base):
-    """ Keep track of votes for objects on the site. """
+    """ Keep track of votes for objects on the site.
+    
+    A Vote FK's to a User and Any other object. So, votes can be applied to
+    Explanations, Comments, Entries, even Users.
+     """
 
     user = models.ForeignKey(User)
     value = models.BooleanField(default=False)
