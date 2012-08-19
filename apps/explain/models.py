@@ -124,10 +124,14 @@ class Explanation(Base):
         return int(self.up_votes - self.down_votes)
 
 
-
-
 class Comment(Base):
-    """ Comments on an Explanation. """
+    """ Comments on an Explanation
+
+    Custom properties:
+    - up_votes: Returns integer, number of related Votes that are positive
+    - down_votes: Returns integer, number of related Votes that are negative
+    - score: Returns integer, up minus down 
+    """
     
     user = models.ForeignKey(User)
     body = models.TextField()
@@ -135,14 +139,16 @@ class Comment(Base):
     @property        
     def up_votes(self):
         up_votes = Vote.objects.for_model(self).get_up_votes().count()
-        print up_votes
         return up_votes
         
     @property        
     def down_votes(self):
         down_votes = Vote.objects.for_model(self).get_down_votes().count()
-        print down_votes
         return down_votes
+
+    @property        
+    def score(self):
+        return int(self.up_votes - self.down_votes)
     
     def __unicode__(self):
         return str(self.body)
