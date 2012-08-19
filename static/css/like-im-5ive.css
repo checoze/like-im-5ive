@@ -4452,35 +4452,42 @@ a.label:hover, a.badge:hover {
   display: inline;
 }
 /* line 63, ../../src/sass/like-im-5ive.sass */
-#lif-auth > li:first-child {
-  border-right: 1px solid white;
-  padding-right: 0.5em;
+#lif-auth > li#lif-user {
+  display: none;
 }
-/* line 66, ../../src/sass/like-im-5ive.sass */
+@media only screen and (min-width: 1024px) {
+  /* line 63, ../../src/sass/like-im-5ive.sass */
+  #lif-auth > li#lif-user {
+    display: inline;
+    border-right: 1px solid white;
+    padding-right: 0.5em;
+  }
+}
+/* line 69, ../../src/sass/like-im-5ive.sass */
 #lif-auth > li > a {
   color: white;
   padding-left: 0.5em;
 }
 
-/* line 70, ../../src/sass/like-im-5ive.sass */
+/* line 73, ../../src/sass/like-im-5ive.sass */
 #lif-main {
   margin: 25px auto;
   padding: 0 10px;
 }
-/* line 73, ../../src/sass/like-im-5ive.sass */
+/* line 76, ../../src/sass/like-im-5ive.sass */
 #lif-main h1 {
   font-family: Georgia, "Times New Roman", Times, serif;
   letter-spacing: -1px;
 }
-/* line 76, ../../src/sass/like-im-5ive.sass */
+/* line 79, ../../src/sass/like-im-5ive.sass */
 #lif-main h1 + .well {
   margin-top: -5px;
 }
-/* line 78, ../../src/sass/like-im-5ive.sass */
+/* line 81, ../../src/sass/like-im-5ive.sass */
 #lif-main h1 + p {
   margin-top: 9px;
 }
-/* line 80, ../../src/sass/like-im-5ive.sass */
+/* line 83, ../../src/sass/like-im-5ive.sass */
 #lif-main .btn.btn-primary.btn-large,
 #lif-main input[type=password],
 #lif-main input[type=search],
@@ -4493,7 +4500,7 @@ a.label:hover, a.badge:hover {
   margin-bottom: 0.5em;
   width: 100%;
 }
-/* line 91, ../../src/sass/like-im-5ive.sass */
+/* line 94, ../../src/sass/like-im-5ive.sass */
 #lif-main input[type=password],
 #lif-main input[type=search],
 #lif-main input[type=text],
@@ -4504,19 +4511,19 @@ a.label:hover, a.badge:hover {
   box-sizing: border-box;
 }
 @media only screen and (min-width: 1024px) {
-  /* line 70, ../../src/sass/like-im-5ive.sass */
+  /* line 73, ../../src/sass/like-im-5ive.sass */
   #lif-main {
     margin: 100px auto;
     width: 512px;
   }
 }
 
-/* line 100, ../../src/sass/like-im-5ive.sass */
+/* line 103, ../../src/sass/like-im-5ive.sass */
 #lif-footer {
   min-height: 100px;
 }
 
-/* line 103, ../../src/sass/like-im-5ive.sass */
+/* line 106, ../../src/sass/like-im-5ive.sass */
 #lif-footer-nav {
   color: white;
   font-size: 16px;
@@ -4524,24 +4531,24 @@ a.label:hover, a.badge:hover {
   padding: 10px;
   margin: 0 auto;
 }
-/* line 109, ../../src/sass/like-im-5ive.sass */
+/* line 112, ../../src/sass/like-im-5ive.sass */
 #lif-footer-nav a {
   color: white;
   text-decoration: underline;
 }
 @media only screen and (min-width: 1024px) {
-  /* line 103, ../../src/sass/like-im-5ive.sass */
+  /* line 106, ../../src/sass/like-im-5ive.sass */
   #lif-footer-nav {
     width: 682.667px;
   }
 }
 
-/* line 115, ../../src/sass/like-im-5ive.sass */
+/* line 118, ../../src/sass/like-im-5ive.sass */
 h1.pre-well {
   margin-left: 20px;
 }
 
-/* line 118, ../../src/sass/like-im-5ive.sass */
+/* line 121, ../../src/sass/like-im-5ive.sass */
 .lif-even {
   background-color: #f5f5f5;
 }

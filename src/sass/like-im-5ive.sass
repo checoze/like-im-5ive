@@ -60,9 +60,12 @@
     top: 2px
     > li
         display: inline
-        &:first-child
-            border-right: 1px solid rgb(255,255,255)
-            padding-right: .5em
+        &#lif-user
+            display: none
+            @media only screen and (min-width: 1024px)
+                display: inline
+                border-right: 1px solid rgb(255,255,255)
+                padding-right: .5em
         > a
             color: rgb(255,255,255)
             padding-left: .5em
