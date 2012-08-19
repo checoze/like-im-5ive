@@ -12,8 +12,7 @@
     <a href="{{ entry.url }}" class="">{{ entry.url }}</a>
 {% endif %}
 
-<h2>Best Explanation</h2>
-<p>{{ entry.get_most_popular_explanation }}</p>
+<p id="lif-explanation-most-popular" style="margin: 10px 0;">{{ entry.get_most_popular_explanation }}</p>
 
 <div class="tabbable">
     <ul class="nav nav-tabs">
@@ -22,9 +21,8 @@
     </ul>
     <div class="tab-content">
         <div class="tab-pane active" id="explanations">
-            <h2>Other Explanations</h2>
             {% for ex in entry.explanation_set.all %}
-            <div class="well">
+            <div class="well" style="background-color: #f5f5f5;">
                 <p>{{ ex }}</p>
                 <p class="lif-score">Score: {{ ex.score }}</p>
                     {% if request.user.is_authenticated %}
@@ -36,13 +34,12 @@
             {% endfor %}
         </div><!-- /#explanations -->
         <div class="tab-pane" id="submit">
-            <h2>Submit New Explanation</h2>
             <form method='POST' action='/explanation/submit' class="well">
                 {% csrf_token %}
                 <div class="control-group">
                     <input type='hidden' name="entry_hex" value='{{ entry.hex }}'>
                     <input type='hidden' id="id_entry" name='entry' value='{{ entry.id }}'>
-                    {{ explanation_form.body }}
+                    <textarea name="body" cols="40" rows="10" id="id_body" style="width: 100%;"></textarea>
                 </div><!-- /.control-group -->
                 <div class="form-actions">
                     <input type='submit' value='Add New Explanation' class='btn btn-primary'>
