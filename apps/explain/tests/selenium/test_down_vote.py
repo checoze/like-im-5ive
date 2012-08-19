@@ -22,7 +22,7 @@ class DownVoteTestCase(LiveServerTestCase):
         self.browser.find_element_by_id("id_password").send_keys("mypassword")
         self.browser.find_element_by_id("login-button").click()
         import time
-        time.sleep(2)
+        time.sleep(10)
         self.browser.get(self.live_server_url)
         self.browser.find_element_by_id("search").send_keys("reddit")
         self.browser.find_element_by_id("search-button").click()
