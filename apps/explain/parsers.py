@@ -7,8 +7,20 @@ def parse_url(term):
     	url_data = urllib.urlopen(term)
     	url_html = url_data.read()
 
+        soup = BeautifulSoup(url_html)
+        
+        #Try Getting the meta title
+        """
         try:
-            soup = BeautifulSoup(url_html)
+            tag = soup.find('meta[name="title"]')
+            return tag['content'], term
+        except Exception, foo:
+            print foo
+            pass
+        """
+
+        #Try Getting the title
+        try:
             return soup.title.string, term
         except:
             pass
