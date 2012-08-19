@@ -49,7 +49,7 @@
                 <p>
                 <p>
                 {% for tag in ex.tags.all %}
-                    <span class="label">{{ tag }}</span>
+                    <span class="label{% if tag.type == 'nsfw' %} label-important{% endif %}">{{ tag }}</span>
                 {% endfor %}
                 <p>
                 
