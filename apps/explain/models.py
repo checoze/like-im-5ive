@@ -79,6 +79,12 @@ class Entry(Base):
     def get_most_popular_explanation(self):
         explanation = sorted(self.explanation_set.all(), key=lambda a: a.score, reverse=True)[:1]
         return explanation
+        
+    def possibly_link(self):
+        if self.name.startswith('http' or 'www'):
+            return True
+        else:
+            return False
                 
 class Explanation(Base):
     """ An Explanation that points to an Entry """
