@@ -1028,9 +1028,9 @@ select:focus:required:invalid:focus {
 
 /* line 325, ../../src/sass/bootstrap/_forms.scss */
 .form-actions {
-  padding: 18px 0;
+  padding: 18px 0 0;
   margin-top: 18px;
-  margin-bottom: 18px;
+  margin-bottom: 0;
   background-color: inherit;
   border-top: 1px solid #e5e5e5;
   *zoom: 1;
@@ -4128,7 +4128,7 @@ a.label:hover, a.badge:hover {
 /* line 8, ../../src/sass/like-im-5ive.sass */
 #top-nav,
 #lif-footer-nav {
-  margin: 10px auto;
+  margin: 0 auto;
 }
 @media only screen and (min-width: 1024px) {
   /* line 8, ../../src/sass/like-im-5ive.sass */
@@ -4144,11 +4144,21 @@ a.label:hover, a.badge:hover {
   margin: 100px auto;
 }
 /* line 17, ../../src/sass/like-im-5ive.sass */
+#lif-main h1 {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  letter-spacing: -1px;
+}
+/* line 20, ../../src/sass/like-im-5ive.sass */
 #lif-main .btn.btn-primary.btn-large,
 #lif-main input[type=password],
 #lif-main input[type=search],
 #lif-main input[type=text],
-#lif-main textarea {
+#lif-main textarea,
+#lif-main label,
+#lif-main .help-block {
+  font-size: 20px;
+  height: auto;
+  margin-bottom: 0.5em;
   width: 100%;
 }
 @media only screen and (min-width: 1024px) {
@@ -4158,20 +4168,20 @@ a.label:hover, a.badge:hover {
   }
 }
 
-/* line 26, ../../src/sass/like-im-5ive.sass */
+/* line 34, ../../src/sass/like-im-5ive.sass */
 #lif-header,
 #lif-footer {
   background: #c80000;
   width: 100%;
 }
 
-/* line 30, ../../src/sass/like-im-5ive.sass */
+/* line 38, ../../src/sass/like-im-5ive.sass */
 #top-nav {
   height: 50px;
   margin: 0 auto;
   position: relative;
 }
-/* line 35, ../../src/sass/like-im-5ive.sass */
+/* line 43, ../../src/sass/like-im-5ive.sass */
 #top-nav > h1 > a {
   color: white;
   font: bold 40px/1 Georgia, "Times New Roman", Times, serif;
@@ -4186,20 +4196,20 @@ a.label:hover, a.badge:hover {
   -o-transition: text-shadow 1s;
   transition: text-shadow 1s;
 }
-/* line 44, ../../src/sass/like-im-5ive.sass */
+/* line 52, ../../src/sass/like-im-5ive.sass */
 #top-nav > h1 > a:active, #top-nav > h1 > a:focus, #top-nav > h1 > a:hover {
   text-decoration: none;
   text-shadow: 3px 3px 1px black;
 }
 
-/* line 49, ../../src/sass/like-im-5ive.sass */
+/* line 57, ../../src/sass/like-im-5ive.sass */
 #signin {
   position: absolute;
   right: 10px;
   top: 5px;
 }
 
-/* line 54, ../../src/sass/like-im-5ive.sass */
+/* line 62, ../../src/sass/like-im-5ive.sass */
 #lif-auth {
   color: white;
   font-size: 20px;
@@ -4208,74 +4218,28 @@ a.label:hover, a.badge:hover {
   right: 10px;
   top: 0;
 }
-/* line 61, ../../src/sass/like-im-5ive.sass */
+/* line 69, ../../src/sass/like-im-5ive.sass */
 #lif-auth > li {
   display: inline;
 }
-/* line 63, ../../src/sass/like-im-5ive.sass */
+/* line 71, ../../src/sass/like-im-5ive.sass */
 #lif-auth > li:first-child {
   border-right: 1px solid white;
   padding-right: 0.5em;
 }
-/* line 66, ../../src/sass/like-im-5ive.sass */
+/* line 74, ../../src/sass/like-im-5ive.sass */
 #lif-auth > li > a {
   color: white;
   padding-left: 0.5em;
 }
 
-/* line 70, ../../src/sass/like-im-5ive.sass */
-#main {
-  margin: 0 auto;
-}
-
-/* line 75, ../../src/sass/like-im-5ive.sass */
+/* line 80, ../../src/sass/like-im-5ive.sass */
 #lif-home-search > h1,
 #lif-signup > h1 {
-  font-family: Georgia, "Times New Roman", Times, serif;
-  letter-spacing: -1px;
   margin-left: 20px;
 }
-/* line 79, ../../src/sass/like-im-5ive.sass */
-#lif-home-search > form,
-#lif-signup > form {
-  margin-top: -5px;
-}
-/* line 82, ../../src/sass/like-im-5ive.sass */
-#lif-home-search > form > .control-group > label,
-#lif-home-search > form > .control-group > .help-block,
-#lif-signup > form > .control-group > label,
-#lif-signup > form > .control-group > .help-block {
-  font-size: 20px;
-  margin-bottom: 0.5em;
-}
-/* line 86, ../../src/sass/like-im-5ive.sass */
-#lif-home-search > form > .control-group > input[type=search],
-#lif-home-search > form > .control-group > input[type=text],
-#lif-home-search > form > .control-group > input[type=password],
-#lif-signup > form > .control-group > input[type=search],
-#lif-signup > form > .control-group > input[type=text],
-#lif-signup > form > .control-group > input[type=password] {
-  font-size: 20px;
-  height: auto;
-  margin-bottom: 10px;
-}
-/* line 92, ../../src/sass/like-im-5ive.sass */
-#lif-home-search .btn,
-#lif-home-search input[type=search],
-#lif-home-search input[type=text],
-#lif-home-search input[type=password],
-#lif-signup .btn,
-#lif-signup input[type=search],
-#lif-signup input[type=text],
-#lif-signup input[type=password] {
-  width: 100%;
-}
 
-/* line 98, ../../src/sass/like-im-5ive.sass */
+/* line 83, ../../src/sass/like-im-5ive.sass */
 #lif-footer {
-  bottom: 0;
-  left: 0;
   min-height: 100px;
-  position: absolute;
-  right: 0;
 }
