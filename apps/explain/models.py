@@ -90,13 +90,18 @@ class Entry(Base):
         return explanation
                 
 class Explanation(Base):
-    """ An Explanation that points to an Entry """
+    """ An Explanation that points to an Entry
+    
+    Custom properties:
+    - up_votes: Returns integer, number of related Votes that are positive
+    - down_votes: Returns integer, number of related Votes that are negative
+    - score: Returns integer, up minus down 
+    """
 
     objects = EntryManager()
     
     entry = models.ForeignKey(Entry)
     body = models.TextField()
-
 
     tags = models.ManyToManyField(Tag, blank=True)
     #submitted #
@@ -107,7 +112,6 @@ class Explanation(Base):
     @property        
     def up_votes(self):
         up_votes = Vote.objects.for_model(self).get_up_votes().count()
-        #print up_votes
         return int(up_votes)
         
     @property        
