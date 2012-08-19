@@ -1,11 +1,10 @@
 {% extends 'base.html' %}
 
 {% block title %}Explain {{ term }} | {% endblock title %}
+
 {% block content %}
-<div style="margin: 20px auto 0 auto; width: 500px;">
     <h1>"{{ term }}" doesn&rsquo;t exist.</h1>
     <h2>Would you like to create an Explanation for it?</h2>
-
     <form method='POST' action='{% url entry_prompt %}' class="well">
         {% csrf_token %}
         <div class="control-group">
@@ -15,11 +14,8 @@
                 <span class="help-block">{{ entry_form.name.help_text }}</span>
             {% endif %}
         </div><!-- /.control-group -->
-
         {{ formset.management_form }}
-
         {% for form in formset %}
-
             <div class="control-group">
                 {{ form.id }}
                 {{ form.body.label_tag }}
@@ -33,7 +29,5 @@
             <input type='hidden' name='original_creator' value='{{ current_user }}'>
             <input type='submit' class="btn btn-primary" value="Save">
         </div><!-- /.form-actions -->
-
     </form>
-</div>
 {% endblock content %}

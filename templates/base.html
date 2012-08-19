@@ -52,6 +52,7 @@
         </nav>
     </header>
     <div id="main" role="main">
+        <section id="lif-main">
         {% if messages %}
             {% for message in messages %}
                 <div class="alert {% block alert_type %}%alert-info{% endblock alert_type %}">
@@ -63,9 +64,10 @@
         {% endif %}
         {% block content %}
         {% endblock content %}
+        </section>
     </div><!-- /#main -->
     <footer role="contentinfo" id="lif-footer">
-        <nav>
+        <nav id="lif-footer-nav">
             <p>Life is complicated, your explanations don&rsquo;t have to be. <a href="">Still need help?</a></p>
             <p>Like I&rsquo;m 5ive brought to you by CheCoZe.</p>
         </nav>

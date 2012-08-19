@@ -6,10 +6,22 @@
 
 
 #top-nav,
-#main
+#lif-footer-nav
+    margin: 10px auto
     @media only screen and (min-width: 1024px)
         max-width: 1024px
         min-width: 1024px
+
+#lif-main
+    margin: 100px auto
+    .btn.btn-primary.btn-large,
+    input[type=password],
+    input[type=search],
+    input[type=text],
+    textarea
+        width: 100%
+    @media only screen and (min-width: 1024px)
+        width: (1024px/2)
 
 #lif-header,
 #lif-footer
@@ -60,7 +72,6 @@
 
 #lif-home-search,
 #lif-signup
-    margin: 100px auto
     > h1
         font-family: $serifFontFamily
         letter-spacing: -1px
@@ -83,8 +94,6 @@
     input[type=text],
     input[type=password]
         width: 100%
-    @media only screen and (min-width: 1024px)
-        width: (1024px/2)
         
 #lif-footer
     bottom: 0
