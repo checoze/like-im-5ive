@@ -21,4 +21,12 @@ Otherwise just run the usual::
 
     python manage.py runserver --settings=settings.local
 
-APIs are avaliable.
+
+Features
+--------
+
+Registration
+Responsive Styles-- completely mobile friendly!
+Tests-- Selenium tested, Unit Coming soon (hey, it WAS a dash)
+Help Docs
+APIs-- GET for now, POST soon
