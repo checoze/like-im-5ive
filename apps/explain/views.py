@@ -46,12 +46,15 @@ def home(request):
 
     
 def entry_detail(request, hex):
-    """ Entry Detail """
+    """ Entry Detail
+        Returns simply the entry object and a form to create new explanations.
+    """
     context = {}
     
     entry = get_object_or_404(Entry, hex=hex)
     context['entry'] = entry
     context['explanation_form'] = ExplanationForm()
+    #CUT FOR TIME: Comments on Explanations
     
     return render(request, 'explain/entry_detail.html', context)
     
