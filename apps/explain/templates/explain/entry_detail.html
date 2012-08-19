@@ -40,7 +40,7 @@
                 <p>{{ ex }}</p>
                 <p class="lif-score">Score: {{ ex.score }}</p>
                     {% if request.user.is_authenticated %}
-                    <a href='/vote/explanation' id='lif-upvote-link-{{ ex.id }}' class='lif-upvote' data-type='explanation' data-id='{{ ex.id }}'><i class="icon-thumbs-up"></i> Upvote</a> / <a href='/vote/explanation' id='lif-downvote-link-{{ ex.id }}' lif-downvote' data-type='explanation' data-id='{{ ex.id }}'><i class="icon-thumbs-down"></i> Downvote</a>
+                    <a href='/vote/explanation' id='lif-upvote-link-{{ ex.id }}' class='lif-upvote' data-type='explanation' data-id='{{ ex.id }}'><i class="icon-thumbs-up"></i> Upvote</a> / <a href='/vote/explanation' id='lif-downvote-link-{{ ex.id }}' class='lif-downvote' data-type='explanation' data-id='{{ ex.id }}'><i class="icon-thumbs-down"></i> Downvote</a>
                     {% else %}
                     <a href="{% url login %}">Sign In to vote.</a>
                     {% endif %}

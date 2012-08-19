@@ -14,9 +14,9 @@ apps/explain/tests/selenium/home_test_case                  9      0   100%
 apps/explain/tests/selenium/search_homepage_test_case      11      0   100%   
 apps/explain/tests/selenium/test_add_explanation           17      0   100%   
 apps/explain/tests/selenium/test_down_vote                 29      0   100%   
-apps/explain/tests/selenium/test_login                     19      0   100%   
+apps/explain/tests/selenium/test_login                     18      0   100%   
 apps/explain/tests/selenium/test_registration              13      0   100%   
-apps/explain/tests/selenium/test_up_vote                   29      0   100%   
+apps/explain/tests/selenium/test_up_vote                   28      0   100%   
 apps/explain/urls                                           6      0   100%   
 apps/explain/views                                        107     12    89%   28, 41-42, 119-120, 136-140, 152, 159-160
 apps/profile/__init__                                       0      0   100%   
@@ -31,4 +31,4 @@ settings/common                                            32      0   100%
 settings/local                                              9      0   100%   
 urls                                                       10      3    70%   18-24
 -------------------------------------------------------------------------------------
-TOTAL                                                     507     45    91%   
+TOTAL                                                     505     45    91%   
