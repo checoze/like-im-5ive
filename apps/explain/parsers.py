@@ -18,6 +18,9 @@ def parse_url(term):
             print foo
             pass
         """
+        
+        #Add LOTS of parsing methods
+        #Even parse title in a site-specific way
 
         #Try Getting the title
         try:
