@@ -111,7 +111,6 @@ class Explanation(Base):
         
     @property        
     def score(self):
-        print int(self.up_votes - self.down_votes)
         return int(self.up_votes - self.down_votes)
 
 

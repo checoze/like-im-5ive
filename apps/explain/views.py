@@ -1,9 +1,9 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.conf import settings
-from django.views.generic import DetailView, ListView
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.forms.models import inlineformset_factory
+from django.contrib.contenttypes.models import ContentType
 
 from django.utils import simplejson
 from django.contrib import messages
@@ -54,26 +54,25 @@ def entry_detail(request, hex):
     
     
 def entry_prompt(request, search_term=None):
+    """ Prompt the user with the ability to add an entry.  Auto fill out part of the form for them."""
     context = {}
     if request.method == "POST":
         entry_form = EntryForm(request.POST)
-        print("validate")
-        print(entry_form.errors)
         if entry_form.is_valid():
-            print('step 1')
             entry = entry_form.save(commit=False)
             formset = ExplanationFormset(request.POST, instance=entry)
             if formset.is_valid():
-                print("save")
                 entry_form.save()
                 formset.save()
                 return HttpResponseRedirect(reverse('entry_detail', args=[entry.hex]))
     else:
+        # Check for authed user.  If not, assign the item to the "Anonymous" user
         if request.user.is_authenticated():
             context['current_user'] = request.user.id
         else:
             context['current_user'] = User.objects.get(username="anon").id
 
+        # Do some form cleanup, and send stuff back.
         context['term'] = search_term
         initial_data = {'name': search_term }
         entry_form = EntryForm(initial_data)
@@ -96,6 +95,7 @@ def explanation_submit(request):
     return HttpResponseRedirect(reverse('entry_detail', args=[entry_hex]))
 
 def registration(request):
+    """ Register a user, log them in, and send them on their way."""
     context = {}
     if request.method == "POST":
         form = RegistrationForm(request.POST)
@@ -127,22 +127,32 @@ def vote(request, id, type):
     context = {}
 
     direction = request.POST.get('direction')
-    
+
+    #What type of object
     if type == 'explanation':
         _object = Explanation.objects.get(id=id)
     elif type == 'comment':
         _object = Explanation.objects.get(id=id)
     else:
-        response = simplejson.dumps({ 'success': False })        
+        response = simplejson.dumps({ 'success': False })
         return HttpResponse(response, mimetype='application/json', status=200)
 
-    if direction == 'up':
-        value = True
-    else:
-        value = False
-    
-    Vote.objects.create(user=request.user, content_object=_object, value=value )
-    
-    response = simplejson.dumps({ 'success': True })        
-    return HttpResponse(response, mimetype='application/json', status=200)
 
+    #Only Vote once
+    explanation_type = ContentType.objects.get(app_label="explain", model="explanation")
+    vote, created = Vote.objects.get_or_create(user=request.user, content_type=explanation_type, object_pk=_object.id)
+
+    #Save value of vote
+    if created:
+        if direction == 'up':
+            value = True
+        else:
+            value = False
+        vote.value = value
+        vote.save()
+        
+        response = simplejson.dumps({ 'success': True, 'value': _object.score })
+        return HttpResponse(response, mimetype='application/json', status=200)
+    else:
+        response = simplejson.dumps({ 'success': False, 'message':"Already voted" })
+        return HttpResponse(response, mimetype='application/json', status=200)

@@ -25,13 +25,12 @@
             {% for ex in entry.explanation_set.all %}
             <div class="well">
                 <p>{{ ex }}</p>
-                <p>Score: <span>{{ ex.score }}</span>
+                <p class="lif-score">Score: {{ ex.score }}</p>
                     {% if request.user.is_authenticated %}
                     <a href='/vote/explanation' class='lif-upvote' data-type='explanation' data-id='{{ ex.id }}'><i class="icon-thumbs-up"></i>UPVOTE</a> / <a href='/vote/explanation' class='lif-downvote' data-type='explanation' data-id='{{ ex.id }}'><i class="icon-thumbs-down"></i>DOWNVOTE</a>
                     {% else %}
                     <a href="{% url login %}">Sign In to vote.</a>
                     {% endif %}
-                </p>
             </div><!-- /.well -->
             {% endfor %}
         </div><!-- /#explanations -->

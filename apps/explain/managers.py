@@ -14,6 +14,7 @@ class EntryManager(Manager):
 
 class VoteQuerySet(QuerySet):
     def for_model(self, model):
+        """ Grab the votes for a specific instance of an item. """
         ct = ContentType.objects.get_for_model(model)
         return self.filter(content_type=ct, object_pk=force_unicode(model._get_pk_val()))
 

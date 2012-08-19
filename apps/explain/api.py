@@ -1,5 +1,5 @@
 from tastypie.resources import ModelResource
-from explain.models import Entry, Comment
+from explain.models import Entry
 from tastypie.authentication import ApiKeyAuthentication
 from tastypie.authorization import ReadOnlyAuthorization
 
@@ -14,12 +14,4 @@ class EntryResource(ModelResource):
         allowed_methods = ['get']
 
 
-class CommentAPIResource(ModelResource):
-    """
-    API for comments
-    """
 
-    class Meta:
-        queryset = Comment.objects.all()
-        resource = "comment"
-        allowed_methods = ['get']
