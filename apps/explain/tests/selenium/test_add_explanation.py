@@ -15,10 +15,8 @@ class NewItemExplTestCase(LiveServerTestCase):
         self.browser.find_element_by_id("search-button").click()
         self.browser.find_element_by_id("id_name").send_keys("reddit")
         self.browser.find_element_by_id("id_explanation_set-0-body").send_keys("Reddit is a fun place to share links.")
-        self.browser.find_element_by_class_name("btn").click()
-        import time
-        time.sleep(10)
-        self.browser.find_element_by_link_text("Submit a New Explanation")
+        self.browser.find_element_by_id('save-item').click()
+        self.browser.find_element_by_link_text("Submit a New Explanation").click()
         self.browser.find_element_by_id("id_body").send_keys("this is my new explanation")
         self.browser.find_element_by_id("add-explanation").click()
 
