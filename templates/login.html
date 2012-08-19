@@ -5,7 +5,7 @@
 {% block content %}
 <div id="lif-signup">
     <h1>Login</h1>
-    <form method="POST" action="{% url login %}" class="well">
+    <form method="POST" action="{% url login %}?next=/" class="well">
         {% csrf_token %}
         <div class="control-group">
             {{ form.username.label_tag }}
