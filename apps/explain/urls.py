@@ -17,6 +17,7 @@ urlpatterns = patterns('',
     #Voting
     url(r'^vote/explanation/(\d+)/$', 'explain.views.vote', {'type':'explanation'}, name='vote_explanation'),
     url(r'^vote/comment/(\d+)/$', 'explain.views.vote', {'type':'comment'}, name='vote_comment', ),
-    
+
+    # API
     url(r'api/', include(v1_api.urls)),
 )

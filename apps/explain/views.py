@@ -1,6 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.conf import settings
-from django.views.generic import DetailView, ListView
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.forms.models import inlineformset_factory
@@ -54,26 +53,25 @@ def entry_detail(request, hex):
     
     
 def entry_prompt(request, search_term=None):
+    """ Prompt the user with the ability to add an entry.  Auto fill out part of the form for them."""
     context = {}
     if request.method == "POST":
         entry_form = EntryForm(request.POST)
-        print("validate")
-        print(entry_form.errors)
         if entry_form.is_valid():
-            print('step 1')
             entry = entry_form.save(commit=False)
             formset = ExplanationFormset(request.POST, instance=entry)
             if formset.is_valid():
-                print("save")
                 entry_form.save()
                 formset.save()
                 return HttpResponseRedirect(reverse('entry_detail', args=[entry.hex]))
     else:
+        # Check for authed user.  If not, assign the item to the "Anonymous" user
         if request.user.is_authenticated():
             context['current_user'] = request.user.id
         else:
             context['current_user'] = User.objects.get(username="anon").id
 
+        # Do some form cleanup, and send stuff back.
         context['term'] = search_term
         initial_data = {'name': search_term }
         entry_form = EntryForm(initial_data)
@@ -96,6 +94,7 @@ def explanation_submit(request):
     return HttpResponseRedirect(reverse('entry_detail', args=[entry_hex]))
 
 def registration(request):
+    """ Register a user, log them in, and send them on their way."""
     context = {}
     if request.method == "POST":
         form = RegistrationForm(request.POST)
