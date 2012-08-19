@@ -4,44 +4,14 @@
 // include Twitter Bootstrap
 @import bootstrap/bootstrap
 
-
-#lif-top-nav
-    margin: 0 auto
-    @media only screen and (min-width: 1024px)
-        max-width: 1024px
-        min-width: 1024px
-
-#lif-main
-    margin: 100px auto
-    padding: 0 10px
-    h1
-        font-family: $serifFontFamily
-        letter-spacing: -1px
-    .btn.btn-primary.btn-large,
-    input[type=password],
-    input[type=search],
-    input[type=text],
-    textarea,
-    label,
-    .help-block
-        font-size: 20px
-        height: auto
-        margin-bottom: .5em
-        width: 100%
-    input[type=password],
-    input[type=search],
-    input[type=text],
-    textarea
-        +box-sizing(border-box)
-    @media only screen and (min-width: 1024px)
-        width: (1024px/2)
-
 #lif-header,
 #lif-footer
     background: rgb(200,0,0)
     width: 100%
+
 #lif-top-nav
     height: auto
+    margin: 0 auto
     position: relative
     > h1
         > a
@@ -61,6 +31,10 @@
             > b
                 font-size: 60px
                 font-weight: inherit
+    @media only screen and (min-width: 1024px)
+        max-width: 1024px
+        min-width: 1024px
+
 #lif-signin
     position: absolute
     right: 10px
@@ -91,6 +65,34 @@
         > a
             color: rgb(255,255,255)
             padding-left: .5em
+
+#lif-main
+    margin: 25px auto
+    padding: 0 10px
+    h1
+        font-family: $serifFontFamily
+        letter-spacing: -1px
+    h1 + .well
+        margin-top: -5px
+    .btn.btn-primary.btn-large,
+    input[type=password],
+    input[type=search],
+    input[type=text],
+    textarea,
+    label,
+    .help-block
+        font-size: 20px
+        height: auto
+        margin-bottom: .5em
+        width: 100%
+    input[type=password],
+    input[type=search],
+    input[type=text],
+    textarea
+        +box-sizing(border-box)
+    @media only screen and (min-width: 1024px)
+        margin: 100px auto
+        width: (1024px/2)
 
 #lif-home-search,
 #lif-signup
