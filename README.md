@@ -40,6 +40,30 @@ APIs-- GET for now, POST soon
 TravisCI Integration
 
 
+TODO
+----
+
+Search
+
+Comments
+
+Site Specific URL Parsing
+
+Automatic consuming of 3rd party site
+
+URL Shortener
+
+Social Media Integration
+
+User Point System
+
+Popular / Random / Recent Posts
+
+
+
+
+Installation
+------------
 
 To get up and running::
 
