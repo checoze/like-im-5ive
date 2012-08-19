@@ -3,10 +3,15 @@
 {% block title %}Explain {{ term }} | {% endblock title %}
 
 {% block content %}
-    <h1>"{{ term }}" doesn&rsquo;t exist.</h1>
-    <h2>Would you like to create an Explanation for it?</h2>
+    <h1>&ldquo;{{ term }}&rdquo; doesn&rsquo;t exist.</h1>
+    <h2>Explain it.</h2>
     <form method='POST' action='{% url entry_prompt %}' class="well">
         {% csrf_token %}
+        {% if entry_form.errors %}
+        <div class="alert alert-error">
+            {{ entry_form.errors }}
+        </div><!-- /.alert -->
+        {% endif %}
         <div class="control-group">
             {{ entry_form.name.label_tag }}
             {{ entry_form.name }}
@@ -16,6 +21,7 @@
         </div><!-- /.control-group -->
         {{ formset.management_form }}
         {% for form in formset %}
+        {{ form.errors }}
             <div class="control-group">
                 {{ form.id }}
                 {{ form.body.label_tag }}
@@ -30,7 +36,7 @@
         {% endfor %}
         <div class="form-actions">
             <input type='hidden' name='original_creator' value='{{ current_user }}'>
-            <input type='submit' class="btn btn-primary" value="Save" id='save-item'>
+            <input type='submit' class="btn btn-primary btn-large" value="Save" id='save-item'>
         </div><!-- /.form-actions -->
     </form>
 {% endblock content %}

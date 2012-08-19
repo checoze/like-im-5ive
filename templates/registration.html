@@ -3,21 +3,19 @@
 {% block title %}Sign up | {% endblock title %}
 
 {% block content %}
-<div id="lif-signup">
-    <h1>Sign up.</h1>
-    <form method="POST" action="{% url registration %}" class="well">
-        {% csrf_token %}
-        <div class="control-group">
-            {{ form.username.label_tag }}
-            {{ form.username }}
-        </div><!-- /.control-group -->
-        <div class="control-group">
-            {{ form.password.label_tag }}
-            {{ form.password }}
-        </div><!-- /.control-group -->
-        <div class="form-actions">
-            <input type="submit" class="btn btn-primary btn-large" id="register-button" value="Register">
-        </div><!-- /.form-actions -->
-    </form>
-</div><!-- /#lif-signup -->
+<h1 class="pre-well">Sign up.</h1>
+<form method="POST" action="{% url registration %}" class="well">
+    {% csrf_token %}
+    <div class="control-group">
+        {{ form.username.label_tag }}
+        {{ form.username }}
+    </div><!-- /.control-group -->
+    <div class="control-group">
+        {{ form.password.label_tag }}
+        {{ form.password }}
+    </div><!-- /.control-group -->
+    <div class="form-actions">
+        <input type="submit" class="btn btn-primary btn-large" id="register-button" value="Register">
+    </div><!-- /.form-actions -->
+</form>
 {% endblock content %}

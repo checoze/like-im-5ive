@@ -1,26 +1,22 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div id="lif-home-search">
-    <h1>Explain it to me.</h1>
-    <form action="." method="post" class="well">
-        {% csrf_token %}
-        <div class="control-group">
-            <input id="search" name="search" type="search" placeholder="Word, Phrase or URL&hellip;">
-            <input type="submit" value="Search or Explain" id="search-button" class="btn btn-primary btn-large">            
-        </div><!-- /.control-group -->
-        <div class="form-actions">
-
-            <p style="font-size:13px;">Like Im 5ive provides brief, simple explanations for anything. Search for words, people, concepts, URLs or anything else and get a short summary. For example:</p>
-            <ul>
-                <li><a href="http://likeim5ive.com/83d7fc/quantam-physics/">quantam physics</a></li>
-                <li><a href="http://likeim5ive.com/bf49f4/battle-for-aleppo-intensifies-syrian-conflict-the-big-picture-bostoncom/">http://www.boston.com/bigpicture/2012/07/battle_for_aleppo_intensifies.html</a></li>
-                <li><a href="http://likeim5ive.com/08ced0/checoze/">CheCoZe</a></li>
-                <li><a href="http://likeim5ive.com/584728/xkcd-python/">http://xkcd.com/353/</a></li>
-                <li><a href="http://likeim5ive.com/e31fea/narwhal/">Narwhal</a></li>
-            </ul>
-
-        </div><!-- /.form-actions -->
-    </form>
-</div><!-- /#lif-home-search -->
+<h1 class="pre-well">Explain it to me.</h1>
+<form action="." method="post" class="well">
+    {% csrf_token %}
+    <div class="control-group">
+        <input id="search" name="search" type="search" placeholder="Word, Phrase or URL&hellip;">
+        <input type="submit" value="Search or Explain" id="search-button" class="btn btn-primary btn-large">            
+    </div><!-- /.control-group -->
+    <div class="form-actions">
+        <p style="font-size:13px;">Like Im 5ive provides brief, simple explanations for anything. Search for words, people, concepts, URLs or anything else and get a short summary. For example:</p>
+        <ul>
+            <li><a href="http://likeim5ive.com/83d7fc/quantam-physics/">quantam physics</a></li>
+            <li><a href="http://likeim5ive.com/bf49f4/battle-for-aleppo-intensifies-syrian-conflict-the-big-picture-bostoncom/">http://www.boston.com/bigpicture/2012/07/battle_for_aleppo_intensifies.html</a></li>
+            <li><a href="http://likeim5ive.com/08ced0/checoze/">CheCoZe</a></li>
+            <li><a href="http://likeim5ive.com/584728/xkcd-python/">http://xkcd.com/353/</a></li>
+            <li><a href="http://likeim5ive.com/e31fea/narwhal/">Narwhal</a></li>
+        </ul>
+    </div><!-- /.form-actions -->
+</form>
 {% endblock content %}
