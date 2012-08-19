@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>{% block title %} Like I&rsquo;m Five{% endblock title%}</title>
+    <title>{% if entry.name %}{{ entry.name }} | {% else %} {% block title %}{% endblock title %}{% endif %}Like I&rsquo;m Five</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ STATIC_URL }}css/like-im-5ive.css">
