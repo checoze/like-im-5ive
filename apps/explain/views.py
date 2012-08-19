@@ -13,7 +13,7 @@ from django.http import HttpResponse
 
 from explain.models import Entry, Explanation, Vote
 from explain.forms import EntryForm, ExplanationForm, ExplanationFormset, RegistrationForm
-
+from explain.utils import is_url
 
 def home(request):
     """ Simple homepage invites users to search for or create an entry """
@@ -77,6 +77,7 @@ def entry_prompt(request, search_term=None):
 
         # Do some form cleanup, and send stuff back.
         context['term'] = search_term
+        context['is_url'] = is_url(search_term)
         initial_data = {'name': search_term }
         entry_form = EntryForm(initial_data)
         formset = ExplanationFormset()
