@@ -21,5 +21,6 @@ Search for and provide short explanations about people, places, concepts, youtub
    searching
    registration
    adding_new_item
+   api
 
 
