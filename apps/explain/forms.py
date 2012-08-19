@@ -14,10 +14,12 @@ class EntryForm(forms.ModelForm):
         
 
 class ExplanationForm(forms.ModelForm):
-    
+   
     class Meta:
         model = Explanation
         exclude = BASE_EXCLUDE_FIELDS
+        widgets = {'tags': forms.CheckboxSelectMultiple}
+
 
 
 """

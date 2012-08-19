@@ -26,12 +26,17 @@
                 {{ form.id }}
                 {{ form.body.label_tag }}
                 {{ form.body }}
-                {% if form.help_text %}
-                    <span class="help-block">{{ form.help_text }}</span>
+                {% if form.body.help_text %}
+                    <span class="help-block">{{ form.body.help_text }}</span>
                 {% endif %}
+            </div><!-- /.control-group -->
+            <div class="control-group">
+                <fieldset>
+                    <legend>Tags</legend>
                 {% if is_url %}
                     {{ form.tags }}
                 {% endif %}
+                </fieldset>
             </div><!-- /.control-group -->
         {% endfor %}
         <div class="form-actions">

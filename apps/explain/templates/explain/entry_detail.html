@@ -36,28 +36,41 @@
     </ul>
     <div class="tab-content">
         <div class="tab-pane active" id="explanations">
-            {% for ex in entry.explanation_set.all %}
+            {% for ex in entry.explanation_set.all|dictsortreversed:"score" %}
             <div class="well {% if forloop.counter|divisibleby:2 %}lif-even{% endif %}"}>
                 <p>{{ ex }}</p>
                 <p class="lif-score">Score: {{ ex.score }}</p>
+
                     {% if request.user.is_authenticated %}
                     <a href='/vote/explanation' id='lif-upvote-link-{{ ex.id }}' class='lif-upvote' data-type='explanation' data-id='{{ ex.id }}'><i class="icon-thumbs-up"></i> Upvote</a> / <a href='/vote/explanation' id='lif-downvote-link-{{ ex.id }}' class='lif-downvote' data-type='explanation' data-id='{{ ex.id }}'><i class="icon-thumbs-down"></i> Downvote</a>
                     {% else %}
                     <a href="{% url login %}">Sign In to vote.</a>
                     {% endif %}
+
+                <p>
+                {% for tag in ex.tags.all %}
+                    <span class="label{% if tag.type == 'nsfw' %} label-important{% endif %}">{{ tag }}</span>
+                {% endfor %}
+                <p>
+                
             </div><!-- /.well -->
             {% endfor %}
         </div><!-- /#explanations -->
         <div class="tab-pane" id="submit">
             <form method='POST' action='/explanation/submit' class="well">
                 {% csrf_token %}
-                {% if entry.url %}
-                    {{ explanation_form.tags }}
-                {% endif %}
                 <div class="control-group">
                     <input type='hidden' name="entry_hex" value='{{ entry.hex }}'>
                     <input type='hidden' id="id_entry" name='entry' value='{{ entry.id }}'>
                     <textarea name="body" cols="40" rows="10" id="id_body"></textarea>
+                </div><!-- /.control-group -->
+                <div class="control-group">
+                    <fieldset>
+                        <legend>Tags</legend>
+                    {% if entry.url %}
+                        {{ explanation_form.tags }}
+                    {% endif %}
+                    </fieldset>
                 </div><!-- /.control-group -->
                 <div class="form-actions">
                     <input type='submit' value='Add New Explanation' class='btn btn-primary btn-large' id='add-explanation'>

@@ -3,6 +3,9 @@ like-lm-5ive
 
 [![Build Status](https://secure.travis-ci.org/checoze/like-im-5ive.png?branch=develop)](http://travis-ci.org/checoze/like-im-5ive)
 
+
+Check out the site at [http://likeim5ive.com](http://likeim5ive.com)
+
 About
 -----
 
@@ -14,18 +17,26 @@ Core Features
 --------
 
 Create Entries
+
 Create Explanations for those entires
+
 Vote on Explanations
+
 Comments (coming soon)
+
 Registration
 
 Extra Features
 --------
 
 Responsive Styles-- completely mobile friendly!
+
 Tests-- Selenium tested, Unit Coming soon (hey, it WAS a dash)
+
 Help Docs
+
 APIs-- GET for now, POST soon
+
 TravisCI Integration
 
 
