@@ -78,7 +78,7 @@ def entry_prompt(request, search_term=None):
         # Do some form cleanup, and send stuff back.
         context['term'] = search_term
         context['is_url'] = is_url(search_term)
-        initial_data = {'name': search_term }
+        initial_data = {'name': search_term, 'original_creator':context['current_user'] }
         entry_form = EntryForm(initial_data)
         formset = ExplanationFormset()
     context['entry_form'] = entry_form
