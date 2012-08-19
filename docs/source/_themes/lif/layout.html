@@ -21,19 +21,21 @@
 </head>
 <body id="{% block body_id %}{% endblock %}" class="{% block body_class %}{% endblock %}">
 <header role="banner" id="lif-header">
-    <nav id="top-nav">
+    <nav id="lif-top-nav">
         <h1><a href="http://likeim5ive.com">Like I&rsquo;m 5ive</a></h1>
     </nav>
 </header>
 <div id="main" role="main">
+    <section>
 <div class="row">
-    <div class="span4 well">
+    <div class="span4 well pull-left">
         {{ toctree(maxdepth=1) }}
     </div>
-    <div class="span10 pull-right">
+    <div class="span10">
         {% block body %}
         {% endblock %}
     </div>
+    </section>
 </div>
 
 </div><!-- /#main -->
