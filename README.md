@@ -14,18 +14,26 @@ Core Features
 --------
 
 Create Entries
+
 Create Explanations for those entires
+
 Vote on Explanations
+
 Comments (coming soon)
+
 Registration
 
 Extra Features
 --------
 
 Responsive Styles-- completely mobile friendly!
+
 Tests-- Selenium tested, Unit Coming soon (hey, it WAS a dash)
+
 Help Docs
+
 APIs-- GET for now, POST soon
+
 TravisCI Integration
 
 
