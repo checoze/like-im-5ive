@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 
-
 {% block content %}
 <script>
     //For ajax
@@ -12,30 +11,48 @@
     <a href="{{ entry.url }}" class="">{{ entry.url }}</a>
 {% endif %}
 
-
 <h2>Best Explanation</h2>
 <p>{{ entry.get_most_popular_explanation }}</p>
 
-<ul class="nav nav-tabs">
-    <li>Other Explanations</li>
-    <li>Submit New Explanation</li>
-</ul>
-
-<h2>More Explanation</h2>
-{% for ex in entry.explanation_set.all %}
-    <p>{{ ex }}</p>
-    <p>Score: <span>{{ ex.score }}</span> <a href='/vote/explanation' class='lif-upvote' data-type='explanation' data-id='{{ ex.id }}'>UPVOTE</a> / <a href='/vote/explanation' class='lif-downvote' data-type='explanation' data-id='{{ ex.id }}'>DOWNVOTE</a></p>
-    <br/>
-{% endfor %}
-
-<h2>Submit New Explanation</h2>
-<form method='POST' action='/explanation/submit'>
-    {% csrf_token %}
-    <input type='hidden' name="entry_hex" value='{{ entry.hex }}' />
-    
-    <input type='hidden' id="id_entry" name='entry' value='{{ entry.id }}' />
-    {{ explanation_form.body }}
-    <input type='submit' value='Add New Explanation' class='btn btn-primary' />
-</form>
-
+<div class="tabbable">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#explanations" data-toggle="tab">Other Explanations</a></li>
+        <li><a href="#submit" data-toggle="tab">Submit a New Explanation</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="explanations">
+            <h2>Other Explanations</h2>
+            {% for ex in entry.explanation_set.all %}
+            <div class="well">
+                <p>{{ ex }}</p>
+                <p>Score: <span>{{ ex.score }}</span>
+                    {% if request.user.is_authenticated %}
+                    <a href='/vote/explanation' class='lif-upvote' data-type='explanation' data-id='{{ ex.id }}'><i class="icon-thumbs-up"></i>UPVOTE</a> / <a href='/vote/explanation' class='lif-downvote' data-type='explanation' data-id='{{ ex.id }}'><i class="icon-thumbs-down"></i>DOWNVOTE</a>
+                    {% else %}
+                    <a href="{% url login %}">Sign In to vote.</a>
+                    {% endif %}
+                </p>
+            </div><!-- /.well -->
+            {% endfor %}
+        </div><!-- /#explanations -->
+        <div class="tab-pane" id="submit">
+            <h2>Submit New Explanation</h2>
+            <form method='POST' action='/explanation/submit' class="well">
+                {% csrf_token %}
+                <div class="control-group">
+                    <input type='hidden' name="entry_hex" value='{{ entry.hex }}'>
+                    <input type='hidden' id="id_entry" name='entry' value='{{ entry.id }}'>
+                    {{ explanation_form.body }}
+                </div><!-- /.control-group -->
+                <div class="form-actions">
+                    <input type='submit' value='Add New Explanation' class='btn btn-primary'>
+                </div><!-- /.form-actions -->
+            </form>
+        </div><!-- /#submit -->
+    </div><!-- /.tab-content -->
+</div><!-- /.tabbable -->
 {% endblock content %}
+
+{% block extra_foot %}
+<script src="{{ STATIC_URL }}js/bootstrap/bootstrap-tab.js"></script>
+{% endblock extra_foot %}

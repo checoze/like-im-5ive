@@ -66,7 +66,7 @@
     </div><!-- /#main -->
     <footer role="contentinfo" id="lif-footer">
         <nav>
-            <p>Life is complicated, your explanations don&rsquo;t have to be. <a href="http://likeim5ive.com/site_media/static/help/index.html">Still need help?</a></p>
+            <p>Life is complicated, your explanations don&rsquo;t have to be. <a href="">Still need help?</a></p>
             <p>Like I&rsquo;m 5ive brought to you by CheCoZe.</p>
         </nav>
     </footer>
@@ -74,5 +74,6 @@
     <script>window.jQuery || document.write('<script src="static/js/jquery/1.7.2/jquery.min.js"><\/script>')</script>
     <script src="{{ STATIC_URL }}js/bootstrap/bootstrap-dropdown.js"></script>
     <script src="{{ STATIC_URL }}js/like-im-5ive.js"></script>
+    {% block extra_foot %}{% endblock extra_foot %}
 </body>
 </html>
