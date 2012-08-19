@@ -3,6 +3,9 @@ like-lm-5ive
 
 [![Build Status](https://secure.travis-ci.org/checoze/like-im-5ive.png?branch=develop)](http://travis-ci.org/checoze/like-im-5ive)
 
+
+Check out the site at [http://likeim5ive.com](http://likeim5ive.com)
+
 About
 -----
 
