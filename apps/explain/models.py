@@ -9,6 +9,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 
 from explain.managers import VoteManager, EntryManager
+from explain.utils import is_url
 
 TAG_CHOICES= (
     ('sfw', 'Safe For Work'),
@@ -57,7 +58,7 @@ class Entry(Base):
             self.hex = _hex
         
         
-        if self.name.startswith('http' or 'www'):
+        if is_url(self.name):
             try:
             	url_data = urllib.urlopen(self.name)
             	url_html = url_data.read()
@@ -79,12 +80,6 @@ class Entry(Base):
     def get_most_popular_explanation(self):
         explanation = sorted(self.explanation_set.all(), key=lambda a: a.score, reverse=True)[:1]
         return explanation
-        
-    def possibly_link(self):
-        if self.name.startswith('http' or 'www'):
-            return True
-        else:
-            return False
                 
 class Explanation(Base):
     """ An Explanation that points to an Entry """
