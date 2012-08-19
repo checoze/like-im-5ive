@@ -6,12 +6,20 @@
     <form action="." method="post" class="well">
         {% csrf_token %}
         <div class="control-group">
-            <label for="search">I don&rsquo;t quite understand</label>
-            <input id="search" name="search" type="search" placeholder="word, phrase or url&hellip;">
-            <p class="help-block">Could you explain it to me, like I&rsquo;m five?</p>
+            <input id="search" name="search" type="search" placeholder="Word, Phrase or URL&hellip;">
+            <input type="submit" value="Search or Explain" id="search-button" class="btn btn-primary btn-large">            
         </div><!-- /.control-group -->
         <div class="form-actions">
-            <input type="submit" value="Search or Explain" id="search-button" class="btn btn-primary btn-large">
+
+            <p style="font-size:13px;">Like Im 5ive provides brief, simple explanations for anything. Search for words, people, concepts, URLs or anything else and get a short summary. For example:</p>
+            <ul>
+                <li><a href="#">quantam physics</a></li>
+                <li><a href="#">http://www.boston.com/bigpicture/2012/07/battle_for_aleppo_intensifies.html</a></li>
+                <li><a href="#">CheCoZe</a></li>
+                <li><a href="#">http://penny-arcade.com/comic/2012/05/18</a></li>
+                <li><a href="#">narwhal</a></li>
+            </ul>
+
         </div><!-- /.form-actions -->
     </form>
 </div><!-- /#lif-home-search -->
