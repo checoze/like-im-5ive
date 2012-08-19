@@ -19,8 +19,10 @@
     <header role="banner" id="lif-header">
         <nav id="top-nav">
             <h1><a href="/">Like I&rsquo;m 5ive</a></h1>
+
             {% if not request.user.is_authenticated %}
             <div id="signin" class="btn-group">
+
                 <a class="btn btn-large dropdown-toggle" data-toggle="dropdown" href="#">Sign In or Sign Up <span class="caret"></span></a>
                 <ul id="signin-dropdown" class="dropdown-menu dropdown-form pull-right">
                     <li>
@@ -45,7 +47,6 @@
             <ul id="lif-auth">
                 <li id="lif-user">{{ request.user.username }}</li>
                 <li><a href="{% url logout %}">Logout</a></li>
-                <li><a href="/help">Help</a></li>
             </ul>
             {% endif %}
         </nav>
@@ -64,12 +65,14 @@
         {% endblock content %}
     </div><!-- /#main -->
     <footer role="contentinfo" id="lif-footer">
-        
+        <nav>
+            <p>Life is complicated, your explanations don&rsquo;t have to be. <a href="http://likeim5ive.com/site_media/static/help/index.html">Still need help?</a></p>
+            <p>Like I&rsquo;m 5ive brought to you by CheCoZe.</p>
+        </nav>
     </footer>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="static/js/jquery/1.7.2/jquery.min.js"><\/script>')</script>
     <script src="{{ STATIC_URL }}js/bootstrap/bootstrap-dropdown.js"></script>
-    <script src="{{ STATIC_URL }}explain/js/explain.js"></script>
     <script src="{{ STATIC_URL }}js/like-im-5ive.js"></script>
 </body>
 </html>

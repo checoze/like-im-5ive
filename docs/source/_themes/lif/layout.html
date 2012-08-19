@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Like I&rsquo;m Five</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://likeim5ive.com/site_media/static/css/like-im-5ive.css">
+    <link rel="author" href="humans.txt">
+
+    <script src="{{ STATIC_URL }}js/modernizr/2.5.3/modernizr.min.js"></script>
+    <style>
+        .headerlink{
+            display: none;
+        }
+    </style>
+</head>
+<body id="{% block body_id %}{% endblock %}" class="{% block body_class %}{% endblock %}">
+<header role="banner" id="lif-header">
+    <nav id="top-nav">
+        <h1><a href="http://likeim5ive.com">Like I&rsquo;m 5ive - Help!</a></h1>
+
+
+
+    </nav>
+</header>
+<div id="main" role="main">
+<div class="row">
+    <div class="span4 well">
+        {{ toctree(maxdepth=1) }}
+    </div>
+    <div class="span10 pull-right">
+        {% block body %}
+        {% endblock %}
+    </div>
+</div>
+
+</div><!-- /#main -->
+<footer role="contentinfo" id="lif-footer">
+
+</footer>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="static/js/jquery/1.7.2/jquery.min.js"><\/script>')</script>
+<script src="{{ STATIC_URL }}js/bootstrap/bootstrap-dropdown.js"></script>
+<script src="{{ STATIC_URL }}explain/js/explain.js"></script>
+<script src="{{ STATIC_URL }}js/like-im-5ive.js"></script>
+</body>
+</html>
