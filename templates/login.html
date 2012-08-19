@@ -3,21 +3,19 @@
 {% block title %}Login | {% endblock title %}
 
 {% block content %}
-<div id="lif-signup">
-    <h1>Login</h1>
-    <form method="POST" action="{% url login %}?next=/" class="well">
-        {% csrf_token %}
-        <div class="control-group">
-            {{ form.username.label_tag }}
-            {{ form.username }}
-        </div><!-- /.control-group -->
-        <div class="control-group">
-            {{ form.password.label_tag }}
-            {{ form.password }}
-        </div><!-- /.control-group -->
-        <div class="form-actions">
-            <input type="submit" class="btn btn-primary btn-large" id="login-button" value="Login">
-        </div><!-- /.form-actions -->
-    </form>
-</div><!-- /#lif-signup -->
+<h1 class="pre-well">Login</h1>
+<form method="POST" action="{% url login %}?next=/" class="well">
+    {% csrf_token %}
+    <div class="control-group">
+        {{ form.username.label_tag }}
+        {{ form.username }}
+    </div><!-- /.control-group -->
+    <div class="control-group">
+        {{ form.password.label_tag }}
+        {{ form.password }}
+    </div><!-- /.control-group -->
+    <div class="form-actions">
+        <input type="submit" class="btn btn-primary btn-large" id="login-button" value="Login">
+    </div><!-- /.form-actions -->
+</form>
 {% endblock content %}

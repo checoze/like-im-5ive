@@ -3,7 +3,7 @@
 {% block title %}Searched for {{ search }} | {% endblock title%}
 
 {% block content %}
-<h1>You searched for {{ search }}</h1>
+<h1 class="pre-well">You searched for {{ search }}</h1>
 {% for entry in entries %}
     <div class="well {% if forloop.counter|divisibleby:2 %}lif-even{% endif %}"}>
         <a href="{% url explain.views.entry_detail entry.hex %}">{{ entry.name }}</a>{% if entry.url %} - {{ entry.url }}{% endif %}
