@@ -78,11 +78,10 @@ class Entry(Base):
         super(Entry, self).save(*args, **kwargs)
     
     def get_most_popular_explanation(self):
-        explanations = self.explanation_set.all()
-        for ex in explanations:
-            return ex
+        explanation = sorted(self.explanation_set.all(), key=lambda a: a.score, reverse=True)[:1]
+        return explanation
+        
 
-        return self.explanation_set.all().get(id=1)
 
         
 class Explanation(Base):
@@ -111,7 +110,6 @@ class Explanation(Base):
         
     @property        
     def score(self):
-        print int(self.up_votes - self.down_votes)
         return int(self.up_votes - self.down_votes)
 
 

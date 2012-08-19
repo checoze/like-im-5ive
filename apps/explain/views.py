@@ -3,6 +3,7 @@ from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.forms.models import inlineformset_factory
+from django.contrib.contenttypes.models import ContentType
 
 from django.utils import simplejson
 from django.contrib import messages
@@ -28,6 +29,9 @@ def home(request):
 
         except Entry.DoesNotExist:
             # Try to find similar ones
+            # Sweet lord, replace this with haystack
+            # and not something on the db level
+            # TODO fo sho.
             from django.db.models.query import Q
             entries = Entry.objects.filter(Q(name__istartswith=term) | Q(name__iendswith=term))
             if not entries.exists():
@@ -126,22 +130,32 @@ def vote(request, id, type):
     context = {}
 
     direction = request.POST.get('direction')
-    
+
+    #What type of object
     if type == 'explanation':
         _object = Explanation.objects.get(id=id)
     elif type == 'comment':
         _object = Explanation.objects.get(id=id)
     else:
-        response = simplejson.dumps({ 'success': False })        
+        response = simplejson.dumps({ 'success': False })
         return HttpResponse(response, mimetype='application/json', status=200)
 
-    if direction == 'up':
-        value = True
-    else:
-        value = False
-    
-    Vote.objects.create(user=request.user, content_object=_object, value=value )
-    
-    response = simplejson.dumps({ 'success': True })        
-    return HttpResponse(response, mimetype='application/json', status=200)
 
+    #Only Vote once
+    explanation_type = ContentType.objects.get(app_label="explain", model="explanation")
+    vote, created = Vote.objects.get_or_create(user=request.user, content_type=explanation_type, object_pk=_object.id)
+
+    #Save value of vote
+    if created:
+        if direction == 'up':
+            value = True
+        else:
+            value = False
+        vote.value = value
+        vote.save()
+        
+        response = simplejson.dumps({ 'success': True, 'value': _object.score })
+        return HttpResponse(response, mimetype='application/json', status=200)
+    else:
+        response = simplejson.dumps({ 'success': False, 'message':"Already voted" })
+        return HttpResponse(response, mimetype='application/json', status=200)
