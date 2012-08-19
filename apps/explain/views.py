@@ -33,7 +33,7 @@ def home(request):
             # and not something on the db level
             # TODO fo sho.
             from django.db.models.query import Q
-            entries = Entry.objects.filter(Q(name__istartswith=term) | Q(name__iendswith=term))
+            entries = Entry.objects.filter(Q(name__istartswith=term) | Q(name__iendswith=term) | Q(url__istartswith=term) | Q(url__iendswith=term))
             if not entries.exists():
                 request.method = "GET"
                 return entry_prompt(request, term)
