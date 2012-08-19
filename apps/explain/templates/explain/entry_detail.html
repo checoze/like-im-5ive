@@ -5,14 +5,18 @@
     //For ajax
     var csrf_token = "{{ csrf_token }}";
 </script>
-<div style="margin: 0 auto; width: 500px;">
+<div style="margin: 20px auto 0 auto; width: 500px;">
 <h1>{{ entry.name }}</h1>
 
 {% if entry.url %}
     <a href="{{ entry.url }}" class="">{{ entry.url }}</a>
 {% endif %}
 
-<p id="lif-explanation-most-popular" style="margin: 10px 0;">{{ entry.get_most_popular_explanation }}</p>
+<p id="lif-explanation-most-popular" style="margin: 10px 0;">
+{% for ex in entry.get_most_popular_explanation %}
+    {{ ex }}
+{% endfor %}
+</p>
 
 <div class="tabbable">
     <ul class="nav nav-tabs">
