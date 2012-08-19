@@ -36,7 +36,16 @@ class Tag(models.Model):
         return str(self.name)
     
 class Entry(Base):
-    """ Describes an Entry"""
+    """ Describes an Entry
+    
+    Entries are referenced by Explanations
+    
+    - save: Overides save to do several things
+        - create a unique hex code for the object
+        - if its a url, attempts to parse the remote site and deduce an appropriate title
+        - creates slug, doesn't need to be uniuqe
+    - get_most_popular_explanation: returns the related explanation with the most computer votes
+    """
     
     objects = EntryManager()
     
@@ -56,7 +65,6 @@ class Entry(Base):
         if not self.hex:
             _hex = ''.join(random.choice('0123456789abcdef') for i in range(6))
             self.hex = _hex
-        
         
         if is_url(self.name):
             try:
@@ -82,13 +90,18 @@ class Entry(Base):
         return explanation
                 
 class Explanation(Base):
-    """ An Explanation that points to an Entry """
+    """ An Explanation that points to an Entry
+    
+    Custom properties:
+    - up_votes: Returns integer, number of related Votes that are positive
+    - down_votes: Returns integer, number of related Votes that are negative
+    - score: Returns integer, up minus down 
+    """
 
     objects = EntryManager()
     
     entry = models.ForeignKey(Entry)
     body = models.TextField()
-
 
     tags = models.ManyToManyField(Tag, blank=True)
     #submitted #
@@ -99,7 +112,6 @@ class Explanation(Base):
     @property        
     def up_votes(self):
         up_votes = Vote.objects.for_model(self).get_up_votes().count()
-        #print up_votes
         return int(up_votes)
         
     @property        
@@ -112,10 +124,14 @@ class Explanation(Base):
         return int(self.up_votes - self.down_votes)
 
 
-
-
 class Comment(Base):
-    """ Comments on an Explanation. """
+    """ Comments on an Explanation
+
+    Custom properties:
+    - up_votes: Returns integer, number of related Votes that are positive
+    - down_votes: Returns integer, number of related Votes that are negative
+    - score: Returns integer, up minus down 
+    """
     
     user = models.ForeignKey(User)
     body = models.TextField()
@@ -123,21 +139,27 @@ class Comment(Base):
     @property        
     def up_votes(self):
         up_votes = Vote.objects.for_model(self).get_up_votes().count()
-        print up_votes
         return up_votes
         
     @property        
     def down_votes(self):
         down_votes = Vote.objects.for_model(self).get_down_votes().count()
-        print down_votes
         return down_votes
+
+    @property        
+    def score(self):
+        return int(self.up_votes - self.down_votes)
     
     def __unicode__(self):
         return str(self.body)
         
         
 class Vote(Base):
-    """ Keep track of votes for objects on the site. """
+    """ Keep track of votes for objects on the site.
+    
+    A Vote FK's to a User and Any other object. So, votes can be applied to
+    Explanations, Comments, Entries, even Users.
+     """
 
     user = models.ForeignKey(User)
     value = models.BooleanField(default=False)

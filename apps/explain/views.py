@@ -46,18 +46,23 @@ def home(request):
 
     
 def entry_detail(request, hex):
-    """ Entry Detail """
+    """ Entry Detail
+        Returns simply the entry object and a form to create new explanations.
+    """
     context = {}
     
     entry = get_object_or_404(Entry, hex=hex)
     context['entry'] = entry
     context['explanation_form'] = ExplanationForm()
+    #CUT FOR TIME: Comments on Explanations
     
     return render(request, 'explain/entry_detail.html', context)
     
     
 def entry_prompt(request, search_term=None):
-    """ Prompt the user with the ability to add an entry.  Auto fill out part of the form for them."""
+    """ Entry Prompt
+    Prompt the user with the ability to add an entry.  Auto fill out part of the form for them.
+    """
     context = {}
     if request.method == "POST":
         entry_form = EntryForm(request.POST)
@@ -81,6 +86,7 @@ def entry_prompt(request, search_term=None):
         initial_data = {'name': search_term, 'original_creator':context['current_user'] }
         entry_form = EntryForm(initial_data)
         formset = ExplanationFormset()
+
     context['entry_form'] = entry_form
     context['formset'] = formset
 
@@ -88,6 +94,7 @@ def entry_prompt(request, search_term=None):
 
     
 def explanation_submit(request):
+    """ Explanation Submit """
     context = {}
     
     if request.method == "POST":
