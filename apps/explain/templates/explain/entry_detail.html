@@ -5,6 +5,7 @@
     //For ajax
     var csrf_token = "{{ csrf_token }}";
 </script>
+<div style="margin: 0 auto; width: 500px;">
 <h1>{{ entry.name }}</h1>
 
 {% if entry.url %}
@@ -50,6 +51,7 @@
         </div><!-- /#submit -->
     </div><!-- /.tab-content -->
 </div><!-- /.tabbable -->
+</div>
 {% endblock content %}
 
 {% block extra_foot %}
