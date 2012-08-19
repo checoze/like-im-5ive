@@ -7,7 +7,11 @@
     <h2>Explain it.</h2>
     <form method='POST' action='{% url entry_prompt %}' class="well">
         {% csrf_token %}
-        {{ entry_form.errors }}
+        {% if entry_form.errors %}
+        <div class="alert alert-error">
+            {{ entry_form.errors }}
+        </div><!-- /.alert -->
+        {% endif %}
         <div class="control-group">
             {{ entry_form.name.label_tag }}
             {{ entry_form.name }}
