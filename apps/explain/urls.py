@@ -1,10 +1,9 @@
 from django.conf.urls.defaults import patterns, include, url
 from tastypie.api import Api
-from explain.api import EntryResource, CommentAPIResource
+from explain.api import EntryResource
 
 v1_api = Api(api_name="v1")
 v1_api.register(EntryResource())
-v1_api.register(CommentAPIResource())
 
 urlpatterns = patterns('',
 
@@ -18,6 +17,7 @@ urlpatterns = patterns('',
     #Voting
     url(r'^vote/explanation/(\d+)/$', 'explain.views.vote', {'type':'explanation'}, name='vote_explanation'),
     url(r'^vote/comment/(\d+)/$', 'explain.views.vote', {'type':'comment'}, name='vote_comment', ),
-    
+
+    # API
     url(r'api/', include(v1_api.urls)),
 )
