@@ -1,8 +1,5 @@
 django==1.4.1
 south==0.7.6
-celery==2.5.5
-django-celery==2.5.5
-django-kombu==0.9.4
 django-tastypie==0.9.11
 django-debug-toolbar==0.9.4
 hadrian==1.1.4

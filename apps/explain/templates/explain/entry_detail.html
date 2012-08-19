@@ -7,15 +7,26 @@
 </script>
 <h1>{{ entry.name }}</h1>
 
-{% if entry.url %}
-    <a href="{{ entry.url }}" class="">{{ entry.url }}</a>
-{% endif %}
-
 <p id="lif-explanation-most-popular" style="margin: 10px 0;">
 {% for ex in entry.get_most_popular_explanation %}
     {{ ex }}
 {% endfor%}
 </p>
+
+{% if entry.url %}
+    <p><a href="{{ entry.url }}" class="">{{ entry.url }}</a></p>
+    
+    {% if entry.tags.all %}
+    <p>Possibly <span class="label label-important">NSFW</span> because:</p>
+    <ul>
+        {% for tag in entry.tags.all %}
+        <li>{{ tag }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    
+{% endif %}
+
 
 <div class="tabbable">
     <ul class="nav nav-tabs">
@@ -29,7 +40,7 @@
                 <p>{{ ex }}</p>
                 <p class="lif-score">Score: {{ ex.score }}</p>
                     {% if request.user.is_authenticated %}
-                    <a href='/vote/explanation' class='lif-upvote' data-type='explanation' data-id='{{ ex.id }}'><i class="icon-thumbs-up"></i> Upvote</a> / <a href='/vote/explanation' class='lif-downvote' data-type='explanation' data-id='{{ ex.id }}'><i class="icon-thumbs-down"></i> Downvote</a>
+                    <a href='/vote/explanation' id='lif-upvote-link-{{ ex.id }}' class='lif-upvote' data-type='explanation' data-id='{{ ex.id }}'><i class="icon-thumbs-up"></i> Upvote</a> / <a href='/vote/explanation' id='lif-downvote-link-{{ ex.id }}' lif-downvote' data-type='explanation' data-id='{{ ex.id }}'><i class="icon-thumbs-down"></i> Downvote</a>
                     {% else %}
                     <a href="{% url login %}">Sign In to vote.</a>
                     {% endif %}
