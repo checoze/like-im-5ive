@@ -6,9 +6,8 @@
     <form action="." method="post" class="well">
         {% csrf_token %}
         <div class="control-group">
-            <label for="search">I don&rsquo;t quite understand</label>
-            <input id="search" name="search" type="search" placeholder="word, phrase or url&hellip;">
-            <p class="help-block">Could you explain it to me, like I&rsquo;m five?</p>
+            <label for="search" style="font-size:13px;">Search for words, people, concepts, URLs or anything else and get a short summary. For example, ‘<a href="#">quantam physics</a>’, ‘<a href="#">http://penny-arcade.com/comic/2012/05/18</a>’, '<a href="#">CheCoZe</a>', or ''<a href="#">narwhal</a>’.</label>
+            <input id="search" name="search" type="search" placeholder="Word, Phrase or URL&hellip;">
         </div><!-- /.control-group -->
         <div class="form-actions">
             <input type="submit" value="Search or Explain" id="search-button" class="btn btn-primary btn-large">
