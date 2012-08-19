@@ -15,7 +15,7 @@
 <p id="lif-explanation-most-popular" style="margin: 10px 0;">
 {% for ex in entry.get_most_popular_explanation %}
     {{ ex }}
-{% endfor %}
+{% endfor%}
 </p>
 
 <div class="tabbable">
@@ -30,7 +30,7 @@
                 <p>{{ ex }}</p>
                 <p class="lif-score">Score: {{ ex.score }}</p>
                     {% if request.user.is_authenticated %}
-                    <a href='/vote/explanation' class='lif-upvote' data-type='explanation' data-id='{{ ex.id }}'><i class="icon-thumbs-up"></i>UPVOTE</a> / <a href='/vote/explanation' class='lif-downvote' data-type='explanation' data-id='{{ ex.id }}'><i class="icon-thumbs-down"></i>DOWNVOTE</a>
+                    <a href='/vote/explanation' class='lif-upvote' data-type='explanation' data-id='{{ ex.id }}'><i class="icon-thumbs-up"></i> Upvote</a> / <a href='/vote/explanation' class='lif-downvote' data-type='explanation' data-id='{{ ex.id }}'><i class="icon-thumbs-down"></i> Downvote</a>
                     {% else %}
                     <a href="{% url login %}">Sign In to vote.</a>
                     {% endif %}
