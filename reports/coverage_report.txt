@@ -7,19 +7,16 @@ apps/explain/api                                            9      0   100%
 apps/explain/forms                                         17      0   100%   
 apps/explain/managers                                      29      8    72%   8-13, 35, 38
 apps/explain/models                                        88     21    76%   36, 53, 62-74, 125-127, 131-133, 136
-apps/explain/tests/__init__                                 8      0   100%   
+apps/explain/tests/__init__                                 5      0   100%   
 apps/explain/tests/selenium/__init__                        2      0   100%   
 apps/explain/tests/selenium/enter_new_item_test_case       14      0   100%   
 apps/explain/tests/selenium/home_test_case                  9      0   100%   
 apps/explain/tests/selenium/search_homepage_test_case      11      0   100%   
 apps/explain/tests/selenium/test_add_explanation           17      0   100%   
-apps/explain/tests/selenium/test_down_vote                 31      0   100%   
-apps/explain/tests/selenium/test_login                     18      0   100%   
 apps/explain/tests/selenium/test_registration              13      0   100%   
-apps/explain/tests/selenium/test_up_vote                   30      0   100%   
 apps/explain/urls                                           6      0   100%   
 apps/explain/utils                                          4      1    75%   3
-apps/explain/views                                        109     11    90%   28, 41-42, 120-121, 137-141, 160-161
+apps/explain/views                                        109     26    76%   28, 41-42, 74, 120-121, 130-161
 apps/profile/__init__                                       0      0   100%   
 apps/profile/admin                                          5      0   100%   
 apps/profile/models                                         8      1    88%   15
@@ -32,4 +29,4 @@ settings/common                                            32      0   100%
 settings/local                                              9      0   100%   
 urls                                                       10      3    70%   18-24
 -------------------------------------------------------------------------------------
-TOTAL                                                     516     45    91%   
+TOTAL                                                     434     60    86%   

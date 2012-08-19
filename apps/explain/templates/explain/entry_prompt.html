@@ -7,6 +7,7 @@
     <h2>Explain it.</h2>
     <form method='POST' action='{% url entry_prompt %}' class="well">
         {% csrf_token %}
+        {{ entry_form.errors }}
         <div class="control-group">
             {{ entry_form.name.label_tag }}
             {{ entry_form.name }}
@@ -16,6 +17,7 @@
         </div><!-- /.control-group -->
         {{ formset.management_form }}
         {% for form in formset %}
+        {{ form.errors }}
             <div class="control-group">
                 {{ form.id }}
                 {{ form.body.label_tag }}
