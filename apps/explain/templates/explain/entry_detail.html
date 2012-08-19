@@ -8,15 +8,25 @@
 <div style="margin: 20px auto 0 auto; width: 500px;">
 <h1>{{ entry.name }}</h1>
 
-{% if entry.url %}
-    <a href="{{ entry.url }}" class="">{{ entry.url }}</a>
-{% endif %}
-
 <p id="lif-explanation-most-popular" style="margin: 10px 0;">
 {% for ex in entry.get_most_popular_explanation %}
     {{ ex }}
 {% endfor%}
 </p>
+
+{% if entry.url %}
+    <p><a href="{{ entry.url }}" class="">{{ entry.url }}</a></p>
+    
+    {% if entry.tags.all %}
+    <ul>
+        {% for tag in entry.tags.all %}
+        <li>{{ tag }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    
+{% endif %}
+
 
 <div class="tabbable">
     <ul class="nav nav-tabs">
