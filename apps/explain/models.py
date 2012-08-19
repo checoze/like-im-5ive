@@ -45,7 +45,6 @@ class Entry(Base):
     
     #URL specific fields
     url = models.URLField(max_length=255, blank=True)
-    tags = models.ManyToManyField(Tag, blank=True)
     
     original_creator = models.ForeignKey(User, default="1")
         
@@ -89,6 +88,8 @@ class Explanation(Base):
     entry = models.ForeignKey(Entry)
     body = models.TextField()
 
+
+    tags = models.ManyToManyField(Tag, blank=True)
     #submitted #
         
     def __unicode__(self):

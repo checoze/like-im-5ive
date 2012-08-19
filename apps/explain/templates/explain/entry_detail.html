@@ -16,15 +16,16 @@
 {% if entry.url %}
     <p><a href="{{ entry.url }}" class="">{{ entry.url }}</a></p>
     
-    {% if entry.tags.all %}
-    <p>Possibly <span class="label label-important">NSFW</span> because:</p>
-    <ul>
-        {% for tag in entry.tags.all %}
-        <li>{{ tag }}</li>
-        {% endfor %}
-    </ul>
-    {% endif %}
-    
+    {% for ex in entry.get_most_popular_explanation %}
+        {% if ex.tags.all %}
+        <p>Possibly <span class="label label-important">NSFW</span> because:</p>
+        <ul>
+            {% for tag in ex.tags.all %}
+            <li>{{ tag }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    {% endfor%}    
 {% endif %}
 
 
@@ -50,6 +51,9 @@
         <div class="tab-pane" id="submit">
             <form method='POST' action='/explanation/submit' class="well">
                 {% csrf_token %}
+                {% if entry.url %}
+                    {{ explanation_form.tags }}
+                {% endif %}
                 <div class="control-group">
                     <input type='hidden' name="entry_hex" value='{{ entry.hex }}'>
                     <input type='hidden' id="id_entry" name='entry' value='{{ entry.id }}'>
