@@ -4368,7 +4368,7 @@ a.label:hover, a.badge:hover {
 /* line 7, ../../src/sass/like-im-5ive.sass */
 #lif-header,
 #lif-footer {
-  background: #c80000;
+  background: #bd362f;
   width: 100%;
 }
 
@@ -4415,7 +4415,7 @@ a.label:hover, a.badge:hover {
 #lif-signin {
   position: absolute;
   right: 10px;
-  top: 5px;
+  top: 10px;
 }
 /* line 42, ../../src/sass/like-im-5ive.sass */
 #lif-signin .icon-user {
@@ -4442,44 +4442,45 @@ a.label:hover, a.badge:hover {
   color: white;
   font-size: 20px;
   line-height: 50px;
+  margin: 0;
   position: absolute;
   right: 10px;
-  top: 0;
+  top: 2px;
 }
-/* line 60, ../../src/sass/like-im-5ive.sass */
+/* line 61, ../../src/sass/like-im-5ive.sass */
 #lif-auth > li {
   display: inline;
 }
-/* line 62, ../../src/sass/like-im-5ive.sass */
+/* line 63, ../../src/sass/like-im-5ive.sass */
 #lif-auth > li:first-child {
   border-right: 1px solid white;
   padding-right: 0.5em;
 }
-/* line 65, ../../src/sass/like-im-5ive.sass */
+/* line 66, ../../src/sass/like-im-5ive.sass */
 #lif-auth > li > a {
   color: white;
   padding-left: 0.5em;
 }
 
-/* line 69, ../../src/sass/like-im-5ive.sass */
+/* line 70, ../../src/sass/like-im-5ive.sass */
 #lif-main {
   margin: 25px auto;
   padding: 0 10px;
 }
-/* line 72, ../../src/sass/like-im-5ive.sass */
+/* line 73, ../../src/sass/like-im-5ive.sass */
 #lif-main h1 {
   font-family: Georgia, "Times New Roman", Times, serif;
   letter-spacing: -1px;
 }
-/* line 75, ../../src/sass/like-im-5ive.sass */
+/* line 76, ../../src/sass/like-im-5ive.sass */
 #lif-main h1 + .well {
   margin-top: -5px;
 }
-/* line 77, ../../src/sass/like-im-5ive.sass */
+/* line 78, ../../src/sass/like-im-5ive.sass */
 #lif-main h1 + p {
   margin-top: 9px;
 }
-/* line 79, ../../src/sass/like-im-5ive.sass */
+/* line 80, ../../src/sass/like-im-5ive.sass */
 #lif-main .btn.btn-primary.btn-large,
 #lif-main input[type=password],
 #lif-main input[type=search],
@@ -4492,7 +4493,7 @@ a.label:hover, a.badge:hover {
   margin-bottom: 0.5em;
   width: 100%;
 }
-/* line 90, ../../src/sass/like-im-5ive.sass */
+/* line 91, ../../src/sass/like-im-5ive.sass */
 #lif-main input[type=password],
 #lif-main input[type=search],
 #lif-main input[type=text],
@@ -4503,25 +4504,25 @@ a.label:hover, a.badge:hover {
   box-sizing: border-box;
 }
 @media only screen and (min-width: 1024px) {
-  /* line 69, ../../src/sass/like-im-5ive.sass */
+  /* line 70, ../../src/sass/like-im-5ive.sass */
   #lif-main {
     margin: 100px auto;
     width: 512px;
   }
 }
 
-/* line 101, ../../src/sass/like-im-5ive.sass */
+/* line 102, ../../src/sass/like-im-5ive.sass */
 #lif-home-search > h1,
 #lif-signup > h1 {
   margin-left: 20px;
 }
 
-/* line 104, ../../src/sass/like-im-5ive.sass */
+/* line 105, ../../src/sass/like-im-5ive.sass */
 #lif-footer {
   min-height: 100px;
 }
 
-/* line 107, ../../src/sass/like-im-5ive.sass */
+/* line 108, ../../src/sass/like-im-5ive.sass */
 #lif-footer-nav {
   color: white;
   font-size: 16px;
@@ -4529,19 +4530,19 @@ a.label:hover, a.badge:hover {
   padding: 10px;
   margin: 0 auto;
 }
-/* line 113, ../../src/sass/like-im-5ive.sass */
+/* line 114, ../../src/sass/like-im-5ive.sass */
 #lif-footer-nav a {
   color: white;
   text-decoration: underline;
 }
 @media only screen and (min-width: 1024px) {
-  /* line 107, ../../src/sass/like-im-5ive.sass */
+  /* line 108, ../../src/sass/like-im-5ive.sass */
   #lif-footer-nav {
     width: 682.667px;
   }
 }
 
-/* line 119, ../../src/sass/like-im-5ive.sass */
+/* line 120, ../../src/sass/like-im-5ive.sass */
 .lif-even {
   background-color: #f5f5f5;
 }

@@ -3,8 +3,8 @@
 {% block title %}Explain {{ term }} | {% endblock title %}
 
 {% block content %}
-    <h1>"{{ term }}" doesn&rsquo;t exist.</h1>
-    <h2>Would you like to create an Explanation for it?</h2>
+    <h1>&ldquo;{{ term }}&rdquo; doesn&rsquo;t exist.</h1>
+    <h2>Explain it.</h2>
     <form method='POST' action='{% url entry_prompt %}' class="well">
         {% csrf_token %}
         <div class="control-group">
