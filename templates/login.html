@@ -6,6 +6,7 @@
 <h1 class="pre-well">Login</h1>
 <form method="POST" action="{% url login %}?next=/" class="well">
     {% csrf_token %}
+    {{ form.errors }}
     <div class="control-group">
         {{ form.username.label_tag }}
         {{ form.username }}
