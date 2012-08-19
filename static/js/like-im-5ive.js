@@ -15,7 +15,14 @@ $(function(){
 			dataType: 'json',
 			data: "csrfmiddlewaretoken=" + csrf_token + "&direction=" + direction,
 			success: function(data){
-			    alert('success!');
+			    if ( data.success ){
+			        //alert( $(elem).attr('class'));
+			        //alert(data.value);
+			        $(elem).siblings('.lif-score').text("Score: " + data.value)
+			    }
+			    else{
+			        console.log('Unable to vote')
+			    }
 			},
 			error: function(){
 			    console.log('Unable to vote')

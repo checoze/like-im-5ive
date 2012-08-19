@@ -141,8 +141,8 @@ def vote(request, id, type):
     else:
         value = False
     
-    Vote.objects.create(user=request.user, content_object=_object, value=value )
+    Vote.objects.create(user=request.user, content_object=_object, value=value)    
     
-    response = simplejson.dumps({ 'success': True })        
+    response = simplejson.dumps({ 'success': True, 'value': _object.score })
     return HttpResponse(response, mimetype='application/json', status=200)
 

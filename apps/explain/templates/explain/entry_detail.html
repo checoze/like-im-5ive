@@ -22,11 +22,15 @@
 </ul>
 
 <h2>More Explanation</h2>
+<ul>
 {% for ex in entry.explanation_set.all %}
+<li class="lif-explanation-listitem">
     <p>{{ ex }}</p>
-    <p>Score: <span>{{ ex.score }}</span> <a href='/vote/explanation' class='lif-upvote' data-type='explanation' data-id='{{ ex.id }}'>UPVOTE</a> / <a href='/vote/explanation' class='lif-downvote' data-type='explanation' data-id='{{ ex.id }}'>DOWNVOTE</a></p>
-    <br/>
+    <p class="lif-score">Score: {{ ex.score }}</p>
+    <a href='/vote/explanation' class='lif-upvote' data-type='explanation' data-id='{{ ex.id }}'>UPVOTE</a> / <a href='/vote/explanation' class='lif-downvote' data-type='explanation' data-id='{{ ex.id }}'>DOWNVOTE</a>
+</li>    
 {% endfor %}
+</ul>
 
 <h2>Submit New Explanation</h2>
 <form method='POST' action='/explanation/submit'>
