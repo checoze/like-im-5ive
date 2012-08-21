@@ -3,45 +3,6 @@
 {% block title %}Explain {{ term }} | {% endblock title %}
 
 {% block content %}
-    <h1>&ldquo;{{ term }}&rdquo; doesn&rsquo;t exist.</h1>
-    <h2>Explain it.</h2>
-    <form method='POST' action='{% url entry_prompt %}' class="well">
-        {% csrf_token %}
-        {% if entry_form.errors %}
-        <div class="alert alert-error">
-            {{ entry_form.errors }}
-        </div><!-- /.alert -->
-        {% endif %}
-        <div class="control-group">
-            {{ entry_form.name.label_tag }}
-            {{ entry_form.name }}
-            {% if entry_form.name.help_text %}
-                <span class="help-block">{{ entry_form.name.help_text }}</span>
-            {% endif %}
-        </div><!-- /.control-group -->
-        {{ formset.management_form }}
-        {% for form in formset %}
-        {{ form.errors }}
-            <div class="control-group">
-                {{ form.id }}
-                {{ form.body.label_tag }}
-                {{ form.body }}
-                {% if form.body.help_text %}
-                    <span class="help-block">{{ form.body.help_text }}</span>
-                {% endif %}
-            </div><!-- /.control-group -->
-            <div class="control-group">
-                <fieldset>
-                    <legend>Tags</legend>
-                {% if is_url %}
-                    {{ form.tags }}
-                {% endif %}
-                </fieldset>
-            </div><!-- /.control-group -->
-        {% endfor %}
-        <div class="form-actions">
-            <input type='hidden' name='original_creator' value='{{ current_user }}'>
-            <input type='submit' class="btn btn-primary btn-large" value="Save" id='save-item'>
-        </div><!-- /.form-actions -->
-    </form>
+    <h1>Explain it to me.</h1>
+    {% include "explain/entry_form.html" %}
 {% endblock content %}
