@@ -22,7 +22,7 @@ def home(request):
     return render(request, 'explain/home.html', context)
 
     
-def entry_detail(request, hex):
+def entry_detail(request, hex, slug):
     """ Entry Detail
         Returns simply the entry object and a form to create new explanations.
     """
@@ -47,7 +47,6 @@ def search(request):
 
     try:
         context['entry'] = Entry.objects.get(name=term)
-        #return redirect(reverse('entry_detail', args=[entry.hex]))
     except Entry.DoesNotExist:
         context['entry'] = None
         context['is_url'] = is_url(term)
@@ -81,7 +80,7 @@ def entry_create(request):
             if formset.is_valid():
                 entry_form.save()
                 formset.save()
-                return HttpResponseRedirect(reverse('entry_detail', args=[entry.hex]))
+                return HttpResponseRedirect(reverse('entry_detail', args=[entry.hex, entry.slug]))
     else:
         if request.user.is_authenticated():
             context['current_user'] = request.user.id
@@ -100,10 +99,11 @@ def explanation_submit(request):
     
     if request.method == "POST":
         entry_hex = request.POST.get('entry_hex')
+        entry_slug = request.POST.get('entry_slug')
         explanation_form = ExplanationForm(request.POST)
         if explanation_form.is_valid():
             explanation_form.save()
-    return HttpResponseRedirect(reverse('entry_detail', args=[entry_hex]))
+    return HttpResponseRedirect(reverse('entry_detail', args=[entry_hex, entry_slug]))
 
 def registration(request):
     """ Register a user, log them in, and send them on their way."""
