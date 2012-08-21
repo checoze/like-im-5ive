@@ -71,6 +71,8 @@ def search(request):
     return render(request, "explain/search_results.html", context)
         
 def entry_create(request):
+    context = {}
+    
     if request.method == 'POST':
         entry_form = EntryForm(request.POST)
         if entry_form.is_valid():
@@ -81,14 +83,17 @@ def entry_create(request):
                 formset.save()
                 return HttpResponseRedirect(reverse('entry_detail', args=[entry.hex]))
     else:
-        context['entry_form'] = entry_form
-        context['formset'] = formset
+        if request.user.is_authenticated():
+            context['current_user'] = request.user.id
+        else:
+            context['current_user'] = User.objects.get(username="anon").id
+        
+        context['entry_form'] = EntryForm()
+        entry = Entry()
+        context['formset'] = ExplanationFormset(instance=entry)
+        return render(request, 'explain/entry_create.html', context)
 
-    return render(request, 'explain/entry_create.html', context)
 
-
-
-    
 def explanation_submit(request):
     """ Explanation Submit """
     context = {}
