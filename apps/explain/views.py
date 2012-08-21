@@ -19,6 +19,10 @@ def home(request):
     """ Simple homepage invites users to search for or create an entry """
     context = {}
     
+    context['recent_entries'] = Entry.objects.order_by('-created_date')[:5]
+    print context['recent_entries']
+
+    
     return render(request, 'explain/home.html', context)
 
     
@@ -32,7 +36,7 @@ def entry_detail(request, hex, slug):
     context['entry'] = entry
     context['explanation_form'] = ExplanationForm()
     #CUT FOR TIME: Comments on Explanations
-    
+        
     return render(request, 'explain/entry_detail.html', context)
     
     
