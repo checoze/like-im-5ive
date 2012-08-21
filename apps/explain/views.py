@@ -20,8 +20,7 @@ def home(request):
     context = {}
     
     context['recent_entries'] = Entry.objects.order_by('-created_date')[:5]
-    print context['recent_entries']
-
+    context['random_entries'] = Entry.objects.order_by('?')[:5]
     
     return render(request, 'explain/home.html', context)
 

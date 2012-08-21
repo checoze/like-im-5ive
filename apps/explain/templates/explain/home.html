@@ -26,7 +26,16 @@
     <h2>Recent Entries</h2>
     <ul>
     {% for entry in recent_entries %}
-        <li>{{ entry.name }}</li>
+        <li><a href="{% url explain.views.entry_detail entry.hex entry.slug %}">{{ entry.name }}</a></li>
+    {% endfor %}
+    </ul>
+</div>
+
+<div>
+    <h2>Random Entries</h2>
+    <ul>
+    {% for entry in random_entries %}
+        <li><a href="{% url explain.views.entry_detail entry.hex entry.slug %}">{{ entry.name }}</a></li>
     {% endfor %}
     </ul>
 </div>
