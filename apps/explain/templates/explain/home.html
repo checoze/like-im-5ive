@@ -18,8 +18,26 @@
             <li><a href="/e31fea/narwhal/">Narwhal</a></li>
             <li><a href="/339274/neil-patrick-harris/">Neil Patrick Harris</a></li>
             <li><a href="/2cff07/ultimate-dog-tease-youtube/">http://www.youtube.com/watch?v=nGeKSiCQkPw</a></li>            
-            
         </ul>
     </div><!-- /.form-actions -->
 </form>
+
+<div>
+    <h2>Recent Entries</h2>
+    <ul>
+    {% for entry in recent_entries %}
+        <li><a href="{% url explain.views.entry_detail entry.hex entry.slug %}">{{ entry.name }}</a></li>
+    {% endfor %}
+    </ul>
+</div>
+
+<div>
+    <h2>Random Entries</h2>
+    <ul>
+    {% for entry in random_entries %}
+        <li><a href="{% url explain.views.entry_detail entry.hex entry.slug %}">{{ entry.name }}</a></li>
+    {% endfor %}
+    </ul>
+</div>
+
 {% endblock content %}
