@@ -9,7 +9,7 @@ from django.utils import simplejson
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.http import HttpResponse
-
+from django.db.models.query import Q
 
 from explain.models import Entry, Explanation, Vote
 from explain.forms import EntryForm, ExplanationForm, ExplanationFormset, RegistrationForm
@@ -19,30 +19,7 @@ def home(request):
     """ Simple homepage invites users to search for or create an entry """
     context = {}
     
-    if request.method == "POST":
-        term = request.POST.get('search')
-        context['search'] = term
-
-        try:
-            entry = Entry.objects.get(name=term)
-            return redirect(reverse('entry_detail', args=[entry.hex]))
-
-        except Entry.DoesNotExist:
-            # Try to find similar ones
-            # Sweet lord, replace this with haystack
-            # and not something on the db level
-            # TODO fo sho.
-            from django.db.models.query import Q
-            entries = Entry.objects.filter(Q(name__istartswith=term) | Q(name__iendswith=term) | Q(url__istartswith=term) | Q(url__iendswith=term))
-            if not entries.exists():
-                request.method = "GET"
-                return entry_prompt(request, term)
-
-            context['entries'] = entries
-            return render(request, "explain/search_results.html", context)
-
-    else:
-        return render(request, 'explain/home.html', context)
+    return render(request, 'explain/home.html', context)
 
     
 def entry_detail(request, hex):
@@ -59,12 +36,44 @@ def entry_detail(request, hex):
     return render(request, 'explain/entry_detail.html', context)
     
     
-def entry_prompt(request, search_term=None):
+def search(request):
     """ Entry Prompt
     Prompt the user with the ability to add an entry.  Auto fill out part of the form for them.
     """
     context = {}
-    if request.method == "POST":
+
+    term = request.GET.get('search')
+    context['search'] = term
+
+    try:
+        context['entry'] = Entry.objects.get(name=term)
+        #return redirect(reverse('entry_detail', args=[entry.hex]))
+    except Entry.DoesNotExist:
+        context['entry'] = None
+        
+        context['term'] = term
+        context['is_url'] = is_url(term)
+        
+        if request.user.is_authenticated():
+            context['current_user'] = request.user.id
+        else:
+            context['current_user'] = User.objects.get(username="anon").id
+
+        initial_data = {'name': term, 'original_creator':context['current_user'] }
+        context['entry_form'] = EntryForm(initial_data)
+        context['formset'] = ExplanationFormset()
+        
+    # Try to find similar ones
+    # Sweet lord, replace this with haystack
+    # and not something on the db level
+    # TODO fo sho.                    
+    similar_entries = Entry.objects.filter(Q(name__istartswith=term) | Q(name__iendswith=term) | Q(url__istartswith=term) | Q(url__iendswith=term))
+    context['similar_entries'] = similar_entries
+    
+    return render(request, "explain/search_results.html", context)
+        
+def entry_create(request):
+    if requset.method == 'POST':
         entry_form = EntryForm(request.POST)
         if entry_form.is_valid():
             entry = entry_form.save(commit=False)
@@ -74,23 +83,12 @@ def entry_prompt(request, search_term=None):
                 formset.save()
                 return HttpResponseRedirect(reverse('entry_detail', args=[entry.hex]))
     else:
-        # Check for authed user.  If not, assign the item to the "Anonymous" user
-        if request.user.is_authenticated():
-            context['current_user'] = request.user.id
-        else:
-            context['current_user'] = User.objects.get(username="anon").id
-
-        # Do some form cleanup, and send stuff back.
-        context['term'] = search_term
-        context['is_url'] = is_url(search_term)
-        initial_data = {'name': search_term, 'original_creator':context['current_user'] }
-        entry_form = EntryForm(initial_data)
-        formset = ExplanationFormset()
-
-    context['entry_form'] = entry_form
-    context['formset'] = formset
+        context['entry_form'] = entry_form
+        context['formset'] = formset
 
     return render(request, 'explain/entry_prompt.html', context)
+
+
 
     
 def explanation_submit(request):

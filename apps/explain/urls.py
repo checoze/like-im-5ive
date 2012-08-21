@@ -9,7 +9,8 @@ urlpatterns = patterns('',
 
     url(r'^$', 'explain.views.home', name='home'),
 
-    url(r'^entry/create$', 'explain.views.entry_prompt', name='entry_prompt'),
+    url(r'^search$', 'explain.views.search', name='search'),
+    url(r'^entry/create', 'explain.views.entry_create', name='entry_create'),
     url(r'^([a-f0-9]{6})/', 'explain.views.entry_detail', name='entry_detail'),
     
     url(r'^explanation/submit$', 'explain.views.explanation_submit', name='explanation_submit'),
