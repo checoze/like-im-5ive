@@ -1,0 +1,41 @@
+<form method='POST' action='{% url entry_create %}' class="well">
+    {% csrf_token %}
+    {% if entry_form.errors %}
+    <div class="alert alert-error">
+        {{ entry_form.errors }}
+    </div><!-- /.alert -->
+    {% endif %}
+    <div class="control-group">
+        {{ entry_form.name.label_tag }}
+        {{ entry_form.name }}
+        {% if entry_form.name.help_text %}
+            <span class="help-block">{{ entry_form.name.help_text }}</span>
+        {% endif %}
+    </div><!-- /.control-group -->
+    {{ formset.management_form }}
+    {% for form in formset %}
+    {{ form.errors }}
+        <div class="control-group">
+            {{ form.id }}
+            {{ form.body.label_tag }}
+            {{ form.body }}
+            {% if form.body.help_text %}
+                <span class="help-block">{{ form.body.help_text }}</span>
+            {% endif %}
+        </div><!-- /.control-group -->
+        {% if is_url %}
+        <div class="control-group">
+            <fieldset>
+                <legend>Tags</legend>
+
+                {{ form.tags }}
+
+            </fieldset>
+        </div><!-- /.control-group -->
+        {% endif %}                
+    {% endfor %}
+    <div class="form-actions">
+        <input type='hidden' name='original_creator' value='{{ current_user }}'>
+        <input type='submit' class="btn btn-primary btn-large" value="Save" id='save-item'>
+    </div><!-- /.form-actions -->
+</form>
