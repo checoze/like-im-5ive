@@ -5,7 +5,7 @@
 {% block content %}
 
     <!-- The label and input should be hte same size, read like a sentence with a search button after. -->
-    <form method='get' action='/search'>
+    <form method='post' action='/search'>
         <span>Searched for </span>
         <input id="inner_search" name="search" type='text' value="{{ term }}" style="display: block-inline; width: 200px;" />
         <input type="submit" value="Search or Explain" id="inner_search-button" class="btn btn-primary" style="display: block-inline;">
