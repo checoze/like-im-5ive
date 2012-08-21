@@ -1,13 +1,30 @@
 {% extends "base.html" %}
 
-{% block title %}Searched for {{ search }} | {% endblock title%}
+{% block title %}Searched for {{ term }} | {% endblock title%}
 
 {% block content %}
-<h1 class="pre-well">You searched for {{ search }}</h1>
-{% for entry in entries %}
-    <div class="well {% if forloop.counter|divisibleby:2 %}lif-even{% endif %}"}>
-        <a href="{% url explain.views.entry_detail entry.hex %}">{{ entry.name }}</a>{% if entry.url %} - {{ entry.url }}{% endif %}
-    </div><!-- /.well -->
-{% endfor %}
+
+    <!-- The label and input should be hte same size, read like a sentence with a search button after. -->
+    <form method='post' action='/search'>
+        {% csrf_token %}
+        <span>Searched for </span>
+        <input id="inner_search" name="search" type='text' value="{{ term }}" style="display: block-inline; width: 200px;" />
+        <input type="submit" value="Search or Explain" id="inner_search-button" class="btn btn-primary" style="display: block-inline;">
+    </form>
+
+    {% if entry %}
+        <h2 style='margin-bottom: 20px;'>Found <a href="{% url explain.views.entry_detail entry.hex %}">{{ entry.name }}</a>{% if entry.url %} - {{ entry.url }}{% endif %}</h2>
+    {% else %}
+        <h2>&ldquo;{{ term }}&rdquo; doesn&rsquo;t exist. Explain it to me.</h2>
+        {% include "explain/entry_form.html" %}
+    {% endif %}
+    
+
+    <h2>Found {{ similar_entries|length }} Similar Entries</h2>
+    {% for entry in similar_entries %}
+        <div class="well {% if forloop.counter|divisibleby:2 %}lif-even{% endif %}"}>
+            <a href="{% url explain.views.entry_detail entry.hex %}">{{ entry.name }}</a>{% if entry.url %} - {{ entry.url }}{% endif %} - {{ entry.get_most_popular_explanation.0 }}
+        </div><!-- /.well -->
+    {% endfor %}
 
 {% endblock %}

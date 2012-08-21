@@ -8,9 +8,7 @@
 <h1>{{ entry.name }}</h1>
 
 <p id="lif-explanation-most-popular">
-{% for ex in entry.get_most_popular_explanation %}
-    {{ ex }}
-{% endfor%}
+{{ entry.get_most_popular_explanation.0 }}
 </p>
 
 {% if entry.url %}
@@ -61,6 +59,7 @@
                 {% csrf_token %}
                 <div class="control-group">
                     <input type='hidden' name="entry_hex" value='{{ entry.hex }}'>
+                    <input type='hidden' name="entry_slug" value='{{ entry.slug }}'>
                     <input type='hidden' id="id_entry" name='entry' value='{{ entry.id }}'>
                     <textarea name="body" cols="40" rows="10" id="id_body"></textarea>
                 </div><!-- /.control-group -->
