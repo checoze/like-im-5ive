@@ -13,7 +13,7 @@
     </form>
 
     {% if entry %}
-        <h2 style='margin-bottom: 20px;'>Found <a href="{% url explain.views.entry_detail entry.hex %}">{{ entry.name }}</a>{% if entry.url %} - {{ entry.url }}{% endif %}</h2>
+        <h2 style='margin-bottom: 20px;'>Found <a href="{% url explain.views.entry_detail entry.hex entry.slug %}">{{ entry.name }}</a>{% if entry.url %} - {{ entry.url }}{% endif %}</h2>
     {% else %}
         <h2>&ldquo;{{ term }}&rdquo; doesn&rsquo;t exist. Explain it to me.</h2>
         {% include "explain/entry_form.html" %}
@@ -23,7 +23,7 @@
     <h2>Found {{ similar_entries|length }} Similar Entries</h2>
     {% for entry in similar_entries %}
         <div class="well {% if forloop.counter|divisibleby:2 %}lif-even{% endif %}"}>
-            <a href="{% url explain.views.entry_detail entry.hex %}">{{ entry.name }}</a>{% if entry.url %} - {{ entry.url }}{% endif %} - {{ entry.get_most_popular_explanation.0 }}
+            <a href="{% url explain.views.entry_detail entry.hex entry.slug %}">{{ entry.name }}</a>{% if entry.url %} - {{ entry.url }}{% endif %} - {{ entry.get_most_popular_explanation.0 }}
         </div><!-- /.well -->
     {% endfor %}
 
