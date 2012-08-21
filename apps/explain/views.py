@@ -42,7 +42,7 @@ def search(request):
     """
     context = {}
 
-    term = request.GET.get('search')
+    term = request.POST.get('search')
     context['term'] = term
 
     try:

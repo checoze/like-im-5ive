@@ -2,7 +2,7 @@
 
 {% block content %}
 <h1 class="pre-well">Explain it to me.</h1>
-<form action="/search" method="get" class="well">
+<form action="/search" method="post" class="well">
     {% csrf_token %}
     <div class="control-group">
         <input id="search" name="search" type="search" placeholder="Word, Phrase or URL&hellip;">
