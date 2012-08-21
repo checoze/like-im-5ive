@@ -63,14 +63,14 @@
                     <input type='hidden' id="id_entry" name='entry' value='{{ entry.id }}'>
                     <textarea name="body" cols="40" rows="10" id="id_body"></textarea>
                 </div><!-- /.control-group -->
+                {% if entry.url %}
                 <div class="control-group">
                     <fieldset>
                         <legend>Tags</legend>
-                    {% if entry.url %}
                         {{ explanation_form.tags }}
-                    {% endif %}
                     </fieldset>
                 </div><!-- /.control-group -->
+                {% endif %}
                 <div class="form-actions">
                     <input type='submit' value='Add New Explanation' class='btn btn-primary btn-large' id='add-explanation'>
                 </div><!-- /.form-actions -->
