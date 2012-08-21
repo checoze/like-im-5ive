@@ -43,15 +43,13 @@ def search(request):
     context = {}
 
     term = request.GET.get('search')
-    context['search'] = term
+    context['term'] = term
 
     try:
         context['entry'] = Entry.objects.get(name=term)
         #return redirect(reverse('entry_detail', args=[entry.hex]))
     except Entry.DoesNotExist:
         context['entry'] = None
-        
-        context['term'] = term
         context['is_url'] = is_url(term)
         
         if request.user.is_authenticated():
@@ -73,7 +71,7 @@ def search(request):
     return render(request, "explain/search_results.html", context)
         
 def entry_create(request):
-    if requset.method == 'POST':
+    if request.method == 'POST':
         entry_form = EntryForm(request.POST)
         if entry_form.is_valid():
             entry = entry_form.save(commit=False)
