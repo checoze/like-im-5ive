@@ -8,9 +8,7 @@
 <h1>{{ entry.name }}</h1>
 
 <p id="lif-explanation-most-popular">
-{% for ex in entry.get_most_popular_explanation %}
-    {{ ex }}
-{% endfor%}
+{{ entry.get_most_popular_explanation.0 }}
 </p>
 
 {% if entry.url %}
