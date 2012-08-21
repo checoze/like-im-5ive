@@ -35,14 +35,16 @@
                         <span class="help-block">{{ form.body.help_text }}</span>
                     {% endif %}
                 </div><!-- /.control-group -->
+                {% if is_url %}
                 <div class="control-group">
                     <fieldset>
                         <legend>Tags</legend>
-                    {% if is_url %}
+
                         {{ form.tags }}
-                    {% endif %}
+
                     </fieldset>
                 </div><!-- /.control-group -->
+                {% endif %}                
             {% endfor %}
             <div class="form-actions">
                 <input type='hidden' name='original_creator' value='{{ current_user }}'>

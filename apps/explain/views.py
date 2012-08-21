@@ -84,7 +84,7 @@ def entry_create(request):
         context['entry_form'] = entry_form
         context['formset'] = formset
 
-    return render(request, 'explain/entry_prompt.html', context)
+    return render(request, 'explain/entry_create.html', context)
 
 
 
